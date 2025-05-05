@@ -103,6 +103,59 @@ export default function About() {
                 ))}
               </Flex>
             )}
+            
+            <Flex direction="column" gap="m" marginTop="m" width="100%">
+              {about.calendar.display && (
+                <Flex
+                  fitWidth
+                  border="brand-alpha-medium"
+                  style={{
+                    backdropFilter: "blur(var(--static-space-1))",
+                    width: "100%"
+                  }}
+                  background="brand-alpha-weak"
+                  radius="full"
+                  padding="4"
+                  gap="8"
+                  vertical="center"
+                >
+                  <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
+                  <Flex paddingX="8">Schedule a call</Flex>
+                  <IconButton
+                    href={about.calendar.link}
+                    data-border="rounded"
+                    variant="secondary"
+                    icon="chevronRight"
+                  />
+                </Flex>
+              )}
+              
+              {about.cv?.display && (
+                <Flex
+                  fitWidth
+                  border="brand-alpha-medium"
+                  style={{
+                    backdropFilter: "blur(var(--static-space-1))",
+                    width: "100%"
+                  }}
+                  background="brand-alpha-weak"
+                  radius="full"
+                  padding="4"
+                  gap="8"
+                  vertical="center"
+                >
+                  <Icon paddingLeft="12" name="document" onBackground="brand-weak" />
+                  <Flex paddingX="8">Download CV</Flex>
+                  <IconButton
+                    href={about.cv.link}
+                    download
+                    data-border="rounded"
+                    variant="secondary"
+                    icon="download"
+                  />
+                </Flex>
+              )}
+            </Flex>
           </Column>
         )}
         <Column className={styles.blockAlign} flex={9} maxWidth={40}>
@@ -113,31 +166,6 @@ export default function About() {
             vertical="center"
             marginBottom="32"
           >
-            {about.calendar.display && (
-              <Flex
-                fitWidth
-                border="brand-alpha-medium"
-                className={styles.blockAlign}
-                style={{
-                  backdropFilter: "blur(var(--static-space-1))",
-                }}
-                background="brand-alpha-weak"
-                radius="full"
-                padding="4"
-                gap="8"
-                marginBottom="m"
-                vertical="center"
-              >
-                <Icon paddingLeft="12" name="calendar" onBackground="brand-weak" />
-                <Flex paddingX="8">Schedule a call</Flex>
-                <IconButton
-                  href={about.calendar.link}
-                  data-border="rounded"
-                  variant="secondary"
-                  icon="chevronRight"
-                />
-              </Flex>
-            )}
             <Heading className={styles.textAlign} variant="display-strong-xl">
               {person.name}
             </Heading>

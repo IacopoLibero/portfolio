@@ -27,6 +27,7 @@ import {
   HiSun,
   HiOutlineDocument,
   HiPhone,
+  HiArrowDownTray,
 } from "react-icons/hi2";
 
 import {
@@ -75,6 +76,7 @@ export const iconLibrary: Record<string, IconType> = {
   sun: HiSun,
   document: HiOutlineDocument,
   phone: HiPhone,
+  download: HiArrowDownTray,
 };
 
 export type IconLibrary = typeof iconLibrary;

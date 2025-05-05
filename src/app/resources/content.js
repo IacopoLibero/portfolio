@@ -86,6 +86,10 @@ const about = {
     display: true,
     link: "https://cal.com",
   },
+  cv: {
+    display: true,
+    link: "/CV - Iacopo Libero Bernabei.pdf",
+  },
   intro: {
     display: true,
     title: "Introduction",
