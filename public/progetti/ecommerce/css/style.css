@@ -1,0 +1,41 @@
+.immagine {
+  width: 8%;
+  height: 3%;
+  margin-left: 3%;
+  margin-right: 2%;
+}
+a {
+  text-decoration: none;
+  color: white;
+}
+a:hover {
+  color: white;
+}
+body {
+  font-family: "Koulen", cursive;
+}
+.no_font {
+  font-family: "Times New Roman";
+}
+.form_account {
+  position: absolute;
+  width: 60%;
+  height: 80%;
+  left: 20%;
+  right: 20%;
+  color: blue;
+}
+.home_immagini {
+  box-sizing: border-box;
+}
+.compere {
+  border-style: solid 1px black;
+}
+.compere:hover {
+  border-style: solid 1px black;
+}
+.skate_botton {
+  height: 50%;
+  width: 100%;
+  min-height: 30%;
+}

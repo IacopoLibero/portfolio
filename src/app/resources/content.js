@@ -56,16 +56,16 @@ const home = {
   label: "Home",
   title: `${person.name}'s Portfolio`,
   description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building bridges between design and code</>,
+  headline: <>Building tomorrow's security through today's code.</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Once UI</strong></>,
-    href: "/work/building-once-ui-a-customizable-design-system",
+    title: <>Recent project: <strong className="ml-4">Ec(h)o d'arte</strong></>,
+    href: "/work/echo_arte",
   },
   subline: (
     <>
-      I'm Selene, a design engineer at <Logo icon={false} style={{ display: "inline-flex", top: "0.25em", marginLeft: "-0.25em" }}/>, where I craft intuitive
-      <br /> user experiences. After hours, I build my own projects.
+      I'm {person.firstName}, a {person.role.toLowerCase()} <br /> focused on building secure
+      web applications and protecting digital assets.
     </>
   ),
 };
@@ -91,13 +91,13 @@ const about = {
     title: "Introduction",
     description: (
       <>
-        I'm a versatile web developer and cybersecurity specialist with a passion for creating secure and effective digital solutions.
+        As a passionate web developer and cybersecurity specialist, I thrive at the intersection of creative development and robust security implementation.
         <br /><br />
-        My expertise spans from full-stack development with JavaScript, HTML5, PHP, CSS, Java, and SQL to designing secure IT architectures.
+        My technical foundation encompasses full-stack development with JavaScript, HTML5, PHP, CSS, Java, and SQL, complemented by specialized knowledge in network security and data protection.
         <br /><br />
-        I'm currently enhancing my skills through an IFTS specialization as a "Network Security and Data Protection Manager," mastering advanced techniques in ethical hacking, digital forensic analysis, cryptography, and incident management.
+        Currently advancing my expertise through an IFTS specialization in "Network Security and Data Protection Management," I'm continuously expanding my proficiency in ethical hacking, digital forensics, cryptography, and incident response protocols.
         <br /><br />
-        My methodical approach to problem-solving, combined with a constant curiosity for emerging technologies, allows me to tackle complex challenges and transform them into elegant and secure solutions.
+        With a methodical approach to complex challenges and an insatiable curiosity for emerging technologies, I transform requirements into elegant, secure, and scalable solutions while constantly evolving my technical repertoire.
       </>
     ),
   },
@@ -111,10 +111,13 @@ const about = {
         role: "Full-stack Developer",
         achievements: [
           <>
-            Developed a management web app for a local ice cream shop, enabling them to manage orders and inventory efficiently.
+            Continuously expanding my skill set in web development, with a focus on modern frameworks, responsive design, and secure application architecture.
           </>,
           <>
-            Developed some personal projects, and some are still in progress.
+            Enhancing my expertise in cybersecurity through practical applications, including penetration testing, vulnerability assessments, and implementing robust security protocols.
+          </>,
+          <>
+            Steadily building a diverse portfolio of projects that demonstrate my evolving capabilities in both front-end and back-end development.
           </>,
         ],
         images: [
@@ -137,10 +140,12 @@ const about = {
     institutions: [
       {
         name: "University of Florence",
+        timeframe: "2024 - ongoing",
         description: <>Followed a IFTS specialization as a "Network Security and Data Protection Manager"</>,
       },
       {
         name: "ITIS A. Meucci Florence",
+        timeframe: "2021 - 2024",
         description: <>Graduated with a diploma in Computer Science</>,
       },
     ],

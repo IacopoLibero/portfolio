@@ -9,21 +9,27 @@ interface ElementTypeProps {
   children: ReactNode;
   className?: string;
   style?: React.CSSProperties;
+  target?: string;
   [key: string]: any;
 }
 
 const isExternalLink = (url: string) => /^https?:\/\//.test(url);
 
 const ElementType = forwardRef<HTMLElement, ElementTypeProps>(
-  ({ href, type, onClick, onLinkClick, children, className, style, ...props }, ref) => {
+  ({ href, type, onClick, onLinkClick, children, className, style, target, ...props }, ref) => {
     if (href) {
       const isExternal = isExternalLink(href);
-      if (isExternal) {
+
+      // Gestisci il target anche per i link che sembrano interni ma devono aprirsi in una nuova scheda
+      const linkTarget = target || (isExternal ? "_blank" : undefined);
+      const rel = linkTarget === "_blank" ? "noreferrer" : undefined;
+
+      if (isExternal || target === "_blank") {
         return (
           <a
             href={href}
-            target="_blank"
-            rel="noreferrer"
+            target={linkTarget}
+            rel={rel}
             ref={ref as React.Ref<HTMLAnchorElement>}
             className={className}
             style={style}
@@ -34,6 +40,7 @@ const ElementType = forwardRef<HTMLElement, ElementTypeProps>(
           </a>
         );
       }
+
       return (
         <Link
           href={href}
@@ -41,6 +48,7 @@ const ElementType = forwardRef<HTMLElement, ElementTypeProps>(
           className={className}
           style={style}
           onClick={() => onLinkClick?.()}
+          target={target}
           {...(props as React.AnchorHTMLAttributes<HTMLAnchorElement>)}
         >
           {children}
