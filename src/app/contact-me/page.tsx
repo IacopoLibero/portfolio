@@ -40,29 +40,29 @@ export default function ContactMe() {
 
         switch (name) {
             case "firstName":
-                if (!value) error = "Il nome è obbligatorio";
-                else if (value.length < 2) error = "Il nome deve contenere almeno 2 caratteri";
+                if (!value) error = "First name is required";
+                else if (value.length < 2) error = "First name must contain at least 2 characters";
                 break;
 
             case "lastName":
-                if (!value) error = "Il cognome è obbligatorio";
-                else if (value.length < 2) error = "Il cognome deve contenere almeno 2 caratteri";
+                if (!value) error = "Last name is required";
+                else if (value.length < 2) error = "Last name must contain at least 2 characters";
                 break;
 
             case "email":
-                if (!value) error = "L'email è obbligatoria";
-                else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) error = "Formato email non valido";
+                if (!value) error = "Email is required";
+                else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) error = "Invalid email format";
                 break;
 
             case "phone":
                 if (value && !/^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/.test(value)) {
-                    error = "Formato numero di telefono non valido";
+                    error = "Invalid phone number format";
                 }
                 break;
 
             case "message":
-                if (!value) error = "Il messaggio è obbligatorio";
-                else if (value.length < 10) error = "Il messaggio deve contenere almeno 10 caratteri";
+                if (!value) error = "Message is required";
+                else if (value.length < 10) error = "Message must contain at least 10 characters";
                 break;
 
             default:
@@ -107,7 +107,7 @@ export default function ContactMe() {
         if (isSubmitting) return;
 
         if (!validateForm()) {
-            setErrorMessage("Correggi gli errori nel form prima di inviare");
+            setErrorMessage("Please correct the errors in the form before submitting");
             setShowError(true);
             return;
         }
@@ -126,7 +126,7 @@ export default function ContactMe() {
             const data = await response.json();
 
             if (!response.ok) {
-                throw new Error(data.error || "Errore durante l'invio dell'email");
+                throw new Error(data.error || "Error while sending the email");
             }
 
             setShowSuccess(true);
@@ -138,8 +138,8 @@ export default function ContactMe() {
                 message: ""
             });
         } catch (error) {
-            console.error('Errore invio form:', error);
-            setErrorMessage(error instanceof Error ? error.message : "Si è verificato un errore durante l'invio del messaggio");
+            console.error('Form submission error:', error);
+            setErrorMessage(error instanceof Error ? error.message : "An error occurred while sending the message");
             setShowError(true);
         } finally {
             setIsSubmitting(false);
@@ -182,15 +182,15 @@ export default function ContactMe() {
 
                     <form onSubmit={handleSubmit} noValidate>
                         <Flex direction="column" gap="l">
-                            <Flex direction="column" gap="l">
+                            <Flex direction="row" gap="l">
                                 <Flex direction="column" gap="s" flex="1">
                                     <Text as="label" htmlFor="firstName" variant="body-strong-s">
-                                        Nome *
+                                        First Name *
                                     </Text>
                                     <Input
                                         id="firstName"
                                         name="firstName"
-                                        label="Nome"
+                                        label="First Name"
                                         value={formData.firstName}
                                         onChange={handleInputChange}
                                         onBlur={handleBlur}
@@ -205,12 +205,12 @@ export default function ContactMe() {
 
                                 <Flex direction="column" gap="s" flex="1">
                                     <Text as="label" htmlFor="lastName" variant="body-strong-s">
-                                        Cognome *
+                                        Last Name *
                                     </Text>
                                     <Input
                                         id="lastName"
                                         name="lastName"
-                                        label="Cognome"
+                                        label="Last Name"
                                         value={formData.lastName}
                                         onChange={handleInputChange}
                                         onBlur={handleBlur}
@@ -224,56 +224,57 @@ export default function ContactMe() {
                                 </Flex>
                             </Flex>
 
-                            <Flex direction="column" gap="s">
-                                <Text as="label" htmlFor="email" variant="body-strong-s">
-                                    Email *
-                                </Text>
-                                <Input
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    label="Email"
-                                    value={formData.email}
-                                    onChange={handleInputChange}
-                                    onBlur={handleBlur}
-                                    required
-                                />
-                                {errors.email && (
-                                    <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
-                                        {errors.email}
+                            <Flex direction="row" gap="l">
+                                <Flex direction="column" gap="s" flex="1">
+                                    <Text as="label" htmlFor="email" variant="body-strong-s">
+                                        Email *
                                     </Text>
-                                )}
-                            </Flex>
+                                    <Input
+                                        id="email"
+                                        name="email"
+                                        type="email"
+                                        label="Email"
+                                        value={formData.email}
+                                        onChange={handleInputChange}
+                                        onBlur={handleBlur}
+                                        required
+                                    />
+                                    {errors.email && (
+                                        <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
+                                            {errors.email}
+                                        </Text>
+                                    )}
+                                </Flex>
 
-                            <Flex direction="column" gap="s">
-                                <Text as="label" htmlFor="phone" variant="body-strong-s">
-                                    Telefono
-                                </Text>
-                                <Input
-                                    id="phone"
-                                    name="phone"
-                                    type="tel"
-                                    label="Telefono"
-                                    value={formData.phone}
-                                    onChange={handleInputChange}
-                                    onBlur={handleBlur}
-                                />
-                                <Text variant="body-default-xs" onBackground="neutral-medium">Opzionale</Text>
-                                {errors.phone && (
-                                    <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
-                                        {errors.phone}
+                                <Flex direction="column" gap="s" flex="1">
+                                    <Text as="label" htmlFor="phone" variant="body-strong-s">
+                                        Phone
                                     </Text>
-                                )}
+                                    <Input
+                                        id="phone"
+                                        name="phone"
+                                        type="tel"
+                                        label="Phone"
+                                        value={formData.phone}
+                                        onChange={handleInputChange}
+                                        onBlur={handleBlur}
+                                    />
+                                    {errors.phone && (
+                                        <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
+                                            {errors.phone}
+                                        </Text>
+                                    )}
+                                </Flex>
                             </Flex>
 
                             <Flex direction="column" gap="s">
                                 <Text as="label" htmlFor="message" variant="body-strong-s">
-                                    Messaggio *
+                                    Message *
                                 </Text>
                                 <Textarea
                                     id="message"
                                     name="message"
-                                    label="Messaggio"
+                                    label="Message"
                                     rows={6}
                                     value={formData.message}
                                     onChange={handleInputChange}
@@ -303,7 +304,7 @@ export default function ContactMe() {
                                     }}
                                     disabled={isSubmitting}
                                 >
-                                    {isSubmitting ? "Invio in corso..." : "Invia Messaggio"}
+                                    {isSubmitting ? "Sending..." : "Send Message"}
                                 </button>
                             </Flex>
                         </Flex>
@@ -311,7 +312,7 @@ export default function ContactMe() {
                 </div>
 
                 <Flex direction="column" gap="l" paddingTop="xl">
-                    <Text variant="body-strong-l">Metodi di contatto alternativi</Text>
+                    <Text variant="body-strong-l">Alternative Contact Methods</Text>
                     <Flex direction="column" gap="m">
                         <Flex direction="row" gap="m" vertical="center">
                             <Flex background="surface" padding="s" radius="full">
@@ -351,8 +352,8 @@ export default function ContactMe() {
                     }}
                     onClick={() => setShowSuccess(false)}
                 >
-                    <Heading as="h3" variant="heading-strong-s">Messaggio Inviato!</Heading>
-                    <Text>Grazie per il tuo messaggio. Ti risponderò al più presto.</Text>
+                    <Heading as="h3" variant="heading-strong-s">Message Sent!</Heading>
+                    <Text>Thank you for your message. I'll get back to you soon.</Text>
                 </Flex>
             )}
 
@@ -373,7 +374,7 @@ export default function ContactMe() {
                     }}
                     onClick={() => setShowError(false)}
                 >
-                    <Heading as="h3" variant="heading-strong-s">Errore</Heading>
+                    <Heading as="h3" variant="heading-strong-s">Error</Heading>
                     <Text>{errorMessage}</Text>
                 </Flex>
             )}
