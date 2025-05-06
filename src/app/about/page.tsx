@@ -104,7 +104,7 @@ export default function About() {
               </Flex>
             )}
             
-            <Flex direction="column" gap="m" marginTop="m" width="100%">
+            <Flex direction="column" gap="m" marginTop="m" fillWidth>
               {about.calendar.display && (
                 <Flex
                   fitWidth
