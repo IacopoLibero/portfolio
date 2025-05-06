@@ -7,7 +7,7 @@ import { Fade, Flex, Line, ToggleButton } from "@/once-ui/components";
 import styles from "@/components/Header.module.scss";
 
 import { routes, display } from "@/app/resources";
-import { person, about, blog, work, gallery } from "@/app/resources/content";
+import { person, about, blog, work, gallery, certifications, contactMe } from "@/app/resources/content";
 import { ThemeToggle } from "./ThemeToggle";
 
 type TimeDisplayProps = {
@@ -144,6 +144,40 @@ export const Header = () => {
                     prefixIcon="gallery"
                     href="/gallery"
                     selected={pathname.startsWith("/gallery")}
+                  />
+                </>
+              )}
+              {routes["/certifications"] && (
+                <>
+                  <ToggleButton
+                    className="s-flex-hide"
+                    prefixIcon="document"
+                    href="/certifications"
+                    label={certifications.label}
+                    selected={pathname.startsWith("/certifications")}
+                  />
+                  <ToggleButton
+                    className="s-flex-show"
+                    prefixIcon="document"
+                    href="/certifications"
+                    selected={pathname.startsWith("/certifications")}
+                  />
+                </>
+              )}
+              {routes["/contact me"] && (
+                <>
+                  <ToggleButton
+                    className="s-flex-hide"
+                    prefixIcon="chat"
+                    href="/contact-me"
+                    label={contactMe.label}
+                    selected={pathname.startsWith("/contact-me")}
+                  />
+                  <ToggleButton
+                    className="s-flex-show"
+                    prefixIcon="chat"
+                    href="/contact-me"
+                    selected={pathname.startsWith("/contact-me")}
                   />
                 </>
               )}

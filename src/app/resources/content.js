@@ -26,8 +26,6 @@ const newsletter = {
 };
 
 const social = [
-  // Links are automatically displayed.
-  // Import new icons in /once-ui/icons.ts
   {
     name: "GitHub",
     icon: "github",
@@ -106,7 +104,7 @@ const about = {
     ),
   },
   work: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Work Experience",
     experiences: [
       {
@@ -139,7 +137,7 @@ const about = {
     ],
   },
   studies: {
-    display: true, // set to false to hide this section
+    display: true,
     title: "Studies",
     institutions: [
       {
@@ -154,9 +152,8 @@ const about = {
       },
     ],
   },
-  //TO DO
   technical: {
-    display: false, // set to false to hide this section
+    display: false,
     title: "Technical skills",
     skills: [
       {
@@ -181,7 +178,6 @@ const about = {
       {
         title: "Next.js",
         description: <>Building next gen apps with Next.js + Once UI + Supabase.</>,
-        // optional: leave the array empty if you don't want to display images
         images: [
           {
             src: "/images/projects/project-01/cover-04.jpg",
@@ -218,8 +214,6 @@ const gallery = {
   label: "Gallery",
   title: `Photo gallery – ${person.name}`,
   description: `A photo collection by ${person.name}`,
-  // Images by https://lorant.one
-  // These are placeholder images, replace with your own
   images: [
     {
       src: "/images/gallery/horizontal-1.jpg",
@@ -264,4 +258,49 @@ const gallery = {
   ],
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery };
+const certifications = {
+  path: "/certifications",
+  label: "Certifications",
+  title: `Certifications – ${person.name}`,
+  description: `Professional certifications earned by ${person.name}`,
+  certifications: [
+    {
+      title: "Network Security Specialist",
+      issuer: "University of Florence",
+      date: "2024-05-01",
+      displayDate: "May 2024",
+      showDate: true,
+      description: "Advanced certification in network security protocols and implementation strategies",
+      image: "/images/certifications/network-security.jpg"
+    },
+    {
+      title: "Cybersecurity Fundamentals",
+      issuer: "Cisco Networking Academy",
+      date: "2023-11-15",
+      displayDate: "November 2023",
+      showDate: true,
+      description: "Comprehensive understanding of cybersecurity principles and best practices",
+      image: "/images/certifications/cisco-security.jpg"
+    },
+    {
+      title: "Full Stack Web Development",
+      issuer: "freeCodeCamp",
+      date: "2023-08-20",
+      displayDate: "August 2023",
+      showDate: true,
+      description: "Mastery of modern web development technologies and frameworks",
+      image: "/images/certifications/web-development.jpg"
+    }
+  ]
+};
+
+const contactMe = {
+  path: "/contact-me",
+  label: "Contact Me",
+  title: `Contact Me – ${person.name}`,
+  description: `Get in touch with ${person.name}`,
+  formHeading: "Let's work together",
+  formSubheading: "Fill out the form below and I'll get back to you as soon as possible."
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery, certifications, contactMe };
