@@ -39,6 +39,66 @@ src/app/resources/content
 Add a new .mdx file to src/app/blog/posts or src/app/work/projects
 ```
 
+# **Deploy to VPS (Instructions for when ready)**
+
+**1. Configure GitHub Secrets**
+In your GitHub repository, add these secrets (Settings > Secrets and variables > Actions):
+```
+EMAIL_USER=iacopoliberolavoro@gmail.com
+EMAIL_PASSWORD=your_gmail_app_password
+SSH_PRIVATE_KEY=your_private_ssh_key
+SSH_KNOWN_HOSTS=output_of_ssh-keyscan_your_vps_host
+VPS_USER=your_vps_username
+VPS_HOST=your_vps_hostname_or_ip
+VPS_PATH=/path/to/portfolio/on/vps
+```
+
+**2. Set up the GitHub Actions workflow**
+```
+# Create the workflows directory if it doesn't exist
+mkdir -p .github/workflows/
+
+# Copy the workflow example file
+cp .github-temp/workflows/portfolio-deploy.yml.example .github/workflows/portfolio-deploy.yml
+
+# Remove the directories from .gitignore
+# Edit .gitignore and remove these lines:
+# /.github/workflows/
+# /.github-temp/
+```
+
+**3. Configure the VPS**
+```
+# SSH into your VPS
+ssh your_username@your_vps_hostname
+
+# Install Node.js and npm (if not already installed)
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+# Install PM2 to manage the Node.js process
+sudo npm install -g pm2
+
+# Create the directory for the application
+mkdir -p /path/to/portfolio
+
+# Set up proper permissions
+sudo chown your_username:your_username /path/to/portfolio
+```
+
+**4. Create a production .env file on the VPS**
+```
+# On your VPS, create a .env file in the application directory
+nano /path/to/portfolio/.env
+
+# Add these environment variables
+EMAIL_USER=iacopoliberolavoro@gmail.com
+EMAIL_PASSWORD=your_gmail_app_password
+```
+
+**5. Deploy**
+Push to the main branch or manually trigger the workflow from the GitHub Actions tab.
+
 # **Documentation**
 
 Docs available at: [docs.once-ui.com](https://docs.once-ui.com/docs/magic-portfolio/quick-start)

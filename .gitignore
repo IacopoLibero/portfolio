@@ -34,3 +34,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Configurazione temporanea GitHub Actions
+/.github/workflows/
+/.github-temp/
+
+# File di ambiente sensibili
+.env
+.env.production

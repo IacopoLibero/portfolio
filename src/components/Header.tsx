@@ -164,7 +164,7 @@ export const Header = () => {
                   />
                 </>
               )}
-              {routes["/contact me"] && (
+              {routes["/contact-me"] && (
                 <>
                   <ToggleButton
                     className="s-flex-hide"

@@ -8,7 +8,7 @@ const routes = {
   "/blog": true,
   "/gallery": false,
   "/certifications":true,
-  "/contact me": true,
+  "/contact-me": true,  // Modificato da "/contact me" a "/contact-me"
 };
 
 // Enable password protection on selected routes
