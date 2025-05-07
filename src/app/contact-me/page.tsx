@@ -303,6 +303,22 @@ export default function ContactMe() {
                     </form>
                 </div>
 
+                {/* Mobile success message - only visible on mobile */}
+                {showSuccess && (
+                    <div className="mobile-success-message" style={{
+                        display: 'none', // Hidden by default, shown via media query
+                        backgroundColor: 'var(--color-info-strong)',
+                        borderRadius: '8px',
+                        boxShadow: 'var(--shadow-l)',
+                        padding: 'var(--spacing-l)',
+                        marginTop: '16px',
+                        marginBottom: '16px'
+                    }}>
+                        <Heading as="h3" variant="heading-strong-s">Message Sent!</Heading>
+                        <Text>Thank you for your message. I'll get back to you soon.</Text>
+                    </div>
+                )}
+
                 <Flex direction="column" gap="l" paddingTop="xl">
                     <Text variant="body-strong-l">Alternative Contact Methods</Text>
                     <Flex direction="column" gap="m">
@@ -327,20 +343,25 @@ export default function ContactMe() {
                 </Flex>
             </div>
 
+            {/* Desktop success message - only visible on larger screens */}
             {showSuccess && (
                 <Flex
                     as="div"
+                    className="desktop-success-message"
                     direction="column"
                     position="fixed"
-                    bottom="16"
-                    right="16"
                     padding="l"
                     style={{
                         backgroundColor: 'var(--color-info-strong)',
                         borderRadius: '8px',
                         boxShadow: 'var(--shadow-l)',
                         zIndex: 100,
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        right: '16px',
+                        bottom: '16px',
+                        width: 'calc(100% - 32px)',
+                        maxWidth: '420px',
+                        transform: 'none',
                     }}
                     onClick={() => setShowSuccess(false)}
                 >
@@ -354,15 +375,18 @@ export default function ContactMe() {
                     as="div"
                     direction="column"
                     position="fixed"
-                    bottom="16"
-                    right="16"
                     padding="l"
                     style={{
                         backgroundColor: 'var(--color-danger-strong)',
                         borderRadius: '8px',
                         boxShadow: 'var(--shadow-l)',
                         zIndex: 100,
-                        cursor: 'pointer'
+                        cursor: 'pointer',
+                        left: '50%',
+                        transform: 'translateX(-50%)',
+                        bottom: '16px',
+                        width: 'calc(100% - 32px)',
+                        maxWidth: '420px',
                     }}
                     onClick={() => setShowError(false)}
                 >
@@ -370,6 +394,24 @@ export default function ContactMe() {
                     <Text>{errorMessage}</Text>
                 </Flex>
             )}
+
+            {/* Add the CSS for mobile/desktop switching */}
+            <style jsx global>{`
+                @media (max-width: 768px) {
+                    .desktop-success-message {
+                        display: none !important;
+                    }
+                    .mobile-success-message {
+                        display: block !important;
+                    }
+                }
+                
+                @media (min-width: 769px) {
+                    .mobile-success-message {
+                        display: none !important;
+                    }
+                }
+            `}</style>
         </Column>
     );
 }

@@ -266,12 +266,21 @@ const certifications = {
     {
       title: "Introduction to Cybersecurity",
       issuer: "Cisco",
-      date: "2025-09-01",
-      displayDate: "October 2025",
+      date: "2025-05-06",
+      displayDate: "May 2025",
       showDate: true,
       description: "This course provides a comprehensive introduction to the field of cybersecurity, covering essential concepts and practices.",
       image: "/images/certifications/introduction-to-cybersecurity.png",
       credlyBadgeId: "980c5a24-dd6c-400c-88d6-bbd0e3237e64"
+    },
+    {
+      title: "Hack the Code Challenge",
+      issuer: "Reply",
+      date: "2025-03-12",
+      displayDate: "March 2025",
+      showDate: true,
+      description: "This competition challenged participants to solve complex coding problems and to resolve some CTF.",
+      image: "/images/certifications/reply_challenge.png"
     }
   ]
 };

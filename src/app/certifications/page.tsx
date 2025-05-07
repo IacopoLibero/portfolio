@@ -55,10 +55,10 @@ export default function Certifications() {
                   {cert.image && (
                     <div style={{
                       width: '100%',
-                      maxWidth: '180px',
-                      maxHeight: '180px',
+                      maxWidth: '280px',
+                      maxHeight: '220px',
                       position: 'relative',
-                      paddingBottom: '50%', // Smaller aspect ratio
+                      paddingBottom: '50%', // Increased aspect ratio
                       overflow: 'hidden',
                       borderRadius: '8px',
                       border: '1px solid var(--color-neutral-alpha-medium)',
