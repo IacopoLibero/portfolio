@@ -165,143 +165,156 @@ export default function ContactMe() {
             </Column>
 
             <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 16px' }}>
-                <div style={{
-                    background: 'var(--color-surface)',
-                    borderRadius: 'var(--radius-l)',
-                    padding: 'var(--spacing-l)',
-                    border: '1px solid var(--color-neutral-alpha-medium)',
-                    boxShadow: 'var(--shadow-m)'
-                }}>
-                    <form onSubmit={handleSubmit} noValidate>
-                        <Flex direction="column" gap="l">
-                            <Flex direction="row" gap="l">
-                                <Flex direction="column" gap="s" flex="1">
-                                    <Text as="label" htmlFor="firstName" variant="body-strong-s">
-                                        First Name *
-                                    </Text>
-                                    <Input
-                                        id="firstName"
-                                        name="firstName"
-                                        label="First Name"
-                                        value={formData.firstName}
-                                        onChange={handleInputChange}
-                                        onBlur={handleBlur}
-                                        required
-                                    />
-                                    {errors.firstName && (
-                                        <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
-                                            {errors.firstName}
-                                        </Text>
-                                    )}
-                                </Flex>
-
-                                <Flex direction="column" gap="s" flex="1">
-                                    <Text as="label" htmlFor="lastName" variant="body-strong-s">
-                                        Last Name *
-                                    </Text>
-                                    <Input
-                                        id="lastName"
-                                        name="lastName"
-                                        label="Last Name"
-                                        value={formData.lastName}
-                                        onChange={handleInputChange}
-                                        onBlur={handleBlur}
-                                        required
-                                    />
-                                    {errors.lastName && (
-                                        <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
-                                            {errors.lastName}
-                                        </Text>
-                                    )}
-                                </Flex>
-                            </Flex>
-
-                            <Flex direction="row" gap="l">
-                                <Flex direction="column" gap="s" flex="1">
-                                    <Text as="label" htmlFor="email" variant="body-strong-s">
-                                        Email *
-                                    </Text>
-                                    <Input
-                                        id="email"
-                                        name="email"
-                                        type="email"
-                                        label="Email"
-                                        value={formData.email}
-                                        onChange={handleInputChange}
-                                        onBlur={handleBlur}
-                                        required
-                                    />
-                                    {errors.email && (
-                                        <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
-                                            {errors.email}
-                                        </Text>
-                                    )}
-                                </Flex>
-
-                                <Flex direction="column" gap="s" flex="1">
-                                    <Text as="label" htmlFor="phone" variant="body-strong-s">
-                                        Phone
-                                    </Text>
-                                    <Input
-                                        id="phone"
-                                        name="phone"
-                                        type="tel"
-                                        label="Phone"
-                                        value={formData.phone}
-                                        onChange={handleInputChange}
-                                        onBlur={handleBlur}
-                                    />
-                                    {errors.phone && (
-                                        <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
-                                            {errors.phone}
-                                        </Text>
-                                    )}
-                                </Flex>
-                            </Flex>
-
-                            <Flex direction="column" gap="s">
-                                <Text as="label" htmlFor="message" variant="body-strong-s">
-                                    Message *
+                <form onSubmit={handleSubmit} noValidate>
+                    <Flex direction="column" gap="l">
+                        <Flex direction="row" gap="l">
+                            <Flex direction="column" gap="s" flex="1">
+                                <Text as="label" htmlFor="firstName" variant="body-strong-s">
+                                    First Name *
                                 </Text>
-                                <Textarea
-                                    id="message"
-                                    name="message"
-                                    label="Message"
-                                    rows={6}
-                                    value={formData.message}
+                                <Input
+                                    id="firstName"
+                                    name="firstName"
+                                    label="First Name"
+                                    value={formData.firstName}
                                     onChange={handleInputChange}
                                     onBlur={handleBlur}
                                     required
                                 />
-                                {errors.message && (
+                                {errors.firstName && (
                                     <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
-                                        {errors.message}
+                                        {errors.firstName}
                                     </Text>
                                 )}
                             </Flex>
 
-                            <Flex horizontal="start" paddingTop="m">
-                                <button
-                                    type="submit"
-                                    style={{
-                                        background: 'var(--color-brand-background-strong)',
-                                        color: 'var(--color-brand-on-background-strong)',
-                                        padding: '10px 20px',
-                                        border: 'none',
-                                        borderRadius: 'var(--radius-m)',
-                                        fontSize: '16px',
-                                        fontWeight: 'bold',
-                                        cursor: isSubmitting ? 'wait' : 'pointer',
-                                        opacity: isSubmitting ? 0.7 : 1
-                                    }}
-                                    disabled={isSubmitting}
-                                >
-                                    {isSubmitting ? "Sending..." : "Send Message"}
-                                </button>
+                            <Flex direction="column" gap="s" flex="1">
+                                <Text as="label" htmlFor="lastName" variant="body-strong-s">
+                                    Last Name *
+                                </Text>
+                                <Input
+                                    id="lastName"
+                                    name="lastName"
+                                    label="Last Name"
+                                    value={formData.lastName}
+                                    onChange={handleInputChange}
+                                    onBlur={handleBlur}
+                                    required
+                                />
+                                {errors.lastName && (
+                                    <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
+                                        {errors.lastName}
+                                    </Text>
+                                )}
                             </Flex>
                         </Flex>
-                    </form>
-                </div>
+
+                        <Flex direction="row" gap="l">
+                            <Flex direction="column" gap="s" flex="1">
+                                <Text as="label" htmlFor="email" variant="body-strong-s">
+                                    Email *
+                                </Text>
+                                <Input
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    label="Email"
+                                    value={formData.email}
+                                    onChange={handleInputChange}
+                                    onBlur={handleBlur}
+                                    required
+                                />
+                                {errors.email && (
+                                    <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
+                                        {errors.email}
+                                    </Text>
+                                )}
+                            </Flex>
+
+                            <Flex direction="column" gap="s" flex="1">
+                                <Text as="label" htmlFor="phone" variant="body-strong-s">
+                                    Phone
+                                </Text>
+                                <Input
+                                    id="phone"
+                                    name="phone"
+                                    type="tel"
+                                    label="Phone"
+                                    value={formData.phone}
+                                    onChange={handleInputChange}
+                                    onBlur={handleBlur}
+                                />
+                                {errors.phone && (
+                                    <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
+                                        {errors.phone}
+                                    </Text>
+                                )}
+                            </Flex>
+                        </Flex>
+
+                        <Flex direction="column" gap="s">
+                            <Text as="label" htmlFor="message" variant="body-strong-s">
+                                Message *
+                            </Text>
+                            <Textarea
+                                id="message"
+                                name="message"
+                                label="Message"
+                                rows={6}
+                                value={formData.message}
+                                onChange={handleInputChange}
+                                onBlur={handleBlur}
+                                required
+                            />
+                            {errors.message && (
+                                <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
+                                    {errors.message}
+                                </Text>
+                            )}
+                        </Flex>
+
+                        <Flex horizontal="start" >
+                            <button
+                                type="submit"
+                                style={{
+                                    background: 'var(--color-brand-background-strong)',
+                                    color: 'var(--color-brand-on-background-strong)',
+                                    border: 'none',
+                                    borderRadius: 'var(--radius-m)',
+                                    fontSize: '16px',
+                                    fontWeight: 'bold',
+                                    cursor: isSubmitting ? 'wait' : 'pointer',
+                                    opacity: isSubmitting ? 0.7 : 1,
+                                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                                    transition: 'all 0.2s ease',
+                                    display: 'flex',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                }}
+                                onMouseOver={(e) => {
+                                    e.currentTarget.style.transform = 'translateY(-2px)';
+                                    e.currentTarget.style.boxShadow = '0 6px 8px rgba(0, 0, 0, 0.12)';
+                                }}
+                                onMouseOut={(e) => {
+                                    e.currentTarget.style.transform = 'translateY(0)';
+                                    e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                                }}
+                                disabled={isSubmitting}
+                            >
+                                {isSubmitting ? "Sending..." : "Send Message"}
+                                {!isSubmitting && (
+                                    <span style={{ marginLeft: '8px', display: 'inline-block' }}>
+                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                            <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
+                                    </span>
+                                )}
+                            </button>
+                        </Flex>
+                    </Flex>
+                </form>
+
 
                 {/* Mobile success message - only visible on mobile */}
                 {showSuccess && (
@@ -311,8 +324,7 @@ export default function ContactMe() {
                         borderRadius: '8px',
                         boxShadow: 'var(--shadow-l)',
                         padding: 'var(--spacing-l)',
-                        marginTop: '16px',
-                        marginBottom: '16px'
+                        marginTop: '30px'
                     }}>
                         <Heading as="h3" variant="heading-strong-s">Message Sent!</Heading>
                         <Text>Thank you for your message. I'll get back to you soon.</Text>
