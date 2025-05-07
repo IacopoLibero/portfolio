@@ -148,7 +148,7 @@ export default function ContactMe() {
     };
 
     return (
-        <Column fillWidth paddingBottom="xl">
+        <Column fillWidth >
             <Column fillWidth paddingBottom="l">
                 <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 16px' }}>
                     <RevealFx translateY="16" paddingTop="16" paddingBottom="l" horizontal="start">
