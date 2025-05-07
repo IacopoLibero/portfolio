@@ -1,4 +1,4 @@
-import { Column } from "@/once-ui/components";
+import { Column, Heading, Text, RevealFx } from "@/once-ui/components";
 import { baseURL } from "@/app/resources";
 import { about, person, work } from "@/app/resources/content";
 import { Meta, Schema } from "@/once-ui/modules";
@@ -30,6 +30,20 @@ export default function Work() {
           image: `${baseURL}${person.avatar}`,
         }}
       />
+      
+      <Column fillWidth paddingBottom="xl">
+        <RevealFx translateY="16" paddingTop="16" paddingBottom="l" horizontal="start">
+          <Heading as="h1" variant="display-strong-l">
+            {work.title}
+          </Heading>
+        </RevealFx>
+        <RevealFx translateY="8" delay={0.2} horizontal="start" paddingBottom="m">
+          <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
+            {work.description}
+          </Text>
+        </RevealFx>
+      </Column>
+      
       <Projects />
     </Column>
   );

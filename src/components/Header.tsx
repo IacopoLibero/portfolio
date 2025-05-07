@@ -168,14 +168,14 @@ export const Header = () => {
                 <>
                   <ToggleButton
                     className="s-flex-hide"
-                    prefixIcon="chat"
+                    prefixIcon="emailOutline"
                     href="/contact-me"
                     label={contactMe.label}
                     selected={pathname.startsWith("/contact-me")}
                   />
                   <ToggleButton
                     className="s-flex-show"
-                    prefixIcon="chat"
+                    prefixIcon="emailOutline"
                     href="/contact-me"
                     selected={pathname.startsWith("/contact-me")}
                   />

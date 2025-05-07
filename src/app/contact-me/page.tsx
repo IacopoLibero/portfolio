@@ -9,7 +9,8 @@ import {
     RevealFx,
     Input,
     Textarea,
-    Card
+    Card,
+    Icon
 } from "@/once-ui/components";
 import { contactMe, person } from "@/app/resources/content";
 
@@ -171,15 +172,6 @@ export default function ContactMe() {
                     border: '1px solid var(--color-neutral-alpha-medium)',
                     boxShadow: 'var(--shadow-m)'
                 }}>
-                    <RevealFx translateY="8" paddingBottom="m">
-                        <Heading as="h2" variant="heading-strong-xl" paddingBottom="8">
-                            {contactMe.formHeading}
-                        </Heading>
-                        <Text variant="body-default-l" paddingBottom="xl">
-                            {contactMe.formSubheading}
-                        </Text>
-                    </RevealFx>
-
                     <form onSubmit={handleSubmit} noValidate>
                         <Flex direction="column" gap="l">
                             <Flex direction="row" gap="l">
@@ -316,7 +308,7 @@ export default function ContactMe() {
                     <Flex direction="column" gap="m">
                         <Flex direction="row" gap="m" vertical="center">
                             <Flex background="surface" padding="s" radius="full">
-                                <span style={{ fontSize: '1.25rem' }}>📧</span>
+                                <Icon name="email" size="m" />
                             </Flex>
                             <Text>
                                 <a href={`mailto:${person.email}`}>{person.email}</a>
@@ -325,7 +317,7 @@ export default function ContactMe() {
 
                         <Flex direction="row" gap="m" vertical="center">
                             <Flex background="surface" padding="s" radius="full">
-                                <span style={{ fontSize: '1.25rem' }}>📞</span>
+                                <Icon name="phone" size="m" />
                             </Flex>
                             <Text>
                                 <a href={`tel:${person.phone}`}>{person.phone}</a>

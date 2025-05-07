@@ -1,5 +1,5 @@
 // IMPORTANT: Replace with your own domain address - it's used for SEO in meta tags and schema
-const baseURL = "https://IacopoLibero.dev";
+const baseURL = "IacopoLibero.dev";
 
 const routes = {
   "/": true,
@@ -8,7 +8,7 @@ const routes = {
   "/blog": true,
   "/gallery": false,
   "/certifications":true,
-  "/contact-me": true,  // Modificato da "/contact me" a "/contact-me"
+  "/contact-me": true,  
 };
 
 // Enable password protection on selected routes

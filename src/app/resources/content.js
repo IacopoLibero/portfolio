@@ -203,8 +203,8 @@ const blog = {
 const work = {
   path: "/work",
   label: "Work",
-  title: `Projects – ${person.name}`,
-  description: `Design and dev projects by ${person.name}`,
+  title: `My school and personal projects`,
+  description: `Explore my projects and see what I've been working on`,
   // Create new project pages by adding a new .mdx file to app/blog/posts
   // All projects will be listed on the /home and /work routes
 };
@@ -261,35 +261,17 @@ const gallery = {
 const certifications = {
   path: "/certifications",
   label: "Certifications",
-  title: `Certifications – ${person.name}`,
-  description: `Professional certifications earned by ${person.name}`,
+  title: `My Certifications`,
   certifications: [
     {
-      title: "Network Security Specialist",
-      issuer: "University of Florence",
-      date: "2024-05-01",
-      displayDate: "May 2024",
+      title: "Introduction to Cybersecurity",
+      issuer: "Cisco",
+      date: "2025-09-01",
+      displayDate: "October 2025",
       showDate: true,
-      description: "Advanced certification in network security protocols and implementation strategies",
-      image: "/images/certifications/network-security.jpg"
-    },
-    {
-      title: "Cybersecurity Fundamentals",
-      issuer: "Cisco Networking Academy",
-      date: "2023-11-15",
-      displayDate: "November 2023",
-      showDate: true,
-      description: "Comprehensive understanding of cybersecurity principles and best practices",
-      image: "/images/certifications/cisco-security.jpg"
-    },
-    {
-      title: "Full Stack Web Development",
-      issuer: "freeCodeCamp",
-      date: "2023-08-20",
-      displayDate: "August 2023",
-      showDate: true,
-      description: "Mastery of modern web development technologies and frameworks",
-      image: "/images/certifications/web-development.jpg"
+      description: "This course provides a comprehensive introduction to the field of cybersecurity, covering essential concepts and practices.",
+      image: "/images/certifications/introduction-to-cybersecurity.png",
+      credlyBadgeId: "980c5a24-dd6c-400c-88d6-bbd0e3237e64"
     }
   ]
 };
@@ -297,10 +279,8 @@ const certifications = {
 const contactMe = {
   path: "/contact-me",
   label: "Contact Me",
-  title: `Contact Me – ${person.name}`,
-  description: `Get in touch with ${person.name}`,
-  formHeading: "Let's work together",
-  formSubheading: "Fill out the form below and I'll get back to you as soon as possible."
+  title: `Let's work together`,
+  description: `Fill out the form below and I'll get back to you as soon as possible.`,
 };
 
 export { person, social, newsletter, home, about, blog, work, gallery, certifications, contactMe };
