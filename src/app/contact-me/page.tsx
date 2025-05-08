@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
     Column,
     Flex,
@@ -36,6 +36,30 @@ export default function ContactMe() {
     const [showError, setShowError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
 
+    // Effetto per nascondere i messaggi dopo 5 secondi
+    useEffect(() => {
+        let successTimer: NodeJS.Timeout;
+        let errorTimer: NodeJS.Timeout;
+        
+        if (showSuccess) {
+            successTimer = setTimeout(() => {
+                setShowSuccess(false);
+            }, 5000); // 5 secondi
+        }
+        
+        if (showError) {
+            errorTimer = setTimeout(() => {
+                setShowError(false);
+            }, 5000); // 5 secondi
+        }
+        
+        // Cleanup per evitare memory leak
+        return () => {
+            if (successTimer) clearTimeout(successTimer);
+            if (errorTimer) clearTimeout(errorTimer);
+        };
+    }, [showSuccess, showError]);
+
     const validateField = (name: string, value: string) => {
         let error = "";
 
@@ -63,7 +87,6 @@ export default function ContactMe() {
 
             case "message":
                 if (!value) error = "Message is required";
-                else if (value.length < 10) error = "Message must contain at least 10 characters";
                 break;
 
             default:
@@ -312,24 +335,47 @@ export default function ContactMe() {
                                 )}
                             </button>
                         </Flex>
+
+                        {/* Messaggi inline per visualizzazione mobile */}
+                        <div className="mobile-messages">
+                            {showSuccess && (
+                                <Flex
+                                    direction="column"
+                                    padding="m"
+                                    style={{
+                                        backgroundColor: 'var(--color-info-strong)',
+                                        borderRadius: '8px',
+                                        boxShadow: 'var(--shadow-s)',
+                                        marginTop: '24px',
+                                        marginBottom: '8px',
+                                        width: '100%',
+                                    }}
+                                >
+                                    <Heading as="h3" variant="heading-strong-s">Message Sent!</Heading>
+                                    <Text>Thank you for your message. I'll get back to you soon.</Text>
+                                </Flex>
+                            )}
+                            
+                            {showError && (
+                                <Flex
+                                    direction="column"
+                                    padding="m"
+                                    style={{
+                                        backgroundColor: 'var(--color-danger-strong)',
+                                        borderRadius: '8px',
+                                        boxShadow: 'var(--shadow-s)',
+                                        marginTop: '24px',
+                                        marginBottom: '8px',
+                                        width: '100%',
+                                    }}
+                                >
+                                    <Heading as="h3" variant="heading-strong-s">Error</Heading>
+                                    <Text>{errorMessage}</Text>
+                                </Flex>
+                            )}
+                        </div>
                     </Flex>
                 </form>
-
-
-                {/* Mobile success message - only visible on mobile */}
-                {showSuccess && (
-                    <div className="mobile-success-message" style={{
-                        display: 'none', // Hidden by default, shown via media query
-                        backgroundColor: 'var(--color-info-strong)',
-                        borderRadius: '8px',
-                        boxShadow: 'var(--shadow-l)',
-                        padding: 'var(--spacing-l)',
-                        marginTop: '30px'
-                    }}>
-                        <Heading as="h3" variant="heading-strong-s">Message Sent!</Heading>
-                        <Text>Thank you for your message. I'll get back to you soon.</Text>
-                    </div>
-                )}
 
                 <Flex direction="column" gap="l" paddingTop="xl">
                     <Text variant="body-strong-l">Alternative Contact Methods</Text>
@@ -355,72 +401,76 @@ export default function ContactMe() {
                 </Flex>
             </div>
 
-            {/* Desktop success message - only visible on larger screens */}
-            {showSuccess && (
-                <Flex
-                    as="div"
-                    className="desktop-success-message"
-                    direction="column"
-                    position="fixed"
-                    padding="l"
-                    style={{
-                        backgroundColor: 'var(--color-info-strong)',
-                        borderRadius: '8px',
-                        boxShadow: 'var(--shadow-l)',
-                        zIndex: 100,
-                        cursor: 'pointer',
-                        right: '16px',
-                        bottom: '16px',
-                        width: 'calc(100% - 32px)',
-                        maxWidth: '420px',
-                        transform: 'none',
-                    }}
-                    onClick={() => setShowSuccess(false)}
-                >
-                    <Heading as="h3" variant="heading-strong-s">Message Sent!</Heading>
-                    <Text>Thank you for your message. I'll get back to you soon.</Text>
-                </Flex>
-            )}
+            {/* Messaggi toast per visualizzazione desktop */}
+            <div className="desktop-messages">
+                {showSuccess && (
+                    <Flex
+                        as="div"
+                        direction="column"
+                        position="fixed"
+                        padding="l"
+                        style={{
+                            backgroundColor: 'var(--color-info-strong)',
+                            borderRadius: '8px',
+                            boxShadow: 'var(--shadow-l)',
+                            zIndex: 100,
+                            cursor: 'pointer',
+                            right: '16px',
+                            bottom: '16px',
+                            width: 'calc(100% - 32px)',
+                            maxWidth: '420px',
+                            transform: 'none',
+                        }}
+                        onClick={() => setShowSuccess(false)}
+                    >
+                        <Heading as="h3" variant="heading-strong-s">Message Sent!</Heading>
+                        <Text>Thank you for your message. I'll get back to you soon.</Text>
+                    </Flex>
+                )}
 
-            {showError && (
-                <Flex
-                    as="div"
-                    direction="column"
-                    position="fixed"
-                    padding="l"
-                    style={{
-                        backgroundColor: 'var(--color-danger-strong)',
-                        borderRadius: '8px',
-                        boxShadow: 'var(--shadow-l)',
-                        zIndex: 100,
-                        cursor: 'pointer',
-                        left: '50%',
-                        transform: 'translateX(-50%)',
-                        bottom: '16px',
-                        width: 'calc(100% - 32px)',
-                        maxWidth: '420px',
-                    }}
-                    onClick={() => setShowError(false)}
-                >
-                    <Heading as="h3" variant="heading-strong-s">Error</Heading>
-                    <Text>{errorMessage}</Text>
-                </Flex>
-            )}
+                {showError && (
+                    <Flex
+                        as="div"
+                        direction="column"
+                        position="fixed"
+                        padding="l"
+                        style={{
+                            backgroundColor: 'var(--color-danger-strong)',
+                            borderRadius: '8px',
+                            boxShadow: 'var(--shadow-l)',
+                            zIndex: 100,
+                            cursor: 'pointer',
+                            right: '16px',
+                            bottom: '16px',
+                            width: 'calc(100% - 32px)',
+                            maxWidth: '420px',
+                            transform: 'none',
+                        }}
+                        onClick={() => setShowError(false)}
+                    >
+                        <Heading as="h3" variant="heading-strong-s">Error</Heading>
+                        <Text>{errorMessage}</Text>
+                    </Flex>
+                )}
+            </div>
 
-            {/* Add the CSS for mobile/desktop switching */}
+            {/* Stili CSS per gestire la visualizzazione dei messaggi su diverse dimensioni dello schermo */}
             <style jsx global>{`
                 @media (max-width: 768px) {
-                    .desktop-success-message {
+                    .desktop-messages {
                         display: none !important;
                     }
-                    .mobile-success-message {
+                    .mobile-messages {
                         display: block !important;
                     }
                 }
                 
                 @media (min-width: 769px) {
-                    .mobile-success-message {
+                    .mobile-messages {
                         display: none !important;
+                    }
+                    .desktop-messages {
+                        display: block !important;
                     }
                 }
             `}</style>
