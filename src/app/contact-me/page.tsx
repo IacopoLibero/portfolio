@@ -1,6 +1,4 @@
 "use client";
-
-import { useState, useEffect } from "react";
 import {
     Column,
     Flex,
@@ -12,8 +10,20 @@ import {
     Card,
     Icon
 } from "@/once-ui/components";
+import { useState, useEffect } from "react";
 import { contactMe, person } from "@/app/resources/content";
+import { baseURL } from "@/app/resources";
+import { Meta, Schema } from "@/once-ui/modules";
 
+export async function generateMetadata() {
+    return Meta.generate({
+        title: contactMe.title,
+        description: contactMe.description,
+        baseURL: baseURL,
+        image: `${baseURL}/og?title=${encodeURIComponent(contactMe.title)}`,
+        path: contactMe.path,
+    });
+}
 export default function ContactMe() {
     const [formData, setFormData] = useState({
         firstName: "",
@@ -40,19 +50,19 @@ export default function ContactMe() {
     useEffect(() => {
         let successTimer: NodeJS.Timeout;
         let errorTimer: NodeJS.Timeout;
-        
+
         if (showSuccess) {
             successTimer = setTimeout(() => {
                 setShowSuccess(false);
             }, 5000); // 5 secondi
         }
-        
+
         if (showError) {
             errorTimer = setTimeout(() => {
                 setShowError(false);
             }, 5000); // 5 secondi
         }
-        
+
         // Cleanup per evitare memory leak
         return () => {
             if (successTimer) clearTimeout(successTimer);
@@ -172,6 +182,19 @@ export default function ContactMe() {
 
     return (
         <Column fillWidth >
+            <Schema
+                as="webPage"
+                baseURL={baseURL}
+                path={contactMe.path}
+                title={contactMe.title}
+                description={contactMe.description}
+                image={`${baseURL}/og?title=${encodeURIComponent(contactMe.title)}`}
+                author={{
+                    name: person.name,
+                    url: `${baseURL}${contactMe.path}`,
+                    image: `${baseURL}${person.avatar}`,
+                }}
+            />
             <Column fillWidth paddingBottom="l">
                 <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 16px' }}>
                     <RevealFx translateY="16" paddingTop="16" paddingBottom="l" horizontal="start">
@@ -355,7 +378,7 @@ export default function ContactMe() {
                                     <Text>Thank you for your message. I'll get back to you soon.</Text>
                                 </Flex>
                             )}
-                            
+
                             {showError && (
                                 <Flex
                                     direction="column"

@@ -262,6 +262,7 @@ const certifications = {
   path: "/certifications",
   label: "Certifications",
   title: `My Certifications`,
+  description: `Professional certifications and achievements`,
   certifications: [
     {
       title: "Introduction to Cybersecurity",

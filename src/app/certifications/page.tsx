@@ -3,7 +3,20 @@
 import Image from 'next/image';
 import { usePathname } from "next/navigation";
 import { Column, Flex, Heading, Text, RevealFx, Card, Button } from "@/once-ui/components";
-import { certifications } from "@/app/resources/content";
+import { certifications, person } from "@/app/resources/content";
+import { baseURL } from "@/app/resources";
+import { Meta, Schema } from "@/once-ui/modules";
+
+
+export async function generateMetadata() {
+  return Meta.generate({
+    title: certifications.title,
+    description: certifications.description,
+    baseURL: baseURL,
+    image: `${baseURL}/og?title=${encodeURIComponent(certifications.title)}`,
+    path: certifications.path,
+  });
+}
 
 export default function Certifications() {
   const pathname = usePathname();
@@ -18,8 +31,22 @@ export default function Certifications() {
   const columnCount = Math.min(itemCount, 4);
 
   return (
+
     <Column fillWidth paddingBottom="xl">
       <Column fillWidth paddingBottom="xl">
+        <Schema
+          as="webPage"
+          baseURL={baseURL}
+          path={certifications.path}
+          title={certifications.title}
+          description={certifications.description}
+          image={`${baseURL}/og?title=${encodeURIComponent(certifications.title)}`}
+          author={{
+            name: person.name,
+            url: `${baseURL}${certifications.path}`,
+            image: `${baseURL}${person.avatar}`,
+          }}
+        />
         <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 16px' }}>
           <RevealFx translateY="16" paddingTop="16" paddingBottom="l" horizontal="start">
             <Heading as="h1" variant="display-strong-l">
@@ -28,7 +55,7 @@ export default function Certifications() {
           </RevealFx>
           <RevealFx translateY="8" delay={0.2} horizontal="start" paddingBottom="m">
             <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-              Professional certifications and achievements
+              {certifications.description}
             </Text>
           </RevealFx>
         </div>
@@ -68,7 +95,7 @@ export default function Certifications() {
                         alt={cert.title}
                         src={cert.image}
                         fill={true}
-                        style={{ 
+                        style={{
                           objectFit: "contain",
                           position: "absolute",
                           top: 0,
@@ -92,10 +119,10 @@ export default function Certifications() {
                       )}
                     </Flex>
                     <Text variant="body-default-l">{cert.description}</Text>
-                    
+
                     {cert.credlyBadgeId && (
                       <Flex marginTop="8" horizontal="start">
-                        <Button 
+                        <Button
                           href={`https://www.credly.com/badges/${cert.credlyBadgeId}/public_url`}
                           target="_blank"
                           rel="noopener noreferrer"
