@@ -282,6 +282,16 @@ const certifications = {
       showDate: true,
       description: "This competition challenged participants to solve complex coding problems and to resolve some CTF.",
       image: "/images/certifications/reply_challenge.png"
+    },
+    {
+      title: "Python Essentials 1",
+      issuer: "Cisco",
+      date: "2025-05-19",
+      displayDate: "May 2025",
+      showDate: true,
+      description: "This course covers the fundamentals of Python programming, including data types, control structures, and functions.",
+      image: "/images/certifications/python-essentials-1.1.png",
+      credlyBadgeId: "b1008665-0d62-4842-b2c8-6bfe6adcfd5f"
     }
   ]
 };
