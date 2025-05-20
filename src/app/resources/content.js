@@ -292,6 +292,46 @@ const certifications = {
       description: "This course covers the fundamentals of Python programming, including data types, control structures, and functions.",
       image: "/images/certifications/python-essentials-1.1.png",
       credlyBadgeId: "b1008665-0d62-4842-b2c8-6bfe6adcfd5f"
+    },
+    {
+      title: "Computer Hardware Basics",
+      issuer: "Cisco",
+      date: "2025-05-20",
+      displayDate: "May 2025",
+      showDate: true,
+      description: "This course provides an overview of computer hardware components, their functions, and how they interact with software.",
+      image: "/images/certifications/computer-hardware-basics.png",
+      credlyBadgeId: "562250c7-cf17-4396-8155-75565577a717"
+    },
+    {
+      title: "Digital Safety and Security Awareness",
+      issuer: "Cisco",
+      date: "2025-05-20",
+      displayDate: "May 2025",
+      showDate: true,
+      description: "This course covers the importance of digital safety and security, including best practices for protecting personal information online.",
+      image: "/images/certifications/digital-safety-and-security-awareness.png",
+      credlyBadgeId: "dd020248-513e-4e87-9c39-9a88c7bcb6b5"
+    },
+    {
+      title: "English for IT 1",
+      issuer: "Cisco",
+      date: "2025-05-20",
+      displayDate: "May 2025",
+      showDate: true,
+      description: "This course focuses on English language skills for IT professionals, including technical vocabulary and communication strategies.",
+      image: "/images/certifications/english-for-it-1.png",
+      credlyBadgeId: "181b40da-b8f1-409b-9585-10402dfbe04f"
+    },
+    {
+      title: "English for IT 2",
+      issuer: "Cisco",
+      date: "2025-05-20",
+      displayDate: "May 2025",
+      showDate: true,
+      description: "This course builds on English for IT 1, further developing language skills for IT professionals.",
+      image: "/images/certifications/english-for-it-2.png",
+      credlyBadgeId: "4ca9fa82-90da-4a79-b0ee-422672822d65"
     }
   ]
 };
