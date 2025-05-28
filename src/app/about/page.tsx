@@ -105,7 +105,7 @@ export default function About() {
             )}
             
             <Flex direction="column" gap="m" marginTop="m">
-              {about.calendar.display && (
+              { /* about.calendar.display && (
                 <Flex
                   fitWidth
                   border="brand-alpha-medium"
@@ -128,7 +128,7 @@ export default function About() {
                     icon="chevronRight"
                   />
                 </Flex>
-              )}
+              )*/}
               
               {about.cv?.display && (
                 <Flex

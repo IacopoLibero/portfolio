@@ -134,6 +134,27 @@ const about = {
           */
         ],
       },
+      {
+        company: "NEBOOLA S.R.L.",
+        timeframe: "05/2025 - Present",
+        role: "Internship",
+        achievements: [
+          <>
+            Currently engaged in an internship at Neboola S.R.L., where I am applying my skills in cloud infrastructure and cybersecurity to real-world projects.
+          </>
+        ],
+        images: [
+          // optional: leave the array empty if you don't want to display images
+          /*
+          {
+            src: "/images/projects/project-01/cover-01.jpg",
+            alt: "Once UI Project",
+            width: 16,
+            height: 9,
+          },
+          */
+        ],
+      }
     ],
   },
   studies: {
@@ -142,7 +163,7 @@ const about = {
     institutions: [
       {
         name: "University of Florence",
-        timeframe: "2024 - ongoing",
+        timeframe: "2024 - Present",
         description: <>Followed a IFTS specialization as a "Network Security and Data Protection Manager"</>,
       },
       {
@@ -205,7 +226,7 @@ const work = {
   label: "Work",
   title: `My school and personal projects`,
   description: `Explore my projects and see what I've been working on`,
-  // Create new project pages by adding a new .mdx file to app/blog/posts
+  // Create new project pages by adding a new .mdx file to app/work/projects
   // All projects will be listed on the /home and /work routes
 };
 
