@@ -108,6 +108,27 @@ const about = {
     title: "Work Experience",
     experiences: [
       {
+        company: "NEBOOLA S.R.L.",
+        timeframe: "05/2025 - Present",
+        role: "Internship",
+        achievements: [
+          <>
+            Currently engaged in an internship at Neboola S.R.L., where I am applying my skills in cloud infrastructure and cybersecurity to real-world projects.
+          </>
+        ],
+        images: [
+          // optional: leave the array empty if you don't want to display images
+          /*
+          {
+            src: "/images/projects/project-01/cover-01.jpg",
+            alt: "Once UI Project",
+            width: 16,
+            height: 9,
+          },
+          */
+        ],
+      },
+      {
         company: "Freelance Web developer",
         timeframe: "2024 - Present",
         role: "Full-stack Developer",
@@ -133,28 +154,8 @@ const about = {
           },
           */
         ],
-      },
-      {
-        company: "NEBOOLA S.R.L.",
-        timeframe: "05/2025 - Present",
-        role: "Internship",
-        achievements: [
-          <>
-            Currently engaged in an internship at Neboola S.R.L., where I am applying my skills in cloud infrastructure and cybersecurity to real-world projects.
-          </>
-        ],
-        images: [
-          // optional: leave the array empty if you don't want to display images
-          /*
-          {
-            src: "/images/projects/project-01/cover-01.jpg",
-            alt: "Once UI Project",
-            width: 16,
-            height: 9,
-          },
-          */
-        ],
       }
+      
     ],
   },
   studies: {
