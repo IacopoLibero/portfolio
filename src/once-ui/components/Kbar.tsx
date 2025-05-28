@@ -403,13 +403,12 @@ export const Kbar: React.FC<KbarProps> = ({ items, children, ...rest }) => {
   const handleClose = () => {
     setIsOpen(false);
   };
-
   // Close Kbar when pathname changes
   useEffect(() => {
     if (isOpen) {
       handleClose();
     }
-  }, [pathname]);
+  }, [pathname, isOpen]);
 
   // Add keyboard shortcut listener
   useEffect(() => {

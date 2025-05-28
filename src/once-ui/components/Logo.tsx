@@ -2,6 +2,7 @@
 
 import React, { useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import classNames from "classnames";
 import styles from "./Logo.module.scss";
 import { SpacingToken } from "../types";
@@ -54,16 +55,16 @@ const Logo: React.FC<LogoProps> = ({
           }}
           className={styles.icon}
         />
-      )}
-      {iconSrc && (
-        // @ts-ignore
-        <img
+      )}      {iconSrc && (
+        <Image
           style={{
             height: `var(--static-space-${sizeMap[size]})`,
             width: "auto",
           }}
           alt="Trademark"
           src={iconSrc}
+          width={parseInt(sizeMap[size])}
+          height={parseInt(sizeMap[size])}
         />
       )}
       {wordmark && !wordmarkSrc && (
@@ -73,16 +74,16 @@ const Logo: React.FC<LogoProps> = ({
           }}
           className={styles.type}
         />
-      )}
-      {wordmarkSrc && (
-        // @ts-ignore
-        <img
+      )}      {wordmarkSrc && (
+        <Image
           style={{
             height: `var(--static-space-${sizeMap[size]})`,
             width: "auto",
           }}
           alt="Trademark"
           src={wordmarkSrc}
+          width={parseInt(sizeMap[size]) * 3} // Wordmarks are typically wider
+          height={parseInt(sizeMap[size])}
         />
       )}
     </>

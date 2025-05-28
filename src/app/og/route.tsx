@@ -52,9 +52,9 @@ export async function GET(request: Request) {
             alignItems: "center",
             gap: "5rem",
           }}
-        >
-          <img
+        >          <img
             src={baseURL + person.avatar}
+            alt={person.name}
             style={{
               width: "12rem",
               height: "12rem",
