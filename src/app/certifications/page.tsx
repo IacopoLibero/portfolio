@@ -10,6 +10,7 @@ export async function generateMetadata() {
     title: certifications.title,
     description: certifications.description,
     baseURL: baseURL,
+    keywords: certifications.keywords,
     image: `${baseURL}/og?title=${encodeURIComponent(certifications.title)}`,
     path: certifications.path,
   });

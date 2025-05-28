@@ -8,6 +8,7 @@ export interface MetaProps {
   type?: "website" | "article";
   image?: string;
   publishedTime?: string;
+  keywords?: string[]; // Aggiunta delle keywords
   author?: {
     name: string;
     url?: string;
@@ -22,6 +23,7 @@ export function generateMetadata({
   type = "website",
   image,
   publishedTime,
+  keywords, // Aggiunta del parametro keywords
   author,
 }: MetaProps): NextMetadata {
   const normalizedBaseURL = baseURL.endsWith("/") ? baseURL.slice(0, -1) : baseURL;
@@ -40,6 +42,9 @@ export function generateMetadata({
   return {
     title,
     description,
+    // Aggiunta delle keywords ai metadati
+    ...(keywords && keywords.length > 0 ? { keywords: keywords.join(", ") } : {}),
+    metadataBase: new URL(normalizedBaseURL), // Risolve anche il warning metadataBase
     openGraph: {
       title,
       description,
@@ -62,9 +67,3 @@ export function generateMetadata({
     ...(author ? { authors: [{ name: author.name, url: author.url }] } : {}),
   };
 }
-
-export const Meta = {
-  generate: generateMetadata,
-};
-
-export default Meta;
