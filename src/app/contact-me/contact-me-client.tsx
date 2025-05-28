@@ -361,7 +361,7 @@ export default function ContactMeClient({ title, description, person }: ContactM
                                     }}
                                 >
                                     <Heading as="h3" variant="heading-strong-s">Message Sent!</Heading>
-                                    <Text>Thank you for your message. I'll get back to you soon.</Text>
+                                    <Text>Thank you for your message. I&apos;ll get back to you soon.</Text>
                                 </Flex>
                             )}
 
@@ -433,7 +433,7 @@ export default function ContactMeClient({ title, description, person }: ContactM
                         onClick={() => setShowSuccess(false)}
                     >
                         <Heading as="h3" variant="heading-strong-s">Message Sent!</Heading>
-                        <Text>Thank you for your message. I'll get back to you soon.</Text>
+                        <Text>Thank you for your message. I&apos;ll get back to you soon.</Text>
                     </Flex>
                 )}
 

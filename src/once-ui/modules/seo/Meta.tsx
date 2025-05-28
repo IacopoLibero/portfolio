@@ -29,22 +29,27 @@ export function generateMetadata({
   const normalizedBaseURL = baseURL.endsWith("/") ? baseURL.slice(0, -1) : baseURL;
   const normalizedPath = path.startsWith("/") ? path : `/${path}`;
 
+  // Ensure baseURL has protocol for valid URL construction
+  const validBaseURL = normalizedBaseURL.startsWith("http") 
+    ? normalizedBaseURL 
+    : `https://${normalizedBaseURL}`;
+
   const isFullUrl = (url: string) => /^https?:\/\//.test(url);
 
   const ogImage = image
     ? isFullUrl(image)
       ? image
-      : `${normalizedBaseURL}${image.startsWith("/") ? image : `/${image}`}`
-    : `${normalizedBaseURL}/og?title=${encodeURIComponent(title)}`;
+      : `${validBaseURL}${image.startsWith("/") ? image : `/${image}`}`
+    : `${validBaseURL}/og?title=${encodeURIComponent(title)}`;
 
-  const url = `${normalizedBaseURL}${normalizedPath}`;
+  const url = `${validBaseURL}${normalizedPath}`;
 
   return {
     title,
     description,
     // Aggiunta delle keywords ai metadati
     ...(keywords && keywords.length > 0 ? { keywords: keywords.join(", ") } : {}),
-    metadataBase: new URL(normalizedBaseURL), // Risolve anche il warning metadataBase
+    metadataBase: new URL(validBaseURL), // Risolve anche il warning metadataBase
     openGraph: {
       title,
       description,
@@ -67,3 +72,8 @@ export function generateMetadata({
     ...(author ? { authors: [{ name: author.name, url: author.url }] } : {}),
   };
 }
+
+// Export con alias per mantenere compatibilità
+export const Meta = {
+  generate: generateMetadata
+};

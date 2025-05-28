@@ -16,7 +16,7 @@ const person = {
 
 const newsletter = {
   display: false,
-  title: <>Subscribe to {person.firstName}'s Newsletter</>,
+  title: <>Subscribe to {person.firstName}&apos;s Newsletter</>,
   description: (
     <>
       I occasionally write about design, technology, and share thoughts on the intersection of
@@ -76,17 +76,15 @@ const home = {
     "programmatore",
     "DEV",
     "developer"
-  ],
-  description: `Portfolio website showcasing my work as a ${person.role}`,
-  headline: <>Building tomorrow's security through today's code.</>,
+  ],  description: `Portfolio website showcasing my work as a ${person.role}`,
+  headline: <>Building tomorrow&apos;s security through today&apos;s code.</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Ec(h)o d'arte</strong></>,
+    title: <>Recent project: <strong className="ml-4">Ec(h)o d&apos;arte</strong></>,
     href: "/work/echo_arte",
-  },
-  subline: (
+  },  subline: (
     <>
-      I'm {person.firstName}, a {person.role.toLowerCase()} <br /> focused on building secure
+      I&apos;m {person.firstName}, a {person.role.toLowerCase()} <br /> focused on building secure
       web applications and protecting digital assets.
     </>
   ),
@@ -145,7 +143,7 @@ const about = {
         <br /><br />
         My technical foundation encompasses full-stack development with JavaScript, HTML5, PHP, CSS, Java, and SQL, complemented by specialized knowledge in network security and data protection.
         <br /><br />
-        Currently advancing my expertise through an IFTS specialization in "Network Security and Data Protection Management," I'm continuously expanding my proficiency in ethical hacking, digital forensics, cryptography, and incident response protocols.
+        Currently advancing my expertise through an IFTS specialization in &ldquo;Network Security and Data Protection Management,&rdquo; I&apos;m continuously expanding my proficiency in ethical hacking, digital forensics, cryptography, and incident response protocols.
         <br /><br />
         With a methodical approach to complex challenges and an insatiable curiosity for emerging technologies, I transform requirements into elegant, secure, and scalable solutions while constantly evolving my technical repertoire.
       </>
@@ -261,7 +259,7 @@ const about = {
       {
         name: "University of Florence",
         timeframe: "2024 - Present",
-        description: <>Followed a IFTS specialization as a "Network Security and Data Protection Manager"</>,
+        description: <>Followed a IFTS specialization as a &ldquo;Network Security and Data Protection Manager&rdquo;</>,
       },
       {
         name: "ITIS A. Meucci Florence",
