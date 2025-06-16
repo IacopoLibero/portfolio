@@ -39,7 +39,7 @@ export default function CertificationsClient({
                             {title}
                         </Heading>
                     </RevealFx>
-                    <RevealFx translateY="8" delay={0.2} horizontal="start" paddingBottom="m">
+                    <RevealFx translateY="8" delay={0.5} horizontal="start" paddingBottom="m">
                         <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
                             {description}
                         </Text>
@@ -54,7 +54,7 @@ export default function CertificationsClient({
                     gap: '24px'
                 }}>
                     {sortedCertifications.map((cert, index) => (
-                        <RevealFx key={cert.title} translateY="16" delay={0.1 * index}>
+                        <RevealFx key={cert.title} translateY="16" delay={0.6 * index}>
                             <Card
                                 className="certificate-card"
                                 background="surface"

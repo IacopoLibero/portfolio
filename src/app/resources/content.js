@@ -132,7 +132,7 @@ const about = {
   },
   cv: {
     display: true,
-    link: "/CV - Iacopo Libero Bernabei.pdf",
+    link: "/documents/CV - Iacopo Libero Bernabei.pdf",
   },
   intro: {
     display: true,

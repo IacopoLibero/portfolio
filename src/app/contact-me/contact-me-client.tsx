@@ -29,7 +29,8 @@ export default function ContactMeClient({ title, description, person }: ContactM
         lastName: "",
         email: "",
         phone: "",
-        message: ""
+        message: "",
+        acceptPrivacy: false
     });
 
     const [errors, setErrors] = useState({
@@ -37,7 +38,8 @@ export default function ContactMeClient({ title, description, person }: ContactM
         lastName: "",
         email: "",
         phone: "",
-        message: ""
+        message: "",
+        acceptPrivacy: ""
     });
 
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -69,33 +71,37 @@ export default function ContactMeClient({ title, description, person }: ContactM
         };
     }, [showSuccess, showError]);
 
-    const validateField = (name: string, value: string) => {
+    const validateField = (name: string, value: string | boolean) => {
         let error = "";
 
         switch (name) {
             case "firstName":
                 if (!value) error = "First name is required";
-                else if (value.length < 2) error = "First name must contain at least 2 characters";
+                else if (typeof value === 'string' && value.length < 2) error = "First name must contain at least 2 characters";
                 break;
 
             case "lastName":
                 if (!value) error = "Last name is required";
-                else if (value.length < 2) error = "Last name must contain at least 2 characters";
+                else if (typeof value === 'string' && value.length < 2) error = "Last name must contain at least 2 characters";
                 break;
 
             case "email":
                 if (!value) error = "Email is required";
-                else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) error = "Invalid email format";
+                else if (typeof value === 'string' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) error = "Invalid email format";
                 break;
 
             case "phone":
-                if (value && !/^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/.test(value)) {
+                if (value && typeof value === 'string' && !/^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/.test(value)) {
                     error = "Invalid phone number format";
                 }
                 break;
 
             case "message":
                 if (!value) error = "Message is required";
+                break;
+
+            case "acceptPrivacy":
+                if (!value) error = "You must accept the privacy policy";
                 break;
 
             default:
@@ -106,17 +112,23 @@ export default function ContactMeClient({ title, description, person }: ContactM
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+        const { name, value, type } = e.target;
+        const checked = type === 'checkbox' ? (e.target as HTMLInputElement).checked : undefined;
 
-        const error = validateField(name, value);
+        setFormData(prev => ({
+            ...prev,
+            [name]: type === 'checkbox' ? checked : value
+        }));
+
+        const error = validateField(name, type === 'checkbox' ? (checked ?? false) : value);
         setErrors(prev => ({ ...prev, [name]: error }));
     };
 
     const handleBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target;
+        const { name, value, type } = e.target;
+        const checked = type === 'checkbox' ? (e.target as HTMLInputElement).checked : undefined;
 
-        const error = validateField(name, value);
+        const error = validateField(name, type === 'checkbox' ? (checked ?? false) : value);
         setErrors(prev => ({ ...prev, [name]: error }));
     };
 
@@ -126,7 +138,8 @@ export default function ContactMeClient({ title, description, person }: ContactM
             lastName: validateField("lastName", formData.lastName),
             email: validateField("email", formData.email),
             phone: validateField("phone", formData.phone),
-            message: validateField("message", formData.message)
+            message: validateField("message", formData.message),
+            acceptPrivacy: validateField("acceptPrivacy", formData.acceptPrivacy)
         };
 
         setErrors(newErrors);
@@ -168,7 +181,8 @@ export default function ContactMeClient({ title, description, person }: ContactM
                 lastName: "",
                 email: "",
                 phone: "",
-                message: ""
+                message: "",
+                acceptPrivacy: false
             });
         } catch (error) {
             console.error('Form submission error:', error);
@@ -181,233 +195,279 @@ export default function ContactMeClient({ title, description, person }: ContactM
 
     return (
         <>
-            <Column fillWidth paddingBottom="l">
-                <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 16px' }}>
-                    <RevealFx translateY="16" paddingTop="16" paddingBottom="l" horizontal="start">
-                        <Heading as="h1" variant="display-strong-l">
-                            {title}
-                        </Heading>
-                    </RevealFx>
-                    <RevealFx translateY="8" delay={0.2} horizontal="start" paddingBottom="m">
-                        <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-                            {description}
-                        </Text>
-                    </RevealFx>
-                </div>
-            </Column>
-
             <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 16px' }}>
-                <form onSubmit={handleSubmit} noValidate>
-                    <Flex direction="column" gap="l">
-                        <Flex direction="row" gap="l">
-                            <Flex direction="column" gap="s" flex="1">
-                                <Text as="label" htmlFor="firstName" variant="body-strong-s">
-                                    First Name *
-                                </Text>
-                                <Input
-                                    id="firstName"
-                                    name="firstName"
-                                    label="First Name"
-                                    value={formData.firstName}
-                                    onChange={handleInputChange}
-                                    onBlur={handleBlur}
-                                    required
-                                />
-                                {errors.firstName && (
-                                    <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
-                                        {errors.firstName}
+                <RevealFx translateY="16" paddingTop="16" paddingBottom="l" horizontal="start">
+                    <Heading as="h1" variant="display-strong-l">
+                        {title}
+                    </Heading>
+                </RevealFx>
+                <RevealFx translateY="8" delay={0.5} horizontal="start" paddingBottom="xl">
+                    <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
+                        {description}
+                    </Text>
+                </RevealFx>
+
+                <RevealFx translateY="12" delay={1.0} horizontal="start">
+                    <form onSubmit={handleSubmit} noValidate>
+                        <Flex direction="column" gap="l">
+                            <Flex direction="row" gap="l">
+                                <Flex direction="column" gap="s" flex="1">
+                                    <Text as="label" htmlFor="firstName" variant="body-strong-s">
+                                        First Name *
                                     </Text>
-                                )}
-                            </Flex>
-
-                            <Flex direction="column" gap="s" flex="1">
-                                <Text as="label" htmlFor="lastName" variant="body-strong-s">
-                                    Last Name *
-                                </Text>
-                                <Input
-                                    id="lastName"
-                                    name="lastName"
-                                    label="Last Name"
-                                    value={formData.lastName}
-                                    onChange={handleInputChange}
-                                    onBlur={handleBlur}
-                                    required
-                                />
-                                {errors.lastName && (
-                                    <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
-                                        {errors.lastName}
-                                    </Text>
-                                )}
-                            </Flex>
-                        </Flex>
-
-                        <Flex direction="row" gap="l">
-                            <Flex direction="column" gap="s" flex="1">
-                                <Text as="label" htmlFor="email" variant="body-strong-s">
-                                    Email *
-                                </Text>
-                                <Input
-                                    id="email"
-                                    name="email"
-                                    type="email"
-                                    label="Email"
-                                    value={formData.email}
-                                    onChange={handleInputChange}
-                                    onBlur={handleBlur}
-                                    required
-                                />
-                                {errors.email && (
-                                    <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
-                                        {errors.email}
-                                    </Text>
-                                )}
-                            </Flex>
-
-                            <Flex direction="column" gap="s" flex="1">
-                                <Text as="label" htmlFor="phone" variant="body-strong-s">
-                                    Phone
-                                </Text>
-                                <Input
-                                    id="phone"
-                                    name="phone"
-                                    type="tel"
-                                    label="Phone"
-                                    value={formData.phone}
-                                    onChange={handleInputChange}
-                                    onBlur={handleBlur}
-                                />
-                                {errors.phone && (
-                                    <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
-                                        {errors.phone}
-                                    </Text>
-                                )}
-                            </Flex>
-                        </Flex>
-
-                        <Flex direction="column" gap="s">
-                            <Text as="label" htmlFor="message" variant="body-strong-s">
-                                Message *
-                            </Text>
-                            <Textarea
-                                id="message"
-                                name="message"
-                                label="Message"
-                                rows={6}
-                                value={formData.message}
-                                onChange={handleInputChange}
-                                onBlur={handleBlur}
-                                required
-                            />
-                            {errors.message && (
-                                <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
-                                    {errors.message}
-                                </Text>
-                            )}
-                        </Flex>
-
-                        <Flex horizontal="start" >
-                            <button
-                                type="submit"
-                                style={{
-                                    background: 'var(--color-brand-background-strong)',
-                                    color: 'var(--color-brand-on-background-strong)',
-                                    border: 'none',
-                                    borderRadius: 'var(--radius-m)',
-                                    fontSize: '16px',
-                                    fontWeight: 'bold',
-                                    cursor: isSubmitting ? 'wait' : 'pointer',
-                                    opacity: isSubmitting ? 0.7 : 1,
-                                    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                                    transition: 'all 0.2s ease',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                }}
-                                onMouseOver={(e) => {
-                                    e.currentTarget.style.transform = 'translateY(-2px)';
-                                    e.currentTarget.style.boxShadow = '0 6px 8px rgba(0, 0, 0, 0.12)';
-                                }}
-                                onMouseOut={(e) => {
-                                    e.currentTarget.style.transform = 'translateY(0)';
-                                    e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
-                                }}
-                                disabled={isSubmitting}
-                            >
-                                {isSubmitting ? "Sending..." : "Send Message"}
-                                {!isSubmitting && (
-                                    <span style={{ marginLeft: '8px', display: 'inline-block' }}>
-                                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                            <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                        </svg>
-                                    </span>
-                                )}
-                            </button>
-                        </Flex>
-
-                        {/* Messaggi inline per visualizzazione mobile */}
-                        <div className="mobile-messages">
-                            {showSuccess && (
-                                <Flex
-                                    direction="column"
-                                    padding="m"
-                                    style={{
-                                        backgroundColor: 'var(--color-info-strong)',
-                                        borderRadius: '8px',
-                                        boxShadow: 'var(--shadow-s)',
-                                        marginTop: '24px',
-                                        marginBottom: '8px',
-                                        width: '100%',
-                                    }}
-                                >
-                                    <Heading as="h3" variant="heading-strong-s">Message Sent!</Heading>
-                                    <Text>Thank you for your message. I&apos;ll get back to you soon.</Text>
+                                    <Input
+                                        id="firstName"
+                                        name="firstName"
+                                        label="First Name"
+                                        value={formData.firstName}
+                                        onChange={handleInputChange}
+                                        onBlur={handleBlur}
+                                        required
+                                    />
+                                    {errors.firstName && (
+                                        <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
+                                            {errors.firstName}
+                                        </Text>
+                                    )}
                                 </Flex>
-                            )}
 
-                            {showError && (
-                                <Flex
-                                    direction="column"
-                                    padding="m"
-                                    style={{
-                                        backgroundColor: 'var(--color-danger-strong)',
-                                        borderRadius: '8px',
-                                        boxShadow: 'var(--shadow-s)',
-                                        marginTop: '24px',
-                                        marginBottom: '8px',
-                                        width: '100%',
-                                    }}
-                                >
-                                    <Heading as="h3" variant="heading-strong-s">Error</Heading>
-                                    <Text>{errorMessage}</Text>
+                                <Flex direction="column" gap="s" flex="1">
+                                    <Text as="label" htmlFor="lastName" variant="body-strong-s">
+                                        Last Name *
+                                    </Text>
+                                    <Input
+                                        id="lastName"
+                                        name="lastName"
+                                        label="Last Name"
+                                        value={formData.lastName}
+                                        onChange={handleInputChange}
+                                        onBlur={handleBlur}
+                                        required
+                                    />
+                                    {errors.lastName && (
+                                        <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
+                                            {errors.lastName}
+                                        </Text>
+                                    )}
                                 </Flex>
-                            )}
-                        </div>
-                    </Flex>
-                </form>
-
-                <Flex direction="column" gap="l" paddingTop="xl">
-                    <Text variant="body-strong-l">Alternative Contact Methods</Text>
-                    <Flex direction="column" gap="m">
-                        <Flex direction="row" gap="m" vertical="center">
-                            <Flex background="surface" padding="s" radius="full">
-                                <Icon name="email" size="m" />
                             </Flex>
-                            <Text>
-                                <a href={`mailto:${person.email}`}>{person.email}</a>
-                            </Text>
-                        </Flex>
 
-                        <Flex direction="row" gap="m" vertical="center">
-                            <Flex background="surface" padding="s" radius="full">
-                                <Icon name="phone" size="m" />
+                            <Flex direction="row" gap="l">
+                                <Flex direction="column" gap="s" flex="1">
+                                    <Text as="label" htmlFor="email" variant="body-strong-s">
+                                        Email *
+                                    </Text>
+                                    <Input
+                                        id="email"
+                                        name="email"
+                                        type="email"
+                                        label="Email"
+                                        value={formData.email}
+                                        onChange={handleInputChange}
+                                        onBlur={handleBlur}
+                                        required
+                                    />
+                                    {errors.email && (
+                                        <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
+                                            {errors.email}
+                                        </Text>
+                                    )}
+                                </Flex>
+
+                                <Flex direction="column" gap="s" flex="1">
+                                    <Text as="label" htmlFor="phone" variant="body-strong-s">
+                                        Phone
+                                    </Text>
+                                    <Input
+                                        id="phone"
+                                        name="phone"
+                                        type="tel"
+                                        label="Phone"
+                                        value={formData.phone}
+                                        onChange={handleInputChange}
+                                        onBlur={handleBlur}
+                                    />
+                                    {errors.phone && (
+                                        <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
+                                            {errors.phone}
+                                        </Text>
+                                    )}
+                                </Flex>
                             </Flex>
-                            <Text>
-                                <a href={`tel:${person.phone}`}>{person.phone}</a>
-                            </Text>
+
+                            <Flex direction="column" gap="s">
+                                <Text as="label" htmlFor="message" variant="body-strong-s">
+                                    Message *
+                                </Text>
+                                <Textarea
+                                    id="message"
+                                    name="message"
+                                    label="Message"
+                                    rows={6}
+                                    value={formData.message}
+                                    onChange={handleInputChange}
+                                    onBlur={handleBlur}
+                                    required
+                                />
+                                {errors.message && (
+                                    <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
+                                        {errors.message}
+                                    </Text>
+                                )}
+                            </Flex>
+
+                            {/* Privacy policy checkbox */}
+                            <Flex direction="column" gap="s">
+                                <Flex direction="row" gap="s" vertical="center">
+                                    <input
+                                        type="checkbox"
+                                        id="acceptPrivacy"
+                                        name="acceptPrivacy"
+                                        checked={formData.acceptPrivacy}
+                                        onChange={handleInputChange}
+                                        style={{
+                                            width: '16px',
+                                            height: '16px',
+                                            cursor: 'pointer',
+                                            accentColor: 'var(--color-brand-background-strong)'
+                                        }}
+                                        required
+                                    />
+                                    <Text as="label" htmlFor="acceptPrivacy" variant="body-default-s" style={{ cursor: 'pointer' }}>
+                                        Accetto i{' '}
+                                        <a
+                                            href="/documents/privacy_policy.pdf"
+                                            download="privacy_policy.pdf"
+                                            style={{
+                                                color: 'var(--color-brand-background-strong)',
+                                                textDecoration: 'underline',
+                                                cursor: 'pointer'
+                                            }}
+                                            onMouseOver={(e) => {
+                                                e.currentTarget.style.color = 'var(--color-brand-background-weak)';
+                                            }}
+                                            onMouseOut={(e) => {
+                                                e.currentTarget.style.color = 'var(--color-brand-background-strong)';
+                                            }}
+                                        >
+                                            termini e condizioni
+                                        </a>
+                                        {' '}*
+                                    </Text>
+                                </Flex>
+                                {errors.acceptPrivacy && (
+                                    <Text style={{ color: 'var(--color-danger-strong)' }} variant="body-default-xs">
+                                        {errors.acceptPrivacy}
+                                    </Text>
+                                )}
+                            </Flex>
+
+                            <Flex horizontal="start" >
+                                <button
+                                    type="submit"
+                                    style={{
+                                        background: 'var(--color-brand-background-strong)',
+                                        color: 'var(--color-brand-on-background-strong)',
+                                        border: 'none',
+                                        borderRadius: 'var(--radius-m)',
+                                        fontSize: '16px',
+                                        fontWeight: 'bold',
+                                        cursor: isSubmitting ? 'wait' : 'pointer',
+                                        opacity: isSubmitting ? 0.7 : 1,
+                                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+                                        transition: 'all 0.2s ease',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                    }}
+                                    onMouseOver={(e) => {
+                                        e.currentTarget.style.transform = 'translateY(-2px)';
+                                        e.currentTarget.style.boxShadow = '0 6px 8px rgba(0, 0, 0, 0.12)';
+                                    }}
+                                    onMouseOut={(e) => {
+                                        e.currentTarget.style.transform = 'translateY(0)';
+                                        e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                                    }}
+                                    disabled={isSubmitting}
+                                >
+                                    {isSubmitting ? "Sending..." : "Send Message"}
+                                    {!isSubmitting && (
+                                        <span style={{ marginLeft: '8px', display: 'inline-block' }}>
+                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                                <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                            </svg>
+                                        </span>
+                                    )}
+                                </button>
+                            </Flex>
+
+                            {/* Messaggi inline per visualizzazione mobile */}
+                            <div className="mobile-messages">
+                                {showSuccess && (
+                                    <Flex
+                                        direction="column"
+                                        padding="m"
+                                        style={{
+                                            backgroundColor: 'var(--color-info-strong)',
+                                            borderRadius: '8px',
+                                            boxShadow: 'var(--shadow-s)',
+                                            marginTop: '24px',
+                                            marginBottom: '8px',
+                                            width: '100%',
+                                        }}
+                                    >
+                                        <Heading as="h3" variant="heading-strong-s">Message Sent!</Heading>
+                                        <Text>Thank you for your message. I&apos;ll get back to you soon.</Text>
+                                    </Flex>
+                                )}
+
+                                {showError && (
+                                    <Flex
+                                        direction="column"
+                                        padding="m"
+                                        style={{
+                                            backgroundColor: 'var(--color-danger-strong)',
+                                            borderRadius: '8px',
+                                            boxShadow: 'var(--shadow-s)',
+                                            marginTop: '24px',
+                                            marginBottom: '8px',
+                                            width: '100%',
+                                        }}
+                                    >
+                                        <Heading as="h3" variant="heading-strong-s">Error</Heading>
+                                        <Text>{errorMessage}</Text>
+                                    </Flex>
+                                )}
+                            </div>
+                        </Flex>
+                    </form>
+                </RevealFx>
+                <RevealFx translateY="12" delay={1.0} horizontal="start">
+                    <Flex direction="column" gap="l" paddingTop="xl">
+                        <Text variant="body-strong-l">Alternative Contact Methods</Text>
+                        <Flex direction="column" gap="m">
+                            <Flex direction="row" gap="m" vertical="center">
+                                <Flex background="surface" padding="s" radius="full">
+                                    <Icon name="email" size="m" />
+                                </Flex>
+                                <Text>
+                                    <a href={`mailto:${person.email}`}>{person.email}</a>
+                                </Text>
+                            </Flex>
+
+                            <Flex direction="row" gap="m" vertical="center">
+                                <Flex background="surface" padding="s" radius="full">
+                                    <Icon name="phone" size="m" />
+                                </Flex>
+                                <Text>
+                                    <a href={`tel:${person.phone}`}>{person.phone}</a>
+                                </Text>
+                            </Flex>
                         </Flex>
                     </Flex>
-                </Flex>
+                </RevealFx>
+
             </div>
 
             {/* Messaggi toast per visualizzazione desktop */}
