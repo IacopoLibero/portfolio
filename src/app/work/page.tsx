@@ -38,7 +38,7 @@ export default function Work() {
             {work.title}
           </Heading>
         </RevealFx>
-        <RevealFx translateY="8" delay={0.2} horizontal="start" paddingBottom="m">
+        <RevealFx translateY="8" delay={0.5} horizontal="start" paddingBottom="m">
           <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
             {work.description}
           </Text>
