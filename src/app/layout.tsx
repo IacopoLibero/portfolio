@@ -6,6 +6,7 @@ import classNames from "classnames";
 import { Footer, Header, RouteGuard } from "@/components";
 import { baseURL, effects, style, font, home } from "@/app/resources";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import { Background, Column, Flex, ThemeProvider, ToastProvider } from "@/once-ui/components";
 import { opacity, SpacingToken } from "@/once-ui/types";
@@ -72,6 +73,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       <ThemeProvider>
         <ToastProvider>
           <Analytics />
+          <SpeedInsights />
           <Column style={{ minHeight: "100vh" }} as="body" fillWidth margin="0" padding="0">
             <Background
               position="fixed"
