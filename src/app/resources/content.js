@@ -7,7 +7,7 @@ const person = {
     return `${this.firstName} ${this.lastName}`;
   },
   role: "Developer and Cybersecurity expert",
-  avatar: "/images/avatar.jpg",
+  avatar: "/images/avatar.webp",
   email: "iacopoliberolavoro@gmail.com",
   location: "Europe/Rome", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
   languages: ["Italian", "English"], // optional: Leave the array empty if you don't want to display languages
@@ -179,11 +179,17 @@ const about = {
     experiences: [
       {
         company: "NEBOOLA S.R.L.",
-        timeframe: "05/2025 - Present",
+        timeframe: "05/2025 - 07/2025",
         role: "Internship",
         achievements: [
           <>
-            Currently engaged in an internship at Neboola S.R.L., where I am applying my skills in cloud infrastructure and cybersecurity to real-world projects.
+            I've done an internship at Neboola S.R.L., where I am applying my skills in cloud infrastructure and cybersecurity to real-world projects.
+          </>,
+          <>
+            Gained hands-on experience with infrastructure as code using Terraform, automated configuration management with Ansible, and container orchestration fundamentals with Kubernetes.
+          </>,
+          <>
+            Collaborated with a team of experienced professionals, enhancing my understanding of cloud security best practices and incident response strategies.
           </>
         ],
         images: [

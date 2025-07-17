@@ -54,7 +54,7 @@ export default function CertificationsClient({
                     gap: '24px'
                 }}>
                     {sortedCertifications.map((cert, index) => (
-                        <RevealFx key={cert.title} translateY="16" delay={0.6 * index}>
+                        <RevealFx key={cert.title} translateY="16" delay={0.4 * index}>
                             <Card
                                 className="certificate-card"
                                 background="surface"

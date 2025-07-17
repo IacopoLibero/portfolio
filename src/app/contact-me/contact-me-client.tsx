@@ -153,7 +153,7 @@ export default function ContactMeClient({ title, description, person }: ContactM
         if (isSubmitting) return;
 
         if (!validateForm()) {
-            setErrorMessage("Please correct the errors in the form before submitting");
+            setErrorMessage("Please fill all the required fields correctly.");
             setShowError(true);
             return;
         }
