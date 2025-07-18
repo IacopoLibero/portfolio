@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV - Iacopo Libero Bernabei</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@300;400;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <select id="languageSelector">
+            <option value="it">🇮🇹 Italiano</option>
+            <option value="en">🇬🇧 English</option>
+        </select>
+        <button class="download-btn" onclick="downloadCV()">
+            <i class="fas fa-download"></i>
+            <span data-key="download">Scarica CV</span>
+        </button>
+    </div>
+
+    <div class="container">
+        <div class="left-column">
+            <div class="photo"></div>
+            <div class="contact-info section">
+                <h2 data-key="contacts">CONTATTI</h2>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i>Firenze, FI</li>
+                    <li><i class="fas fa-phone-alt"></i><a href="tel:+393459488277">+39 345 9488277</a></li>
+                    <li><i class="fas fa-globe"></i> <a href="https://iacopolibero.dev"
+                            target="_blank">iacopolibero.dev</a></li>
+                    <li><i class="fas fa-envelope"></i> <a
+                            href="mailto: iacopoliberolavoro@gmail.com">iacopoliberolavoro@gmail.com</a></li>
+                    <li><i class="bi bi-github"></i><a
+                            href="https://github.com/IacopoLibero">github.com/IacopoLibero</a></li>
+                    <li><i class="fas fa-birthday-cake"></i> 14/12/2004</li>
+                    <li><i class="fas fa-car"></i> <span data-key="license">Categoria B</span></li>
+                </ul>
+            </div>
+            <hr>
+            <div class="skills section">
+                <h2 data-key="skills">CAPACITÀ E COMPETENZE</h2>
+                <ul>
+                    <li data-key="skill1">Autonomia operativa</li>
+                    <li data-key="skill2">Attitudine al lavoro per obiettivi</li>
+                    <li data-key="skill3">Predisposizione al lavoro di squadra</li>
+                    <li data-key="skill4">Capacità di gestione del tempo</li>
+                    <li data-key="skill5">Capacità di adattamento e flessibilità</li>
+                    <li data-key="skill6">Capacità relazionali</li>
+                    <li data-key="skill7">Capacità di pensiero critico</li>
+                    <li data-key="skill8">Problem solving</li>
+                </ul>
+            </div>
+            <hr>
+            <div class="languages section">
+                <h2 data-key="languages">LINGUE</h2>
+                <div class="language">
+                    <div class="language-header">
+                        <strong data-key="lang_italian">Italiano</strong>
+                        <span class="level" data-key="lang_native">Madrelingua</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 100%;"></div>
+                    </div>
+                </div>
+
+                <div class="language">
+                    <div class="language-header">
+                        <strong data-key="lang_english">Inglese</strong>
+                        <span class="level">B2</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 75%;"></div>
+                    </div>
+                    <span class="description" data-key="lang_intermediate">Intermedio avanzato</span>
+                </div>
+
+                <div class="language">
+                    <div class="language-header">
+                        <strong data-key="lang_spanish">Spagnolo</strong>
+                        <span class="level">A2</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div class="progress" style="width: 30%;"></div>
+                    </div>
+                    <span class="description" data-key="lang_basic">Base</span>
+                </div>
+            </div>
+            <hr>
+            <div class="hobbies section">
+                <h2 data-key="hobbies">HOBBY E INTERESSI</h2>
+                <ul>
+                    <li data-key="hobby1">Musica</li>
+                    <li data-key="hobby2">Cinema</li>
+                    <li data-key="hobby3">Fotografia</li>
+                    <li data-key="hobby4">Pesca</li>
+                    <li data-key="hobby5">Videogame</li>
+                </ul>
+            </div>
+        </div>
+        <div class="right-column">
+            <h1 class="nome">Iacopo Libero Bernabei</h1>
+            <div class="profile section">
+                <h2><i class="fas fa-briefcase"></i> <span data-key="professional_profile">PROFILO PROFESSIONALE</span></h2>
+                <p data-key="profile_desc1">Perito informatico con buona conoscenza della programmazione con linguaggi JS, HTML5, PHP, CSS, Java,
+                    SQL e framework come Bootstrap.</p>
+                <p data-key="profile_desc2">Particolare interesse al full-stack web development, con forte motivazione a crescere
+                    professionalmente nel ruolo.</p>
+                <p data-key="profile_desc3">Attualmente sto completando una specializzazione IFTS come "Responsabile della sicurezza di reti
+                    informatiche e della protezione dei dati", acquisendo competenze avanzate in cybersecurity, ethical
+                    hacking, analisi forense, crittografia, sicurezza delle reti, gestione degli incidenti informatici e
+                    compliance normativa sulla protezione dei dati personali.</p>
+            </div>
+            <div class="skills section">
+                <h2><i class="bi bi-tools"></i> <span data-key="technical_skills">COMPETENZE TECNICHE</span></h2>
+                <ul class="row">
+                    <div class="col-md-6">
+                        <li data-key="tech1">Java (Base - scolastico)</li>
+                        <li data-key="tech2">Sviluppo web (HTML, CSS, JS, PHP, SQL) (Intermedio)</li>
+                        <li data-key="tech3">Progettazione database (Intermedio)</li>
+                        <li data-key="tech4">Sviluppo applicazioni client-server (Intermedio)</li>
+                        <li data-key="tech5">Sviluppo API (Base)</li>
+                        <li data-key="tech6">Framework Bootstrap (Intermedio)</li>
+                        <li data-key="tech7">Conoscenza di C++ (Base - scolastico)</li>
+                        <li data-key="tech8">Progettazione infrastrutture di rete (Intermedio)</li>
+                        <li data-key="tech9">Conoscenza dei sistemi operativi linux e windows (Intermedio)</li>
+                        <li data-key="tech10">IT skills (Avanzato)</li>
+                    </div>
+                    <div class="col-md-6">
+                        <li data-key="tech11">Progettazione ACL (Base)</li>
+                        <li data-key="tech12">Conoscenza di Git e Github (Intermedio)</li>
+                        <li data-key="tech13">Sicurezza informatica (Intermedio)</li>
+                        <li data-key="tech14">Crittografia e scambio dati sicuro (Base)</li>
+                        <li data-key="tech15">Ethical hacking (Base)</li>
+                        <li data-key="tech16">Blockchain (Conoscenza teorica)</li>
+                        <li data-key="tech17">AWS Cloud (Conoscenza base)</li>
+                        <li data-key="tech18">Analisi forense informatica (Conoscenza teorica)</li>
+                        <li data-key="tech19">Analisi e valutazione rischi informatici (Intermedio)</li>
+                        <li data-key="tech20">Gestione incidenti di sicurezza (Base)</li>
+                    </div>
+                </ul>
+            </div>
+            <div class="education section">
+                <h2><i class="fas fa-graduation-cap"></i> <span data-key="education">ISTRUZIONE E FORMAZIONE</span></h2>
+                <div class="education-item">
+                    <strong data-key="edu_title1">Responsabile della sicurezza di reti informatiche e della protezione dei dati</strong>
+                    <p data-key="edu_desc1">IFTS: Prato, 09/2024 - in corso</p>
+                </div>
+                <div class="education-details">
+                    <p><strong data-key="edu_ifts">IFTS Cyber Security Specialist 3</strong></p>
+                    <p data-key="edu_cert">Certificato di Specializzazione Tecnica Superiore e Qualifica Professionale della Regione Toscana
+                        (IV° livello europeo)</p>
+                </div>
+                <div class="education-item">
+                    <strong data-key="edu_title2">Diploma: Perito Informatico</strong>
+                    <p data-key="edu_desc2">ITIS Antonio Meucci - Firenze, 09/2021 - 07/2024</p>
+                </div>
+            </div>
+
+            <div class="job-roles section">
+                <h2><i class="fas fa-briefcase"></i> <span data-key="work_experience">ESPERIENZA LAVORATIVA</span></h2>
+                <div class="education-item">
+                    <strong data-key="job_title1">Sviluppatore Web Freelance</strong>
+                    <p data-key="job_desc1">Attività autonoma - Firenze, 09/2024 - in corso</p>
+                </div>
+            </div>
+            <div class="signature">
+                <p data-key="privacy_statement">Autorizzo il trattamento dei dati personali contenuti nel mio CV ex art. 13 del decreto legislativo
+                    196/2003 e art. 13 del regolamento UE 2016/679 sulla protezione dei singoli cittadini in merito al
+                    trattamento dei dati personali</p>
+                <p class="signature-name">Iacopo Libero Bernabei</p>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+
+</html>
