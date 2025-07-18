@@ -359,37 +359,230 @@ hr {
 
 /* Print styles */
 @media print {
+    @page {
+        size: A4;
+        margin: 0.5cm;
+    }
+
+    * {
+        -webkit-print-color-adjust: exact !important;
+        color-adjust: exact !important;
+        print-color-adjust: exact !important;
+    }
+
     body {
-        background-color: white;
-        color: black;
-        font-size: 12pt;
+        background-color: white !important;
+        color: black !important;
+        font-size: 10pt !important;
+        line-height: 1.3 !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
     .container {
-        width: 100%;
-        margin: 0;
-        box-shadow: none;
-        max-width: 100%;
+        width: 100% !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        display: flex !important;
+        height: auto !important;
+        page-break-inside: avoid;
+    }
+
+    .left-column {
+        width: 35% !important;
+        padding: 8px !important;
+        padding-right: 5px !important;
+        padding-bottom: 0 !important;
+        font-size: 9pt !important;
+    }
+
+    .right-column {
+        width: 65% !important;
+        padding: 8px !important;
+        padding-left: 10px !important;
+        padding-bottom: 0 !important;
+        font-size: 9pt !important;
     }
 
     .photo {
-        height: 300px;
+        height: 200px !important;
+        margin-bottom: 10px !important;
     }
 
-    a {
-        color: black;
-        text-decoration: none;
+    h1 {
+        font-size: 18pt !important;
+        margin-bottom: 8px !important;
     }
 
-    .progress-bar,
-    .progress {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
+    h2 {
+        font-size: 12pt !important;
+        margin: 10px 0 6px 0 !important;
+        padding-bottom: 4px !important;
+    }
+
+    .section {
+        margin-bottom: 8px !important;
+        page-break-inside: avoid;
+    }
+
+    .skills ul li, .hobbies ul li {
+        margin-bottom: 3px !important;
+        font-size: 9pt !important;
+    }
+
+    .contact-info ul li {
+        margin-bottom: 4px !important;
+        font-size: 9pt !important;
+    }
+
+    .language {
+        margin-bottom: 8px !important;
+    }
+
+    .language-header {
+        margin-bottom: 2px !important;
+    }
+
+    .progress-bar {
+        height: 4px !important;
+        margin: 2px 0 !important;
+    }
+
+    .language .description {
+        font-size: 8pt !important;
+        margin-top: 1px !important;
+    }
+
+    .profile p {
+        margin-bottom: 6px !important;
+        font-size: 9pt !important;
+        line-height: 1.2 !important;
+    }
+
+    .education-item {
+        margin-bottom: 6px !important;
+    }
+
+    .education-item strong {
+        font-size: 10pt !important;
+    }
+
+    .education-item p {
+        margin-bottom: 3px !important;
+        font-size: 9pt !important;
+    }
+
+    .education-details {
+        margin: 6px 0 6px 10px !important;
+        padding: 6px !important;
+        font-size: 8pt !important;
+    }
+
+    .signature {
+        margin-top: 10px !important;
+        font-size: 7pt !important;
+        line-height: 1.1 !important;
+        padding-top: 8px !important;
+    }
+
+    .signature-name {
+        font-size: 14pt !important;
+        margin-top: 6px !important;
     }
 
     .language-selector {
-        display: none;
+        display: none !important;
     }
+
+    .row .col-md-6 {
+        width: 50% !important;
+        float: left !important;
+    }
+
+    .row .col-md-6 li {
+        font-size: 8pt !important;
+        margin-bottom: 2px !important;
+    }
+
+    hr {
+        margin: 6px 0 !important;
+        page-break-inside: avoid;
+    }
+
+    a {
+        color: black !important;
+        text-decoration: none !important;
+    }
+
+    /* Forza i colori per la stampa */
+    .progress-bar,
+    .progress {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        color-adjust: exact !important;
+    }
+
+    /* Evita interruzioni di pagina indesiderate */
+    .skills,
+    .languages,
+    .hobbies,
+    .profile,
+    .education,
+    .job-roles {
+        page-break-inside: avoid;
+    }
+}
+
+/* Stili specifici per PDF generation */
+.pdf-generation {
+    font-size: 10pt !important;
+    line-height: 1.2 !important;
+}
+
+.pdf-generation .container {
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 10px !important;
+    box-shadow: none !important;
+    border-radius: 0 !important;
+}
+
+.pdf-generation .left-column {
+    width: 35% !important;
+    padding: 5px !important;
+    font-size: 9pt !important;
+}
+
+.pdf-generation .right-column {
+    width: 65% !important;
+    padding: 5px 10px !important;
+    font-size: 9pt !important;
+}
+
+.pdf-generation .photo {
+    height: 180px !important;
+    margin-bottom: 8px !important;
+}
+
+.pdf-generation h1 {
+    font-size: 16pt !important;
+    margin-bottom: 6px !important;
+}
+
+.pdf-generation h2 {
+    font-size: 11pt !important;
+    margin: 8px 0 4px 0 !important;
+}
+
+.pdf-generation .section {
+    margin-bottom: 6px !important;
+}
+
+.pdf-generation .language-selector {
+    display: none !important;
 }
 
 /* Responsive styles */

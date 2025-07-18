@@ -158,19 +158,55 @@ function translateContent(language) {
 
 // Funzione per scaricare il CV
 function downloadCV() {
-    const filename = currentLanguage === 'en' ? 'CV_Iacopo_Bernabei_EN.pdf' : 'CV_Iacopo_Bernabei_IT.pdf';
+    const lang = currentLanguage === 'en' ? 'EN' : 'IT';
+    const filename = `CV_Iacopo_Libero_Bernabei_${lang}`;
     
-    // Nascondi il selettore di lingua prima della stampa
+    // Nascondi il selettore di lingua prima della generazione PDF
     const languageSelector = document.querySelector('.language-selector');
+    const originalDisplay = languageSelector.style.display;
     languageSelector.style.display = 'none';
     
-    // Stampa la pagina
-    window.print();
+    // Ottieni il contenitore del CV
+    const element = document.querySelector('.container');
     
-    // Ripristina il selettore di lingua dopo la stampa
-    setTimeout(() => {
-        languageSelector.style.display = 'flex';
-    }, 1000);
+    // Configurazioni per html2pdf
+    const opt = {
+        margin: [0.0, 0.0, 0.0, 0.0], // margini ridotti in pollici
+        filename: filename + '.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+            scale: 2,
+            useCORS: true,
+            letterRendering: true,
+            allowTaint: true
+        },
+        jsPDF: { 
+            unit: 'in',
+            orientation: 'portrait',
+            compress: true
+        },
+        pagebreak: { mode: 'avoid-all' }
+    };
+    
+    // Controlla se html2pdf è disponibile
+    if (typeof html2pdf !== 'undefined') {
+        // Genera e scarica il PDF
+        html2pdf().set(opt).from(element).save().then(() => {
+            // Ripristina il selettore di lingua
+            setTimeout(() => {
+                languageSelector.style.display = originalDisplay || 'flex';
+            }, 500);
+        });
+    } else {
+        // Fallback: usa il metodo di stampa standard
+        console.log('html2pdf non disponibile, uso window.print()');
+        setTimeout(() => {
+            window.print();
+            setTimeout(() => {
+                languageSelector.style.display = originalDisplay || 'flex';
+            }, 1000);
+        }, 100);
+    }
 }
 
 // Event listener per il cambio lingua
