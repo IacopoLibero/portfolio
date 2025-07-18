@@ -146,13 +146,14 @@ export default function About() {
                   vertical="center"
                 >
                   <Icon paddingLeft="12" name="document" onBackground="brand-weak" />
-                  <Flex paddingX="8">Download CV</Flex>
+                  <Flex paddingX="8">Look at my CV</Flex>
                   <IconButton
                     href={about.cv.link}
-                    download
+                    target="_blank"
+                    rel="noopener noreferrer"
                     data-border="rounded"
                     variant="secondary"
-                    icon="download"
+                    icon="externalLink"
                   />
                 </Flex>
               )}

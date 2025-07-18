@@ -200,7 +200,7 @@ function downloadCV() {
     element.style.transformOrigin = 'top center';
     foto.style.transform = 'scaleX(0.8)';
     foto.style.transformOrigin = 'center';
-    element.style.fontSize = '98%';
+    element.style.fontSize = '97%';
 
     // Configurazioni per html2pdf
     const opt = {
