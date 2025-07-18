@@ -153,7 +153,7 @@ export default function About() {
                     rel="noopener noreferrer"
                     data-border="rounded"
                     variant="secondary"
-                    icon="externalLink"
+                    icon="chevronRight"
                   />
                 </Flex>
               )}
