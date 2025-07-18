@@ -29,28 +29,29 @@ const translations = {
         professional_profile: "PROFILO PROFESSIONALE",
         profile_desc1: "Perito informatico con buona conoscenza della programmazione con linguaggi JS, HTML5, PHP, CSS, Java, SQL e framework come Bootstrap.",
         profile_desc2: "Particolare interesse al full-stack web development, con forte motivazione a crescere professionalmente nel ruolo.",
-        profile_desc3: "Attualmente sto completando una specializzazione IFTS come \"Responsabile della sicurezza di reti informatiche e della protezione dei dati\", acquisendo competenze avanzate in cybersecurity, ethical hacking, analisi forense, crittografia, sicurezza delle reti, gestione degli incidenti informatici e compliance normativa sulla protezione dei dati personali.",
+        profile_desc3: "Attualmente sto completando una specializzazione IFTS come \"Responsabile della sicurezza di reti informatiche e della protezione dei dati\", acquisendo competenze avanzate in cybersecurity, ethical hacking, crittografia, sicurezza delle reti, gestione degli incidenti informatici e compliance normativa sulla protezione dei dati personali.",
         technical_skills: "COMPETENZE TECNICHE",
-        tech1: "Java (Base - scolastico)",
+        tech1: "Java, C++ (Base - scolastico)",
         tech2: "Sviluppo web (HTML, CSS, JS, PHP, SQL) (Intermedio)",
         tech3: "Progettazione database (Intermedio)",
         tech4: "Sviluppo applicazioni client-server (Intermedio)",
         tech5: "Sviluppo API (Base)",
         tech6: "Framework Bootstrap (Intermedio)",
-        tech7: "Conoscenza di C++ (Base - scolastico)",
         tech8: "Progettazione infrastrutture di rete (Intermedio)",
-        tech9: "Conoscenza dei sistemi operativi linux e windows (Intermedio)",
+        tech9: "Conoscenza dei sistemi operativi linux e windows (Intermedio - avanzato)",
         tech10: "IT skills (Avanzato)",
         tech11: "Progettazione ACL (Base)",
-        tech12: "Conoscenza di Git e Github (Intermedio)",
+        tech12: "Utilizzo di Git e delle best practise di versionamento (Intermedio)",
         tech13: "Sicurezza informatica (Intermedio)",
         tech14: "Crittografia e scambio dati sicuro (Base)",
         tech15: "Ethical hacking (Base)",
         tech16: "Blockchain (Conoscenza teorica)",
-        tech17: "AWS Cloud (Conoscenza base)",
+        tech17: "AWS Cloud (Base)",
         tech18: "Analisi forense informatica (Conoscenza teorica)",
         tech19: "Analisi e valutazione rischi informatici (Intermedio)",
         tech20: "Gestione incidenti di sicurezza (Base)",
+        tech21: "Automatizzazione con ansible e terraform (Base - intermedio)",
+        tech22: "Conoscenza concetti fondamentali di Kubernetes (Conoscienza teorica)",
         education: "ISTRUZIONE E FORMAZIONE",
         edu_title1: "Responsabile della sicurezza di reti informatiche e della protezione dei dati",
         edu_desc1: "IFTS: Prato, 09/2024 - in corso",
@@ -59,14 +60,18 @@ const translations = {
         edu_title2: "Diploma: Perito Informatico",
         edu_desc2: "ITIS Antonio Meucci - Firenze, 09/2021 - 07/2024",
         work_experience: "ESPERIENZA LAVORATIVA",
+        job_title2: "Tirocinio a Neboola Srl.",
+        job_desc2: "Ho svolto un tirocinio presso Neboola S.R.L., dove ho applicato le mie competenze in infrastrutture cloud e cybersecurity a progetti reali.Ho acquisito esperienza pratica con Infrastructure as Code utilizzando Terraform, gestione automatizzata della configurazione con Ansible e fondamenti di orchestrazione dei container con Kubernetes.",
         job_title1: "Sviluppatore Web Freelance",
-        job_desc1: "Attività autonoma - Firenze, 09/2024 - in corso",
+        job_desc1: "Attività autonoma",
         privacy_statement: "Autorizzo il trattamento dei dati personali contenuti nel mio CV ex art. 13 del decreto legislativo 196/2003 e art. 13 del regolamento UE 2016/679 sulla protezione dei singoli cittadini in merito al trattamento dei dati personali"
     },
     en: {
         download: "Download CV",
         contacts: "CONTACTS",
         license: "Category B",
+
+        //soft skill
         skills: "SKILLS & COMPETENCIES",
         skill1: "Operational autonomy",
         skill2: "Goal-oriented work attitude",
@@ -76,6 +81,8 @@ const translations = {
         skill6: "Interpersonal skills",
         skill7: "Critical thinking skills",
         skill8: "Problem solving",
+
+        //lingue
         languages: "LANGUAGES",
         lang_italian: "Italian",
         lang_english: "English",
@@ -83,6 +90,8 @@ const translations = {
         lang_native: "Native",
         lang_intermediate: "Upper intermediate",
         lang_basic: "Basic",
+
+        //hobbies
         hobbies: "HOBBIES & INTERESTS",
         hobby1: "Music",
         hobby2: "Cinema",
@@ -92,36 +101,45 @@ const translations = {
         professional_profile: "PROFESSIONAL PROFILE",
         profile_desc1: "IT specialist with good knowledge of programming languages JS, HTML5, PHP, CSS, Java, SQL and frameworks like Bootstrap.",
         profile_desc2: "Particular interest in full-stack web development, with strong motivation to grow professionally in this role.",
-        profile_desc3: "Currently completing an IFTS specialization as \"Network Security and Data Protection Manager\", acquiring advanced skills in cybersecurity, ethical hacking, forensic analysis, cryptography, network security, IT incident management and data protection compliance.",
+        profile_desc3: "Currently completing an IFTS specialization as \"Network Security and Data Protection Manager\", acquiring advanced skills in cybersecurity, ethical hacking, cryptography, network security, IT incident management and data protection compliance.",
+
+        // skill tecniche
         technical_skills: "TECHNICAL SKILLS",
-        tech1: "Java (Basic - academic)",
+        tech1: "Java, C++ (Basic - academic)",
         tech2: "Web development (HTML, CSS, JS, PHP, SQL) (Intermediate)",
         tech3: "Database design (Intermediate)",
         tech4: "Client-server application development (Intermediate)",
         tech5: "API development (Basic)",
         tech6: "Bootstrap framework (Intermediate)",
-        tech7: "C++ knowledge (Basic - academic)",
         tech8: "Network infrastructure design (Intermediate)",
-        tech9: "Linux and Windows operating systems knowledge (Intermediate)",
+        tech9: "Linux and Windows operating systems knowledge (Intermediate - Advanced)",
         tech10: "IT skills (Advanced)",
         tech11: "ACL design (Basic)",
-        tech12: "Git and Github knowledge (Intermediate)",
+        tech12: "Git usage and versioning best practices (Intermediate)",
         tech13: "IT security (Intermediate)",
         tech14: "Cryptography and secure data exchange (Basic)",
         tech15: "Ethical hacking (Basic)",
         tech16: "Blockchain (Theoretical knowledge)",
-        tech17: "AWS Cloud (Basic knowledge)",
+        tech17: "AWS Cloud (Basic)",
         tech18: "IT forensic analysis (Theoretical knowledge)",
         tech19: "IT risk analysis and assessment (Intermediate)",
         tech20: "Security incident management (Basic)",
-        education: "EDUCATION & TRAINING",
+        tech21: "Automation with Ansible and Terraform (Basic - Intermediate)",
+        tech22: "Kubernetes fundamental concepts knowledge (Theoretical knowledge)",
+
+        // formazione
+        education: "EDUCATION",
         edu_title1: "Network Security and Data Protection Manager",
         edu_desc1: "IFTS: Prato, 09/2024 - ongoing",
         edu_ifts: "IFTS Cyber Security Specialist 3",
         edu_cert: "Higher Technical Specialization Certificate and Professional Qualification of Tuscany Region (IV European level)",
         edu_title2: "Diploma: IT Specialist",
         edu_desc2: "ITIS Antonio Meucci - Florence, 09/2021 - 07/2024",
+
+        // lavoro
         work_experience: "WORK EXPERIENCE",
+        job_title2: "Internship at Neboola S.R.L.",
+        job_desc2: "I've done an internship at Neboola S.R.L., where I am applying my skills in cloud infrastructure and cybersecurity to real-world projects. Gained hands-on experience with infrastructure as code using Terraform, automated configuration management with Ansible, and container orchestration fundamentals with Kubernetes.",
         job_title1: "Freelance Web Developer",
         job_desc1: "Self-employed - Florence, 09/2024 - ongoing",
         privacy_statement: "I authorize the processing of personal data contained in my CV pursuant to art. 13 of legislative decree 196/2003 and art. 13 of EU regulation 2016/679 on the protection of individuals with regard to the processing of personal data"
@@ -136,23 +154,22 @@ function translateContent(language) {
     const elements = document.querySelectorAll('[data-key]');
     const title = document.querySelector('title');
     const htmlLang = document.querySelector('html');
-    
+
     elements.forEach(element => {
         const key = element.getAttribute('data-key');
         if (translations[language] && translations[language][key]) {
             element.textContent = translations[language][key];
         }
     });
-    
+
+    title.textContent = 'CV - Iacopo Libero Bernabei';
     // Aggiorna il titolo della pagina
     if (language === 'en') {
-        title.textContent = 'CV - Iacopo Libero Bernabei';
         htmlLang.setAttribute('lang', 'en');
     } else {
-        title.textContent = 'CV - Iacopo Libero Bernabei';
         htmlLang.setAttribute('lang', 'it');
     }
-    
+
     currentLanguage = language;
 }
 
@@ -160,48 +177,73 @@ function translateContent(language) {
 function downloadCV() {
     const lang = currentLanguage === 'en' ? 'EN' : 'IT';
     const filename = `CV_Iacopo_Libero_Bernabei_${lang}`;
-    
+
     // Nascondi il selettore di lingua prima della generazione PDF
     const languageSelector = document.querySelector('.language-selector');
     const originalDisplay = languageSelector.style.display;
     languageSelector.style.display = 'none';
-    
+
     // Ottieni il contenitore del CV
     const element = document.querySelector('.container');
-    
+    const foto = document.getElementById('foto');
+
+    // Rimuovi il margine top e bottom e riduci il font del 10%
+    const originalFontSize = element.style.fontSize;
+    const originalMargin = element.style.marginTop;
+    element.style.marginTop = '0';
+    element.style.marginBottom = '0';
+
+    // Applica una trasformazione per ridurre l'altezza all'80% e il testo
+    const originalTransform = element.style.transform;
+    const originalFotox = foto.style.transform;
+    element.style.transform = 'scaleY(0.8)';
+    element.style.transformOrigin = 'top center';
+    foto.style.transform = 'scaleX(0.8)';
+    foto.style.transformOrigin = 'center';
+    element.style.fontSize = '98%';
+
     // Configurazioni per html2pdf
     const opt = {
-        margin: [0.0, 0.0, 0.0, 0.0], // margini ridotti in pollici
         filename: filename + '.pdf',
         image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: { 
-            scale: 2,
+        html2canvas: {
+            scale: 4,
             useCORS: true,
-            letterRendering: true,
-            allowTaint: true
+            letterRendering: true
         },
-        jsPDF: { 
+        jsPDF: {
             unit: 'in',
+            format: 'a3',
             orientation: 'portrait',
-            compress: true
-        },
-        pagebreak: { mode: 'avoid-all' }
+            compress: true,
+            margin: [0.0, 0.0, 0.0, 0.0]
+        }
     };
-    
+
     // Controlla se html2pdf è disponibile
     if (typeof html2pdf !== 'undefined') {
         // Genera e scarica il PDF
         html2pdf().set(opt).from(element).save().then(() => {
-            // Ripristina il selettore di lingua
+            // Ripristina la trasformazione e il selettore di lingua
+            element.style.transform = originalTransform;
+            element.style.marginTop = originalMargin;
+            element.style.marginBottom = originalMargin;
+            foto.style.transform = originalFotox;
+            element.style.fontSize = originalFontSize;
             setTimeout(() => {
                 languageSelector.style.display = originalDisplay || 'flex';
             }, 500);
         });
     } else {
         // Fallback: usa il metodo di stampa standard
-        console.log('html2pdf non disponibile, uso window.print()');
         setTimeout(() => {
             window.print();
+            // Ripristina la trasformazione
+            element.style.transform = originalTransform;
+            element.style.marginTop = originalMargin;
+            element.style.marginBottom = originalMargin;
+            foto.style.transform = originalFotox;
+            element.style.fontSize = originalFontSize;
             setTimeout(() => {
                 languageSelector.style.display = originalDisplay || 'flex';
             }, 1000);
@@ -210,25 +252,14 @@ function downloadCV() {
 }
 
 // Event listener per il cambio lingua
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const languageSelector = document.getElementById('languageSelector');
-    
-    languageSelector.addEventListener('change', function() {
+
+    languageSelector.addEventListener('change', function () {
         const selectedLanguage = this.value;
         translateContent(selectedLanguage);
     });
-    
+
     // Imposta la lingua iniziale
     translateContent('it');
-});
-
-// Gestione della stampa per browser che supportano beforeprint
-window.addEventListener('beforeprint', function() {
-    const languageSelector = document.querySelector('.language-selector');
-    languageSelector.style.display = 'none';
-});
-
-window.addEventListener('afterprint', function() {
-    const languageSelector = document.querySelector('.language-selector');
-    languageSelector.style.display = 'flex';
 });
