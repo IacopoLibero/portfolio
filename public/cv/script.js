@@ -35,8 +35,8 @@ const translations = {
 
         // profilo professionale
         professional_profile: "PROFILO PROFESSIONALE",
-        profile_desc1: "Perito informatico con buona conoscenza della programmazione con linguaggi JS, HTML5, PHP, CSS, Java, SQL e framework come Bootstrap.",
-        profile_desc2: "Particolare interesse al full-stack web development, con forte motivazione a crescere professionalmente nel ruolo.",
+        profile_desc1: "Perito informatico con competenze trasversali in sviluppo software, cybersecurity e gestione di sistemi informatici. Esperienza pratica con linguaggi di programmazione (JS, HTML5, PHP, CSS, Java, SQL) e strumenti di automazione.",
+        profile_desc2: "Profilo versatile con forte orientamento alla sicurezza informatica e interesse per lo sviluppo di soluzioni tecnologiche innovative e sicure, con particolare attenzione alla protezione dei dati e delle infrastrutture di rete.",
         profile_desc3: "Attualmente sto completando una specializzazione IFTS come \"Responsabile della sicurezza di reti informatiche e della protezione dei dati\", acquisendo competenze avanzate in cybersecurity, ethical hacking, crittografia, sicurezza delle reti, gestione degli incidenti informatici e compliance normativa sulla protezione dei dati personali.",
 
         // competenze tecniche
@@ -115,8 +115,8 @@ const translations = {
         hobby4: "Fishing",
         hobby5: "Video games",
         professional_profile: "PROFESSIONAL PROFILE",
-        profile_desc1: "IT specialist with good knowledge of programming languages JS, HTML5, PHP, CSS, Java, SQL and frameworks like Bootstrap.",
-        profile_desc2: "Particular interest in full-stack web development, with strong motivation to grow professionally in this role.",
+        profile_desc1: "IT specialist with cross-functional skills in software development, cybersecurity, and IT systems management. Practical experience with programming languages (JS, HTML5, PHP, CSS, Java, SQL) and automation tools.",
+        profile_desc2: "Versatile profile with strong focus on IT security and interest in developing innovative and secure technological solutions, with particular attention to data protection and network infrastructure security.",
         profile_desc3: "Currently completing an IFTS specialization as \"Network Security and Data Protection Manager\", acquiring advanced skills in cybersecurity, ethical hacking, cryptography, network security, IT incident management and data protection compliance.",
 
         // skill tecniche
@@ -190,9 +190,13 @@ function translateContent(language) {
 
     currentLanguage = language;
 }
+
 function downloadCV(){
     const lang = currentLanguage === 'en' ? 'EN' : 'IT';
     const filename = `CV_Iacopo_Libero_Bernabei_${lang}.pdf`;
+    
+    // Mostra notifica di download
+    showDownloadNotification(lang);
     
     // Crea un elemento link temporaneo per forzare il download
     const link = document.createElement('a');
@@ -201,6 +205,62 @@ function downloadCV(){
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
+}
+
+function showDownloadNotification(lang) {
+    // Messaggio basato sulla lingua
+    const message = lang === 'EN' ? 'CV download started!' : 'Download CV iniziato!';
+    
+    // Crea la notifica
+    const notification = document.createElement('div');
+    notification.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: linear-gradient(135deg, rgba(157, 140, 85, 0.9), rgba(157, 140, 85, 1));
+        color: white;
+        padding: 16px 24px;
+        border-radius: 8px;
+        box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        z-index: 10000;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 500;
+        font-size: 14px;
+        backdrop-filter: blur(10px);
+        transform: translateX(400px);
+        transition: all 1.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+    `;
+    
+    // Aggiungi icona di download
+    notification.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+            <polyline points="7,10 12,15 17,10"></polyline>
+            <line x1="12" y1="15" x2="12" y2="3"></line>
+        </svg>
+        ${message}
+    `;
+    
+    document.body.appendChild(notification);
+    
+    // Animazione di entrata
+    setTimeout(() => {
+        notification.style.transform = 'translateX(0)';
+    }, 100);
+    
+    // Rimozione automatica dopo 3 secondi
+    setTimeout(() => {
+        notification.style.transform = 'translateX(400px)';
+        notification.style.opacity = '0';
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 400);
+    }, 3000);
 }
 
 /*
