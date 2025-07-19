@@ -4,6 +4,8 @@ const translations = {
         download: "Scarica CV",
         contacts: "CONTATTI",
         license: "Categoria B",
+
+        // soft skills
         skills: "CAPACITÀ E COMPETENZE",
         skill1: "Autonomia operativa",
         skill2: "Attitudine al lavoro per obiettivi",
@@ -13,6 +15,8 @@ const translations = {
         skill6: "Capacità relazionali",
         skill7: "Capacità di pensiero critico",
         skill8: "Problem solving",
+
+        // lingue
         languages: "LINGUE",
         lang_italian: "Italiano",
         lang_english: "Inglese",
@@ -20,16 +24,22 @@ const translations = {
         lang_native: "Madrelingua",
         lang_intermediate: "Intermedio avanzato",
         lang_basic: "Base",
+
+        // hobbies
         hobbies: "HOBBY E INTERESSI",
         hobby1: "Musica",
         hobby2: "Cinema",
         hobby3: "Fotografia",
         hobby4: "Pesca",
         hobby5: "Videogame",
+
+        // profilo professionale
         professional_profile: "PROFILO PROFESSIONALE",
         profile_desc1: "Perito informatico con buona conoscenza della programmazione con linguaggi JS, HTML5, PHP, CSS, Java, SQL e framework come Bootstrap.",
         profile_desc2: "Particolare interesse al full-stack web development, con forte motivazione a crescere professionalmente nel ruolo.",
         profile_desc3: "Attualmente sto completando una specializzazione IFTS come \"Responsabile della sicurezza di reti informatiche e della protezione dei dati\", acquisendo competenze avanzate in cybersecurity, ethical hacking, crittografia, sicurezza delle reti, gestione degli incidenti informatici e compliance normativa sulla protezione dei dati personali.",
+
+        // competenze tecniche
         technical_skills: "COMPETENZE TECNICHE",
         tech1: "Java, C++ (Base - scolastico)",
         tech2: "Sviluppo web (HTML, CSS, JS, PHP, SQL) (Intermedio)",
@@ -52,6 +62,8 @@ const translations = {
         tech20: "Gestione incidenti di sicurezza (Base)",
         tech21: "Automatizzazione con ansible e terraform (Base - intermedio)",
         tech22: "Conoscenza concetti fondamentali di Kubernetes (Conoscienza teorica)",
+
+        // formazione
         education: "ISTRUZIONE E FORMAZIONE",
         edu_title1: "Responsabile della sicurezza di reti informatiche e della protezione dei dati",
         edu_desc1: "IFTS: Prato, 09/2024 - in corso",
@@ -59,10 +71,14 @@ const translations = {
         edu_cert: "Certificato di Specializzazione Tecnica Superiore e Qualifica Professionale della Regione Toscana (IV° livello europeo)",
         edu_title2: "Diploma: Perito Informatico",
         edu_desc2: "ITIS Antonio Meucci - Firenze, 09/2021 - 07/2024",
+
+        // lavoro
         work_experience: "ESPERIENZA LAVORATIVA",
         job_title2: "Tirocinio a Neboola Srl.",
+        job_time2: "Firenze, 05/2025 - 07/2025",
         job_desc2: "Ho svolto un tirocinio presso Neboola S.R.L., dove ho applicato le mie competenze in infrastrutture cloud e cybersecurity a progetti reali.Ho acquisito esperienza pratica con Infrastructure as Code utilizzando Terraform, gestione automatizzata della configurazione con Ansible e fondamenti di orchestrazione dei container con Kubernetes.",
         job_title1: "Sviluppatore Web Freelance",
+        job_time1: "Firenze, 09/2024 - in corso",
         job_desc1: "Attività autonoma",
         privacy_statement: "Autorizzo il trattamento dei dati personali contenuti nel mio CV ex art. 13 del decreto legislativo 196/2003 e art. 13 del regolamento UE 2016/679 sulla protezione dei singoli cittadini in merito al trattamento dei dati personali"
     },
@@ -139,8 +155,10 @@ const translations = {
         // lavoro
         work_experience: "WORK EXPERIENCE",
         job_title2: "Internship at Neboola S.R.L.",
+        job_time2: "Florence, 05/2025 - 07/2025",
         job_desc2: "I've done an internship at Neboola S.R.L., where I am applying my skills in cloud infrastructure and cybersecurity to real-world projects. Gained hands-on experience with infrastructure as code using Terraform, automated configuration management with Ansible, and container orchestration fundamentals with Kubernetes.",
         job_title1: "Freelance Web Developer",
+        job_time1: "Florence, 09/2024 - ongoing",
         job_desc1: "Self-employed - Florence, 09/2024 - ongoing",
         privacy_statement: "I authorize the processing of personal data contained in my CV pursuant to art. 13 of legislative decree 196/2003 and art. 13 of EU regulation 2016/679 on the protection of individuals with regard to the processing of personal data"
     }
@@ -172,7 +190,20 @@ function translateContent(language) {
 
     currentLanguage = language;
 }
+function downloadCV(){
+    const lang = currentLanguage === 'en' ? 'EN' : 'IT';
+    const filename = `CV_Iacopo_Libero_Bernabei_${lang}.pdf`;
+    
+    // Crea un elemento link temporaneo per forzare il download
+    const link = document.createElement('a');
+    link.href = filename;
+    link.download = filename;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
 
+/*
 // Funzione per scaricare il CV
 function downloadCV() {
     const lang = currentLanguage === 'en' ? 'EN' : 'IT';
@@ -196,11 +227,11 @@ function downloadCV() {
     // Applica una trasformazione per ridurre l'altezza all'80% e il testo
     const originalTransform = element.style.transform;
     const originalFotox = foto.style.transform;
+    const originalFotoTransform = foto.style.transform;
     element.style.transform = 'scaleY(0.8)';
     element.style.transformOrigin = 'top center';
     foto.style.transform = 'scaleX(0.8)';
     foto.style.transformOrigin = 'center';
-    element.style.fontSize = '97%';
 
     // Configurazioni per html2pdf
     const opt = {
@@ -229,7 +260,6 @@ function downloadCV() {
             element.style.marginTop = originalMargin;
             element.style.marginBottom = originalMargin;
             foto.style.transform = originalFotox;
-            element.style.fontSize = originalFontSize;
             setTimeout(() => {
                 languageSelector.style.display = originalDisplay || 'flex';
             }, 500);
@@ -243,13 +273,13 @@ function downloadCV() {
             element.style.marginTop = originalMargin;
             element.style.marginBottom = originalMargin;
             foto.style.transform = originalFotox;
-            element.style.fontSize = originalFontSize;
             setTimeout(() => {
                 languageSelector.style.display = originalDisplay || 'flex';
             }, 1000);
         }, 100);
     }
 }
+*/
 
 // Event listener per il cambio lingua
 document.addEventListener('DOMContentLoaded', function () {
