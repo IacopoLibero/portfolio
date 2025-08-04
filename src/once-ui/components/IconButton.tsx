@@ -24,7 +24,7 @@ interface CommonProps {
     | "bottom-left";
   tooltip?: string;
   tooltipPosition?: "top" | "bottom" | "left" | "right";
-  variant?: "primary" | "secondary" | "tertiary" | "danger" | "ghost";
+  variant?: "primary" | "secondary" | "tertiary" | "danger" | "ghost" | "outline";
   className?: string;
   style?: React.CSSProperties;
   href?: string;

@@ -60,7 +60,7 @@ export default function Home() {
               id="about"
               data-border="rounded"
               href={about.path}
-              variant="secondary"
+              variant="outline"
               size="m"
               arrowIcon
             >

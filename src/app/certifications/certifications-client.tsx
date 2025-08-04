@@ -90,29 +90,31 @@ export default function CertificationsClient({
                                             />
                                         </div>
                                     )}
-                                    <Flex direction="column" gap="m" flex="1">
-                                        <Heading as="h2" variant="heading-strong-l">
-                                            {cert.title}
-                                        </Heading>
-                                        <Flex gap="s" direction="column">
-                                            <Text variant="body-strong-l" onBackground="brand-strong">
-                                                {cert.issuer}
-                                            </Text>
-                                            {cert.showDate && (
-                                                <Text variant="body-default-m" onBackground="neutral-medium">
-                                                    {cert.displayDate}
+                                    <Flex direction="column" gap="m" flex="1" style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+                                        <div>
+                                            <Heading as="h2" variant="heading-strong-l">
+                                                {cert.title}
+                                            </Heading>
+                                            <Flex gap="s" direction="column" marginTop="m">
+                                                <Text variant="body-strong-l" onBackground="brand-strong">
+                                                    {cert.issuer}
                                                 </Text>
-                                            )}
-                                        </Flex>
-                                        <Text variant="body-default-l">{cert.description}</Text>
+                                                {cert.showDate && (
+                                                    <Text variant="body-default-m" onBackground="neutral-medium">
+                                                        {cert.displayDate}
+                                                    </Text>
+                                                )}
+                                            </Flex>
+                                            <Text variant="body-default-l" marginTop="m">{cert.description}</Text>
+                                        </div>
 
                                         {cert.credlyBadgeId && (
-                                            <Flex marginTop="8" horizontal="start">
+                                            <Flex style={{ marginTop: 'auto' }} paddingTop="l" horizontal="start">
                                                 <Button
                                                     href={`https://www.credly.com/badges/${cert.credlyBadgeId}/public_url`}
                                                     target="_blank"
                                                     rel="noopener noreferrer"
-                                                    variant="secondary"
+                                                    variant="outline"
                                                     label="View on Credly"
                                                     suffixIcon="externalLink"
                                                 />

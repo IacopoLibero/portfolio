@@ -40,7 +40,7 @@ const font = {
 };
 
 const style = {
-  theme: "dark", // theme is not necessary when using ThemeProvider (default)
+  theme: "system", // system | dark | light - ora rileva automaticamente la preferenza dell'utente
   neutral: "sand", // sand | gray | slate
   brand: "violet", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan
   accent: "aqua", // blue | indigo | violet | magenta | pink | red | orange | yellow | moss | green | emerald | aqua | cyan

@@ -73,31 +73,34 @@ export default function ContactMeClient({ title, description, person }: ContactM
 
     const validateField = (name: string, value: string | boolean) => {
         let error = "";
+        
+        // Trim degli spazi per i campi stringa
+        const trimmedValue = typeof value === 'string' ? value.trim() : value;
 
         switch (name) {
             case "firstName":
-                if (!value) error = "First name is required";
-                else if (typeof value === 'string' && value.length < 2) error = "First name must contain at least 2 characters";
+                if (!trimmedValue) error = "First name is required";
+                else if (typeof trimmedValue === 'string' && trimmedValue.length < 1) error = "First name must contain at least 1 character";
                 break;
 
             case "lastName":
-                if (!value) error = "Last name is required";
-                else if (typeof value === 'string' && value.length < 2) error = "Last name must contain at least 2 characters";
+                if (!trimmedValue) error = "Last name is required";
+                else if (typeof trimmedValue === 'string' && trimmedValue.length < 1) error = "Last name must contain at least 1 character";
                 break;
 
             case "email":
-                if (!value) error = "Email is required";
-                else if (typeof value === 'string' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)) error = "Invalid email format";
+                if (!trimmedValue) error = "Email is required";
+                else if (typeof trimmedValue === 'string' && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(trimmedValue)) error = "Invalid email format";
                 break;
 
             case "phone":
-                if (value && typeof value === 'string' && !/^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/.test(value)) {
+                if (trimmedValue && typeof trimmedValue === 'string' && !/^[+]?[(]?[0-9]{1,4}[)]?[-\s./0-9]*$/.test(trimmedValue)) {
                     error = "Invalid phone number format";
                 }
                 break;
 
             case "message":
-                if (!value) error = "Message is required";
+                if (!trimmedValue) error = "Message is required";
                 break;
 
             case "acceptPrivacy":
@@ -161,12 +164,22 @@ export default function ContactMeClient({ title, description, person }: ContactM
         setIsSubmitting(true);
 
         try {
+            // Trim dei dati prima dell'invio
+            const trimmedFormData = {
+                firstName: formData.firstName.trim(),
+                lastName: formData.lastName.trim(),
+                email: formData.email.trim(),
+                phone: formData.phone.trim(),
+                message: formData.message.trim(),
+                acceptPrivacy: formData.acceptPrivacy
+            };
+
             const response = await fetch('/api/send-email', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: JSON.stringify(trimmedFormData),
             });
 
             const data = await response.json();
@@ -334,7 +347,7 @@ export default function ContactMeClient({ title, description, person }: ContactM
                                         required
                                     />
                                     <Text as="label" htmlFor="acceptPrivacy" variant="body-default-s" style={{ cursor: 'pointer' }}>
-                                        Accetto i{' '}
+                                        I accept the{' '}
                                         <a
                                             href="/documents/privacy_policy.pdf"
                                             download="privacy_policy.pdf"
@@ -350,7 +363,7 @@ export default function ContactMeClient({ title, description, person }: ContactM
                                                 e.currentTarget.style.color = 'var(--color-brand-background-strong)';
                                             }}
                                         >
-                                            termini e condizioni
+                                            Privacy Policy
                                         </a>
                                         {' '}*
                                     </Text>

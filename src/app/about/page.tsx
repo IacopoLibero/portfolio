@@ -139,7 +139,6 @@ export default function About() {
                     backdropFilter: "blur(var(--static-space-1))",
                     width: "100%"
                   }}
-                  background="brand-alpha-weak"
                   radius="full"
                   padding="4"
                   gap="8"
@@ -152,7 +151,7 @@ export default function About() {
                     target="_blank"
                     rel="noopener noreferrer"
                     data-border="rounded"
-                    variant="secondary"
+                    variant="outline"
                     icon="chevronRight"
                   />
                 </Flex>
@@ -191,7 +190,7 @@ export default function About() {
                                 prefixIcon={item.icon}
                                 label={item.name}
                                 size="s"
-                                variant="secondary"
+                                variant="outline"
                             />
                             <IconButton
                                 className="s-flex-show"
@@ -199,7 +198,7 @@ export default function About() {
                                 key={`${item.name}-icon`}
                                 href={item.link}
                                 icon={item.icon}
-                                variant="secondary"
+                                variant="outline"
                             />
                         </React.Fragment>
                     ),
