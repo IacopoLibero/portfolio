@@ -35,9 +35,9 @@ const translations = {
 
         // profilo professionale
         professional_profile: "PROFILO PROFESSIONALE",
-        profile_desc1: "Perito informatico con competenze trasversali in sviluppo software, cybersecurity e gestione di sistemi informatici. Esperienza pratica con linguaggi di programmazione (JS, HTML5, PHP, CSS, Java, SQL) e strumenti di automazione.",
-        profile_desc2: "Profilo versatile con forte orientamento alla sicurezza informatica e interesse per lo sviluppo di soluzioni tecnologiche innovative e sicure, con particolare attenzione alla protezione dei dati e delle infrastrutture di rete.",
-        profile_desc3: "Attualmente sto completando una specializzazione IFTS come \"Responsabile della sicurezza di reti informatiche e della protezione dei dati\", acquisendo competenze avanzate in cybersecurity, ethical hacking, crittografia, sicurezza delle reti, gestione degli incidenti informatici e compliance normativa sulla protezione dei dati personali.",
+        profile_desc1: "Responsabile della sicurezza di reti informatiche e della protezione dei dati, con una solida formazione tecnica da Perito Informatico e competenze trasversali in sviluppo software, cybersecurity e gestione di sistemi informatici.",
+        profile_desc2: "Ho maturato esperienza pratica con diversi linguaggi di programmazione e con strumenti di automazione e monitoraggio dei sistemi.",
+        profile_desc3: "Ho completato con successo la specializzazione IFTS “Responsabile della sicurezza di reti informatiche e della protezione dei dati”, durante la quale ho approfondito tematiche di ethical hacking, crittografia, analisi e gestione degli incidenti informatici, e implementazione di politiche di sicurezza aziendale.",
 
         // competenze tecniche
         technical_skills: "COMPETENZE TECNICHE",
@@ -66,9 +66,10 @@ const translations = {
         // formazione
         education: "ISTRUZIONE E FORMAZIONE",
         edu_title1: "Responsabile della sicurezza di reti informatiche e della protezione dei dati",
-        edu_desc1: "IFTS: Prato, 09/2024 - in corso",
+        edu_desc1: "IFTS: Prato, 09/2024 - 10/2025",
         edu_ifts: "IFTS Cyber Security Specialist 3",
         edu_cert: "Certificato di Specializzazione Tecnica Superiore e Qualifica Professionale della Regione Toscana (IV° livello europeo)",
+        edu_cert_score: "Valutazione: 93/100",
         edu_title2: "Diploma: Perito Informatico",
         edu_desc2: "ITIS Antonio Meucci - Firenze, 09/2021 - 07/2024",
 
@@ -115,9 +116,9 @@ const translations = {
         hobby4: "Fishing",
         hobby5: "Video games",
         professional_profile: "PROFESSIONAL PROFILE",
-        profile_desc1: "IT specialist with cross-functional skills in software development, cybersecurity, and IT systems management. Practical experience with programming languages (JS, HTML5, PHP, CSS, Java, SQL) and automation tools.",
-        profile_desc2: "Versatile profile with strong focus on IT security and interest in developing innovative and secure technological solutions, with particular attention to data protection and network infrastructure security.",
-        profile_desc3: "Currently completing an IFTS specialization as \"Network Security and Data Protection Manager\", acquiring advanced skills in cybersecurity, ethical hacking, cryptography, network security, IT incident management and data protection compliance.",
+        profile_desc1: "Responsible for computer network security and data protection, with solid technical training as an IT expert and cross-disciplinary skills in software development, cybersecurity, and IT systems management.",
+        profile_desc2: "I have gained practical experience with various programming languages and with system automation and monitoring tools.",
+        profile_desc3: "I successfully completed the IFTS specialization course “Responsible for computer network security and data protection,” during which I studied ethical hacking, cryptography, analysis and management of IT incidents, and implementation of corporate security policies.",
 
         // skill tecniche
         technical_skills: "TECHNICAL SKILLS",
@@ -146,9 +147,10 @@ const translations = {
         // formazione
         education: "EDUCATION",
         edu_title1: "Network Security and Data Protection Manager",
-        edu_desc1: "IFTS: Prato, 09/2024 - ongoing",
+        edu_desc1: "IFTS: Prato, 09/2024 - 10/2025",
         edu_ifts: "IFTS Cyber Security Specialist 3",
         edu_cert: "Higher Technical Specialization Certificate and Professional Qualification of Tuscany Region (IV European level)",
+        edu_cert_score: "Score: 93/100",
         edu_title2: "Diploma: IT Specialist",
         edu_desc2: "ITIS Antonio Meucci - Florence, 09/2021 - 07/2024",
 
