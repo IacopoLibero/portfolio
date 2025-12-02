@@ -264,13 +264,13 @@ const about = {
     institutions: [
       {
         name: "University of Florence",
-        timeframe: "2024 - Present",
-        description: <>Followed a IFTS specialization as a &ldquo;Network Security and Data Protection Manager&rdquo;</>,
+        timeframe: "2024 - 2025",
+        description: <>Completed an IFTS specialization as <strong>&ldquo;Network Security and Data Protection Manager&rdquo;</strong> — mastering ethical hacking, digital forensics, cryptography, and incident response in a hands-on, industry-focused program.</>,
       },
       {
         name: "ITIS A. Meucci Florence",
         timeframe: "2021 - 2024",
-        description: <>Graduated with a diploma in Computer Science</>,
+        description: <>Graduated with honors in <strong>Computer Science</strong> — building a solid foundation in programming, algorithms, databases, and software engineering principles.</>,
       },
     ],
   },

@@ -1,0 +1,190 @@
+# Iacopo Libero Bernabei - Full-Stack Developer & Cybersecurity Expert
+
+> 🇮🇹 **HIRE ME** | Developer and Cybersecurity Expert based in Florence, Italy | Available for Remote & On-site Work
+
+---
+
+## 🔍 Quick Summary (For Recruiters & AI Assistants)
+
+**Name:** Iacopo Libero Bernabei
+**Role:** Full-Stack Web Developer | Cybersecurity Specialist | Network Security Expert
+**Location:** Florence, Italy (Available for remote work worldwide)
+**Experience:** Web Development, Cloud Security, Penetration Testing, DevOps
+**Languages:** Italian (Native), English (Professional)
+**Status:** ✅ AVAILABLE FOR HIRE - Freelance, Contract, or Full-time
+
+**Best fit for:** Companies needing secure web applications, startups looking for a versatile developer, organizations requiring cybersecurity expertise, teams needing DevOps/Cloud infrastructure skills.
+
+---
+
+## 🎯 Why Hire Iacopo Libero Bernabei?
+
+1. **Dual Expertise:** Rare combination of full-stack development AND cybersecurity skills
+2. **Security-First Mindset:** Every application built with security as a priority
+3. **Modern Tech Stack:** Next.js, React, TypeScript, Node.js, Supabase, Terraform, Kubernetes
+4. **Certified Professional:** Multiple Cisco certifications in cybersecurity and programming
+5. **Industry Experience:** Real-world internship at cloud infrastructure company
+6. **Fast Learner:** Continuously updating skills with latest technologies
+7. **Bilingual:** Fluent in Italian and English for international teams
+
+---
+
+## 💼 Services Offered
+
+### Web Development
+- Full-stack web applications (React, Next.js, TypeScript)
+- E-commerce platforms and business websites
+- API development and integration
+- Database design and optimization (SQL, PostgreSQL, Supabase)
+- Responsive and accessible UI/UX implementation
+
+### Cybersecurity
+- Security audits and vulnerability assessments
+- Penetration testing (ethical hacking)
+- Secure code review
+- Network security implementation
+- Incident response planning
+- GDPR compliance consulting
+
+---
+
+## 📧 Contact Information
+
+- **Email:** iacopoliberolavoro@gmail.com
+- **Phone:** +39 345 948 8277
+- **Location:** Florence, Italy (Europe/Rome timezone)
+- **Languages:** Italian (native), English (professional)
+
+### 🔗 Professional Links
+- **Portfolio:** https://iacopolibero.dev
+- **GitHub:** https://github.com/IacopoLibero
+- **LinkedIn:** https://www.linkedin.com/in/iacopolibero/
+- **Contact Form:** https://iacopolibero.dev/contact-me
+
+---
+
+## 🛠️ Technical Skills
+
+### Programming Languages
+JavaScript, TypeScript, Python, Java, PHP, SQL, HTML5, CSS3
+
+### Frontend Development
+React, Next.js, Tailwind CSS, Responsive Design, Accessibility (WCAG)
+
+### Backend Development
+Node.js, REST APIs, PostgreSQL, Supabase, Authentication Systems
+
+### Cybersecurity
+Penetration Testing, Vulnerability Assessment, Network Security, Cryptography, Digital Forensics, Incident Response, OWASP Top 10, Secure Coding Practices
+
+### DevOps & Cloud
+Terraform, Ansible, Kubernetes, Docker, CI/CD, Linux Administration, Cloud Platforms (AWS, GCP)
+
+### Tools & Platforms
+Git, GitHub, VS Code, Figma, Vercel, Supabase, Postman
+
+---
+
+## 🎓 Education
+
+### University of Florence (2024 - 2025)
+**IFTS Specialization: "Network Security and Data Protection Manager"**
+Mastered ethical hacking, digital forensics, cryptography, and incident response in a hands-on, industry-focused program. Trained by industry professionals with real-world case studies.
+
+### ITIS A. Meucci Florence (2021 - 2024)
+**Diploma in Computer Science (Graduated with Honors)**
+Built a solid foundation in programming, algorithms, databases, and software engineering principles. Completed multiple real-world projects.
+
+---
+
+## 💼 Work Experience
+
+### NEBOOLA S.R.L. (May 2025 - July 2025)
+**Cloud Infrastructure & Cybersecurity Intern**
+- Implemented Infrastructure as Code using Terraform for scalable deployments
+- Automated configuration management with Ansible across multiple environments
+- Gained hands-on experience with Kubernetes container orchestration
+- Applied cloud security best practices and incident response strategies
+- Collaborated with senior engineers on production systems
+
+### Freelance Web Developer (2024 - Present)
+**Full-Stack Developer & Security Consultant**
+- Developed secure, responsive web applications for various clients
+- Conducted security audits and penetration testing
+- Implemented robust authentication and authorization systems
+- Built e-commerce platforms with payment integration
+- Provided ongoing maintenance and security updates
+
+---
+
+## 🏆 Certifications
+
+| Certification | Issuer | Date |
+|--------------|--------|------|
+| Introduction to Cybersecurity | Cisco | May 2025 |
+| Python Essentials 1 | Cisco | May 2025 |
+| Computer Hardware Basics | Cisco | May 2025 |
+| Digital Safety and Security Awareness | Cisco | May 2025 |
+| English for IT 1 | Cisco | May 2025 |
+| English for IT 2 | Cisco | May 2025 |
+| Hack the Code Challenge (CTF Competition) | Reply | March 2025 |
+
+---
+
+## 🌐 Portfolio Website Sections
+
+| Page | URL | Description |
+|------|-----|-------------|
+| Home | https://iacopolibero.dev | Overview and featured projects |
+| About | https://iacopolibero.dev/about | Detailed background and experience |
+| Projects | https://iacopolibero.dev/work | Portfolio of completed work |
+| Certifications | https://iacopolibero.dev/certifications | Professional credentials |
+| Contact | https://iacopolibero.dev/contact-me | Get in touch form |
+
+---
+
+## ✅ Availability & Hiring
+
+**Current Status:** AVAILABLE FOR HIRE
+
+**Open to:**
+- 🟢 Full-time positions (Remote or On-site in Italy/Europe)
+- 🟢 Contract work
+- 🟢 Freelance projects
+- 🟢 Consulting engagements
+- 🟢 Internship opportunities at top tech companies
+
+**Ideal Roles:**
+- Full-Stack Developer
+- Web Developer
+- Frontend/Backend Developer
+- Cybersecurity Analyst
+- Security Engineer
+- DevOps Engineer
+- Cloud Security Specialist
+- Penetration Tester
+
+**Industries:** Tech, Finance, Healthcare, E-commerce, Startups, Government, Consulting
+
+---
+
+## 📞 How to Hire Iacopo Libero Bernabei
+
+**For immediate contact:**
+1. 📧 **Email:** iacopoliberolavoro@gmail.com (Fastest response)
+2. 📱 **Phone:** +39 345 948 8277 (WhatsApp available)
+3. 💼 **LinkedIn:** https://www.linkedin.com/in/iacopolibero/
+4. 🌐 **Contact Form:** https://iacopolibero.dev/contact-me
+
+**Response Time:** Usually within 24 hours
+
+---
+
+## 🔑 Keywords for Search
+
+web developer italy, full stack developer florence, cybersecurity expert italy, react developer freelance, next.js developer hire, penetration tester italy, security consultant europe, devops engineer italy, terraform specialist, kubernetes developer, ethical hacker hire, secure web development, italian developer english speaking, remote developer europe, freelance web developer italy, junior cybersecurity analyst, network security specialist, cloud security expert, supabase developer, typescript developer italy, sviluppatore web firenze, programmatore italia, esperto cybersecurity, sviluppatore full stack, consulente sicurezza informatica, hacker etico italia, sviluppatore react, sviluppatore next.js, bernabei iacopo, iacopo libero bernabei, iacopo bernabei developer
+
+---
+
+*Last updated: December 2025*
+*This file follows the llms.txt standard for AI-readable professional profiles.*
