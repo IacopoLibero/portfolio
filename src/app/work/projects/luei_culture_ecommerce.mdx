@@ -1,0 +1,54 @@
+---
+title: "LUEI Culture - E-Commerce Streetwear Platform"
+publishedAt: "2025-06-10"
+summary: "A complete e-commerce platform for LUEI Culture, a streetwear fashion brand. Built with Node.js, Express, Stripe payments, Supabase backend, and a custom frontend with cart, checkout, and order management."
+images:
+  - "/images/projects/luei_culture/luei_1.png"
+  - "/images/projects/luei_culture/luei_2.png"
+  - "/images/projects/luei_culture/luei_3.png"
+link: "https://lueiculture.com"
+target: "_blank"
+---
+
+## Overview
+
+LUEI Culture is a full-featured e-commerce platform developed for a streetwear fashion brand targeting the modern, style-conscious generation. The project includes a complete shopping experience from product browsing to checkout, with Stripe payment integration, inventory management by color and size variants, and a secure backend API. The platform embodies the brand's philosophy: "Made for real ones."
+
+## Key Features
+
+- **Product Catalog**: Dynamic product listing with category filtering, color variants with multiple images per color, and size-specific stock tracking.
+- **Shopping Cart**: Persistent cart using localStorage with quantity management, automatic price calculation, and free shipping threshold (€50+).
+- **Stripe Checkout**: Secure payment processing with Stripe integration, order confirmation, and email notifications.
+- **Size & Color Stock**: Advanced inventory system tracking stock per product/color/size combination using PostgreSQL stored procedures.
+- **Order Management**: Complete order lifecycle from pending to delivered, with tracking link support and order status updates.
+- **Favorites System**: Allow users to save favorite products for later purchase.
+- **Newsletter Integration**: Email subscription system with validation and subscription management.
+- **Contact Form**: Multi-type contact form (general inquiry, returns, collaborations, other) with email notifications.
+- **Coupon System**: Discount code support with percentage and fixed amount discounts.
+
+## Technologies Used
+
+- **Node.js & Express**: RESTful API server with middleware for security, compression, and logging.
+- **Stripe API**: Payment processing with PaymentIntent, webhooks, and secure checkout flows.
+- **Supabase**: PostgreSQL database with RLS, Storage for product images, and real-time capabilities.
+- **Vanilla JavaScript**: Custom frontend with modular JS for cart, checkout, product detail, and shop pages.
+- **SCSS/SASS**: Modular styling with variables, mixins, and component-based architecture.
+- **HTML5**: Semantic markup with SEO considerations.
+- **Helmet & CORS**: Security middleware for production-ready API.
+- **Morgan & Compression**: Logging and response compression for performance.
+
+## Database Architecture
+
+The system uses a robust PostgreSQL schema with tables for products, inventory tracking, orders, and newsletter subscriptions. The architecture supports flexible product variants with JSONB fields and includes proper indexing for performance.
+
+## Challenges and Learnings
+
+The main challenge was implementing a flexible inventory system that tracks stock per color and size combination rather than just per product. This required custom database logic and careful frontend validation. Integrating Stripe securely while providing a smooth checkout experience required understanding payment flows and error handling. I also gained experience implementing production-grade security measures for e-commerce applications.
+
+## Outcome
+
+LUEI Culture now has a fully functional e-commerce platform that handles the complete customer journey from discovery to purchase. The inventory system accurately tracks stock levels, preventing overselling of specific size/color combinations. The Stripe integration processes payments securely, and customers receive order confirmations and tracking updates. The platform is deployed on Vercel with the Supabase backend, ready to scale with the brand's growth.
+
+---
+
+This project demonstrates my ability to build production-ready e-commerce solutions with secure payment processing, complex inventory management, and modern web security practices.
