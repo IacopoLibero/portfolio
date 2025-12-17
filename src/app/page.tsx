@@ -4,8 +4,9 @@ import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row } fro
 import { Projects } from "@/components/work/Projects";
 
 import { baseURL, routes } from "@/app/resources";
-import { home, about, person, newsletter } from "@/app/resources/content";
+import { home, about, person, newsletter, services } from "@/app/resources/content";
 import { Mailchimp } from "@/components";
+import { PacmanGame } from "@/components/games/PacmanGame";
 import { Posts } from "@/components/blog/Posts";
 import { Meta, Schema } from "@/once-ui/modules";
 
@@ -38,12 +39,12 @@ export default function Home() {
       <Column fillWidth paddingY="24" gap="m">
         <Column maxWidth="s">
           {home.featured && (
-          <RevealFx fillWidth horizontal="start" paddingTop="16" paddingBottom="32" paddingLeft="12">
-            <Badge background="brand-alpha-weak" paddingX="12" paddingY="4" onBackground="neutral-strong" textVariant="label-default-s" arrow={false}
-              href={home.featured.href}>
-              <Row paddingY="2">{home.featured.title}</Row>
-            </Badge>
-          </RevealFx>
+            <RevealFx fillWidth horizontal="start" paddingTop="16" paddingBottom="32" paddingLeft="12">
+              <Badge background="brand-alpha-weak" paddingX="12" paddingY="4" onBackground="neutral-strong" textVariant="label-default-s" arrow={false}
+                href={home.featured.href}>
+                <Row paddingY="2">{home.featured.title}</Row>
+              </Badge>
+            </RevealFx>
           )}
           <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
             <Heading wrap="balance" variant="display-strong-l">
@@ -78,9 +79,35 @@ export default function Home() {
           </RevealFx>
         </Column>
       </Column>
-      <RevealFx translateY="16" delay={0.6}>
-        <Projects range={[1, 1]} />
+
+      <PacmanGame />
+
+      {services.items.length > 0 && (
+        <RevealFx translateY="16" delay={0.6} fillWidth>
+          <Column fillWidth paddingX="l" gap="m">
+            <Column fillWidth padding="l" border="neutral-medium" radius="l" background="neutral-alpha-weak">
+              <Heading as="h3" variant="heading-strong-l" marginBottom="s">
+                {services.items[0].title}
+              </Heading>
+              <Text variant="body-default-m" onBackground="neutral-weak" marginBottom="m">
+                {services.items[0].description}
+              </Text>
+              <Button
+                href="/services"
+                variant="secondary"
+                arrowIcon
+              >
+                View available services
+              </Button>
+            </Column>
+          </Column>
+        </RevealFx>
+      )}
+
+      <RevealFx translateY="16" delay={0.8}>
+        <Projects range={[1, 2]} />
       </RevealFx>
+
       {routes["/blog"] && (
         <Flex fillWidth gap="24" mobileDirection="column">
           <Flex flex={1} paddingLeft="l" paddingTop="24">
@@ -93,7 +120,6 @@ export default function Home() {
           </Flex>
         </Flex>
       )}
-      <Projects range={[2]} />
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>
   );

@@ -52,13 +52,13 @@ export async function GET(request: Request) {
             alignItems: "center",
             gap: "5rem",
           }}
-        >          <img
-            src={baseURL + person.avatar}
-            alt={person.name}
+        >
+          <div
             style={{
               width: "12rem",
               height: "12rem",
-              objectFit: "cover",
+              backgroundImage: `url(${baseURL + person.avatar})`,
+              backgroundSize: "cover",
               borderRadius: "100%",
             }}
           />

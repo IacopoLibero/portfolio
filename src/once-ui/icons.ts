@@ -29,6 +29,7 @@ import {
   HiOutlineDocument,
   HiPhone,
   HiArrowDownTray,
+  HiCommandLine,
 } from "react-icons/hi2";
 
 import {
@@ -79,6 +80,7 @@ export const iconLibrary: Record<string, IconType> = {
   document: HiOutlineDocument,
   phone: HiPhone,
   download: HiArrowDownTray,
+  terminal: HiCommandLine,
 };
 
 export type IconLibrary = typeof iconLibrary;

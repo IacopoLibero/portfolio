@@ -12,6 +12,8 @@ import {
 } from "@/once-ui/components";
 import { useState, useEffect } from "react";
 
+import { useSearchParams } from "next/navigation";
+
 interface ContactMeClientProps {
     title: string;
     description: string;
@@ -24,12 +26,25 @@ interface ContactMeClientProps {
 }
 
 export default function ContactMeClient({ title, description, person }: ContactMeClientProps) {
+    const searchParams = useSearchParams();
+    const service = searchParams.get("service");
+
     const [formData, setFormData] = useState({
         firstName: "",
         lastName: "",
         email: "",
         phone: "",
-        message: "",
+        message: service ? `Hi,
+I'm interested in your ${service} service.
+
+Could you please provide a quote?
+Here are some details about my project:
+- ...
+
+My estimated budget is:
+- ...
+
+Thanks!` : "",
         acceptPrivacy: false
     });
 
@@ -73,7 +88,7 @@ export default function ContactMeClient({ title, description, person }: ContactM
 
     const validateField = (name: string, value: string | boolean) => {
         let error = "";
-        
+
         // Trim degli spazi per i campi stringa
         const trimmedValue = typeof value === 'string' ? value.trim() : value;
 
@@ -316,7 +331,7 @@ export default function ContactMeClient({ title, description, person }: ContactM
                                     id="message"
                                     name="message"
                                     label="Message"
-                                    rows={6}
+                                    lines="auto"
                                     value={formData.message}
                                     onChange={handleInputChange}
                                     onBlur={handleBlur}

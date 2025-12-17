@@ -76,13 +76,13 @@ const home = {
     "programmatore",
     "DEV",
     "developer"
-  ],  description: `Portfolio website showcasing my work as a ${person.role}`,
+  ], description: `Portfolio website showcasing my work as a ${person.role}`,
   headline: <>Building tomorrow&apos;s security through today&apos;s code.</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Ec(h)o d&apos;arte</strong></>,
-    href: "/work/echo_arte",
-  },  subline: (
+    title: <>Recent project: <strong className="ml-4">Spinza</strong></>,
+    href: "/work/spinza",
+  }, subline: (
     <>
       I&apos;m {person.firstName}, a {person.role.toLowerCase()} <br /> focused on building secure
       web applications and protecting digital assets.
@@ -609,4 +609,73 @@ const contactMe = {
   description: `Fill out the form below and I'll get back to you as soon as possible.`,
 };
 
-export { person, social, newsletter, home, about, blog, work, gallery, certifications, contactMe };
+const services = {
+  keywords: [
+    "portfolio",
+    "developer",
+    "Iacopo Libero Bernabei",
+    "Iacopo Libero",
+    "jacopo libero bernabei",
+    "jacopo libero",
+    "Bernabei",
+    "web developer",
+    "cybersecurity",
+    "full-stack developer",
+    "bernabei iacopo libero",
+    "coding",
+    "contact iacopo libero bernabei",
+    "contatti",
+    "programming",
+    "informatica",
+    "italy",
+    "italiano",
+    "italian",
+    "programmatore",
+    "DEV",
+    "developer"
+  ],
+  title: <>What I like to work on <br /> (and I&apos;m good at)</>,
+  label: "Services",
+  path: "/services",
+  description: "I work on a variety of projects, from web development to cybersecurity consulting.",
+  items: [
+    {
+      title: "Web Development",
+      description: "Custom websites and web applications built with modern technologies like Next.js, React, and Node.js. From simple landing pages to complex platforms.",
+      images: [
+        {
+          src: "/images/services/web_development.png",
+          alt: "Web Development",
+          width: 16,
+          height: 9,
+        }
+      ]
+    },
+    {
+      title: "Cybersecurity Consulting",
+      description: "Vulnerability assessments, penetration testing, and security audits to protect your digital assets and ensure compliance with best practices.",
+      images: [
+        {
+          src: "/images/services/cybersecurity.png",
+          alt: "Cybersecurity",
+          width: 16,
+          height: 9,
+        }
+      ]
+    },
+    {
+      title: "IT Support & Networking",
+      description: "Network configuration, troubleshooting, and optimization. Secure your infrastructure and ensure reliable connectivity.",
+      images: [
+        {
+          src: "/images/services/it_support.png",
+          alt: "Networking",
+          width: 16,
+          height: 9,
+        }
+      ]
+    }
+  ]
+};
+
+export { person, social, newsletter, home, about, blog, work, gallery, certifications, contactMe, services };
