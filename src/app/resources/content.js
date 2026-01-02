@@ -50,7 +50,7 @@ const social = [
 
 const home = {
   path: "/",
-  image: "/images/og/home.jpg",
+  image: "/og/home.png",
   label: "Home",
   title: `${person.name}'s Portfolio`,
   keywords: [
@@ -92,6 +92,7 @@ const home = {
 
 const about = {
   path: "/about",
+  image: "/og/about.png",
   label: "About",
   title: `About – ${person.name}`,
   keywords: [
@@ -339,6 +340,7 @@ const about = {
 
 const blog = {
   path: "/blog",
+  image: "/og/home.png",
   keywords: [
     "portfolio",
     "developer",
@@ -372,6 +374,7 @@ const blog = {
 
 const work = {
   path: "/work",
+  image: "/og/work.png",
   label: "Work",
   keywords: [
     "portfolio",
@@ -405,6 +408,7 @@ const work = {
 
 const gallery = {
   path: "/gallery",
+  image: "/og/home.png",
   label: "Gallery",
   keywords: [
     "portfolio",
@@ -478,6 +482,7 @@ const gallery = {
 
 const certifications = {
   path: "/certifications",
+  image: "/og/certifications.png",
   label: "Certifications",
   keywords: [
     "portfolio",
@@ -579,6 +584,7 @@ const certifications = {
 };
 
 const contactMe = {
+  image: "/og/contact.png",
   keywords: [
     "portfolio",
     "developer",
@@ -610,6 +616,7 @@ const contactMe = {
 };
 
 const services = {
+  image: "/og/services.png",
   keywords: [
     "portfolio",
     "developer",
