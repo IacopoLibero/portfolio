@@ -9,17 +9,11 @@ export default function robots(): MetadataRoute.Robots {
         allow: "/",
         disallow: [
           "/api/",
-          "/api/*",
           "/_next/",
-          "/_next/*",
           "/admin/",
-          "/admin/*",
-          "/*.json$",
-          "/*?*",
         ],
       },
     ],
     sitemap: `${baseURL}/sitemap.xml`,
-    host: baseURL,
   };
 }
