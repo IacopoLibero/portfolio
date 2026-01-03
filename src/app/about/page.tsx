@@ -23,7 +23,7 @@ export async function generateMetadata() {
     description: about.description,
     baseURL: baseURL,
     keywords: about.keywords,
-    image: `${baseURL}/og?title=${encodeURIComponent(about.title)}`,
+    image: about.image,
     path: about.path,
   });
 }
@@ -59,7 +59,7 @@ export default function About() {
         title={about.title}
         description={about.description}
         path={about.path}
-        image={`${baseURL}/og?title=${encodeURIComponent(about.title)}`}
+        image={about.image}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,

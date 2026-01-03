@@ -11,7 +11,7 @@ export async function generateMetadata() {
     description: certifications.description,
     baseURL: baseURL,
     keywords: certifications.keywords,
-    image: `${baseURL}/og?title=${encodeURIComponent(certifications.title)}`,
+    image: certifications.image,
     path: certifications.path,
   });
 }
@@ -34,7 +34,7 @@ export default function Certifications() {
         path={certifications.path}
         title={certifications.title}
         description={certifications.description}
-        image={`${baseURL}/og?title=${encodeURIComponent(certifications.title)}`}
+        image={certifications.image}
         author={{
           name: person.name,
           url: `${baseURL}${certifications.path}`,

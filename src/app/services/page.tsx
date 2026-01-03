@@ -20,7 +20,7 @@ export async function generateMetadata() {
         title: services.label,
         description: services.description,
         baseURL: baseURL,
-        image: `${baseURL}/og?title=${encodeURIComponent(services.label)}`,
+        image: services.image,
         path: "/services",
     });
 }
@@ -34,7 +34,7 @@ export default function Services() {
                 path="/services"
                 title={services.label}
                 description={services.description}
-                image={`${baseURL}/og?title=${encodeURIComponent(services.label)}`}
+                image={services.image}
                 author={{
                     name: person.name,
                     url: `${baseURL}${about.path}`,

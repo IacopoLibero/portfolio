@@ -40,7 +40,7 @@ export function generateMetadata({
     ? isFullUrl(image)
       ? image
       : `${validBaseURL}${image.startsWith("/") ? image : `/${image}`}`
-    : `${validBaseURL}/og?title=${encodeURIComponent(title)}`;
+    : `${validBaseURL}/og.png`; // Fallback to standard og.png
 
   const url = `${validBaseURL}${normalizedPath}`;
 

@@ -9,7 +9,7 @@ export async function generateMetadata() {
         title: contactMe.title,
         description: contactMe.description,
         baseURL: baseURL,
-        image: `${baseURL}/og?title=${encodeURIComponent(contactMe.title)}`,
+        image: contactMe.image,
         path: contactMe.path,
         keywords: contactMe.keywords,
     });
@@ -24,7 +24,7 @@ export default function ContactMe() {
                 path={contactMe.path}
                 title={contactMe.title}
                 description={contactMe.description}
-                image={`${baseURL}/og?title=${encodeURIComponent(contactMe.title)}`}
+                image={contactMe.image}
                 author={{
                     name: person.name,
                     url: `${baseURL}${contactMe.path}`,
