@@ -54,6 +54,7 @@ export function generateMetadata({
       title,
       description,
       type,
+      siteName: "Iacopo Libero's Portfolio",
       ...(publishedTime && type === "article" ? { publishedTime } : {}),
       url,
       images: [
