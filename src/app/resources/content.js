@@ -80,8 +80,8 @@ const home = {
   headline: <>Building tomorrow&apos;s security through today&apos;s code.</>,
   featured: {
     display: true,
-    title: <>Recent project: <strong className="ml-4">Spinza</strong></>,
-    href: "/work/spinza",
+    title: <>Recent project: <strong className="ml-4">Easy Restaurant</strong></>,
+    href: "/work/easy_restaurant",
   }, subline: (
     <>
       I&apos;m {person.firstName}, a {person.role.toLowerCase()} <br /> focused on building secure
