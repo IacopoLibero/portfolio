@@ -49,6 +49,7 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       )}
     >
       <head>
+        <link rel="preload" href="/images/avatar.webp" as="image" type="image/webp" />
         <script
           dangerouslySetInnerHTML={{
             __html: `

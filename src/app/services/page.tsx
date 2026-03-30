@@ -17,11 +17,12 @@ import { Meta, Schema } from "@/once-ui/modules";
 
 export async function generateMetadata() {
     return Meta.generate({
-        title: services.label,
+        title: services.title,
         description: services.description,
         baseURL: baseURL,
         image: services.image,
         path: "/services",
+        keywords: services.keywords,
     });
 }
 
@@ -32,7 +33,7 @@ export default function Services() {
                 as="webPage"
                 baseURL={baseURL}
                 path="/services"
-                title={services.label}
+                title={services.title}
                 description={services.description}
                 image={services.image}
                 author={{
@@ -45,7 +46,7 @@ export default function Services() {
             <Column fillWidth paddingBottom="xl">
                 <RevealFx translateY="16" paddingTop="16" paddingBottom="l" horizontal="start">
                     <Heading as="h1" variant="display-strong-l">
-                        {services.title}
+                        {services.heading}
                     </Heading>
                 </RevealFx>
                 <RevealFx translateY="8" delay={0.5} horizontal="start" paddingBottom="m">

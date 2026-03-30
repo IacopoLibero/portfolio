@@ -3,7 +3,7 @@ import Script from "next/script";
 import { social } from "@/app/resources/content";
 
 export interface SchemaProps {
-  as: "website" | "article" | "blog" | "blogPosting" | "techArticle" | "webPage" | "organization";
+  as: "website" | "article" | "blog" | "blogPosting" | "techArticle" | "webPage" | "organization" | "person";
   title: string;
   description: string;
   baseURL: string;
@@ -11,6 +11,8 @@ export interface SchemaProps {
   datePublished?: string;
   dateModified?: string;
   image?: string;
+  jobTitle?: string;
+  email?: string;
   author?: {
     name: string;
     url?: string;
@@ -26,6 +28,7 @@ const schemaTypeMap = {
   techArticle: "TechArticle",
   webPage: "WebPage",
   organization: "Organization",
+  person: "Person",
 };
 
 export function Schema({
@@ -37,6 +40,8 @@ export function Schema({
   datePublished,
   dateModified,
   image,
+  jobTitle,
+  email,
   author,
 }: SchemaProps) {
   const normalizedBaseURL = baseURL.endsWith("/") ? baseURL.slice(0, -1) : baseURL;
@@ -55,8 +60,10 @@ export function Schema({
     "@type": schemaType,
     url,
   };
-  
-  schema.sameAs = Object.values(social).filter(Boolean)
+
+  schema.sameAs = social
+    .map((item) => item.link)
+    .filter((link) => link.startsWith("http"));
 
   if (as === "website") {
     schema.name = title;
@@ -66,6 +73,12 @@ export function Schema({
     schema.name = title;
     schema.description = description;
     schema.image = imageUrl;
+  } else if (as === "person") {
+    schema.name = title;
+    schema.description = description;
+    schema.image = imageUrl;
+    if (jobTitle) schema.jobTitle = jobTitle;
+    if (email) schema.email = email;
   } else {
     schema.headline = title;
     schema.description = description;

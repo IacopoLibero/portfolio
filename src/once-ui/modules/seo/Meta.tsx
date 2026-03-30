@@ -47,9 +47,11 @@ export function generateMetadata({
   return {
     title,
     description,
-    // Aggiunta delle keywords ai metadati
     ...(keywords && keywords.length > 0 ? { keywords: keywords.join(", ") } : {}),
-    metadataBase: new URL(validBaseURL), // Risolve anche il warning metadataBase
+    alternates: {
+      canonical: url,
+    },
+    metadataBase: new URL(validBaseURL),
     openGraph: {
       title,
       description,

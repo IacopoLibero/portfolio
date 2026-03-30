@@ -35,6 +35,7 @@ export async function generateMetadata({
     baseURL: baseURL,
     image: post.metadata.image ? `${baseURL}${post.metadata.image}` : `${baseURL}/og?title=${post.metadata.title}`,
     path: `${work.path}/${post.slug}`,
+    keywords: work.keywords,
   });
 }
 
@@ -83,7 +84,7 @@ export default async function Project({
           priority
           aspectRatio="16 / 9"
           radius="m"
-          alt="image"
+          alt={post.metadata.title}
           src={post.metadata.images[0]}
         />
       )}

@@ -1,12 +1,10 @@
 import React from "react";
 
 import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row } from "@/once-ui/components";
-import { Projects } from "@/components/work/Projects";
 
-import { baseURL, routes } from "@/app/resources";
-import { home, about, person, newsletter, services } from "@/app/resources/content";
+import { baseURL } from "@/app/resources";
+import { home, about, person, newsletter } from "@/app/resources/content";
 import { Mailchimp } from "@/components";
-import { Posts } from "@/components/blog/Posts";
 import { Meta, Schema } from "@/once-ui/modules";
 
 export async function generateMetadata() {
@@ -15,6 +13,7 @@ export async function generateMetadata() {
     description: home.description,
     baseURL: baseURL,
     path: home.path,
+    image: home.image,
     keywords: home.keywords,
   });
 }
@@ -28,12 +27,22 @@ export default function Home() {
         path={home.path}
         title={home.title}
         description={home.description}
-        image={`${baseURL}/og?title=${encodeURIComponent(home.title)}`}
+        image={home.image}
         author={{
           name: person.name,
           url: `${baseURL}${about.path}`,
           image: `${baseURL}${person.avatar}`,
         }}
+      />
+      <Schema
+        as="person"
+        baseURL={baseURL}
+        path={home.path}
+        title={person.name}
+        description={home.description}
+        image={person.avatar}
+        jobTitle={person.role}
+        email={person.email}
       />
       <Column fillWidth paddingY="24" gap="m">
         <Column maxWidth="s">
@@ -46,7 +55,7 @@ export default function Home() {
             </RevealFx>
           )}
           <RevealFx translateY="4" fillWidth horizontal="start" paddingBottom="16">
-            <Heading wrap="balance" variant="display-strong-l">
+            <Heading as="h1" wrap="balance" variant="display-strong-l">
               {home.headline}
             </Heading>
           </RevealFx>
@@ -73,7 +82,7 @@ export default function Home() {
                       size="m"
                     />
                   )}
-                  {about.title}
+                  {about.label}
                 </Flex>
               </Button>
               <Button
