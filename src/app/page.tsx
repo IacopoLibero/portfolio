@@ -56,67 +56,39 @@ export default function Home() {
             </Text>
           </RevealFx>
           <RevealFx paddingTop="12" delay={0.4} horizontal="start" paddingLeft="12">
-            <Button
-              id="about"
-              data-border="rounded"
-              href={about.path}
-              variant="outline"
-              size="m"
-              arrowIcon
-            >
-              <Flex gap="8" vertical="center">
-                {about.avatar.display && (
-                  <Avatar
-                    style={{ marginLeft: "-0.75rem", marginRight: "0.25rem" }}
-                    src={person.avatar}
-                    size="m"
-                  />
-                )}
-                {about.title}
-              </Flex>
-            </Button>
+            <Flex gap="12" wrap>
+              <Button
+                id="about"
+                data-border="rounded"
+                href={about.path}
+                variant="outline"
+                size="m"
+                arrowIcon
+              >
+                <Flex gap="8" vertical="center">
+                  {about.avatar.display && (
+                    <Avatar
+                      style={{ marginLeft: "-0.75rem", marginRight: "0.25rem" }}
+                      src={person.avatar}
+                      size="m"
+                    />
+                  )}
+                  {about.title}
+                </Flex>
+              </Button>
+              <Button
+                data-border="rounded"
+                href="/cv/cv_iacopo.html"
+                variant="secondary"
+                size="m"
+                prefixIcon="document"
+              >
+                Curriculum Vitae
+              </Button>
+            </Flex>
           </RevealFx>
         </Column>
       </Column>
-
-      {services.items.length > 0 && (
-        <RevealFx translateY="16" delay={0.6} fillWidth>
-          <Column fillWidth paddingX="l" gap="m">
-            <Column fillWidth padding="l" border="neutral-medium" radius="l" background="neutral-alpha-weak">
-              <Heading as="h3" variant="heading-strong-l" marginBottom="s">
-                {services.items[0].title}
-              </Heading>
-              <Text variant="body-default-m" onBackground="neutral-weak" marginBottom="m">
-                {services.items[0].description}
-              </Text>
-              <Button
-                href="/services"
-                variant="secondary"
-                arrowIcon
-              >
-                View available services
-              </Button>
-            </Column>
-          </Column>
-        </RevealFx>
-      )}
-
-      <RevealFx translateY="16" delay={0.8}>
-        <Projects range={[1, 2]} />
-      </RevealFx>
-
-      {routes["/blog"] && (
-        <Flex fillWidth gap="24" mobileDirection="column">
-          <Flex flex={1} paddingLeft="l" paddingTop="24">
-            <Heading as="h2" variant="display-strong-xs" wrap="balance">
-              Latest from the blog
-            </Heading>
-          </Flex>
-          <Flex flex={3} paddingX="20">
-            <Posts range={[1, 2]} columns="2" />
-          </Flex>
-        </Flex>
-      )}
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>
   );
