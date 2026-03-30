@@ -6,7 +6,6 @@ import { Projects } from "@/components/work/Projects";
 import { baseURL, routes } from "@/app/resources";
 import { home, about, person, newsletter, services } from "@/app/resources/content";
 import { Mailchimp } from "@/components";
-import { PacmanGame } from "@/components/games/PacmanGame";
 import { Posts } from "@/components/blog/Posts";
 import { Meta, Schema } from "@/once-ui/modules";
 
@@ -79,8 +78,6 @@ export default function Home() {
           </RevealFx>
         </Column>
       </Column>
-
-      <PacmanGame />
 
       {services.items.length > 0 && (
         <RevealFx translateY="16" delay={0.6} fillWidth>
