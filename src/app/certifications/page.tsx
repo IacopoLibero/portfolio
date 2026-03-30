@@ -1,6 +1,5 @@
-import Image from 'next/image';
-import { Column, Flex, Heading, Text, RevealFx, Card, Button } from "@/once-ui/components";
-import { certifications, person } from "@/app/resources/content";
+import { Column, Heading } from "@/once-ui/components";
+import { certifications, person, about } from "@/app/resources/content";
 import { baseURL } from "@/app/resources";
 import { Meta, Schema } from "@/once-ui/modules";
 import CertificationsClient from "./certifications-client";
@@ -37,12 +36,15 @@ export default function Certifications() {
         image={certifications.image}
         author={{
           name: person.name,
-          url: `${baseURL}${certifications.path}`,
+          url: `${baseURL}${about.path}`,
           image: `${baseURL}${person.avatar}`,
         }}
       />
       
-      <CertificationsClient 
+      <Heading as="h1" variant="display-strong-l" paddingTop="16" paddingBottom="l">
+        {certifications.title}
+      </Heading>
+      <CertificationsClient
         title={certifications.title}
         description={certifications.description}
         sortedCertifications={sortedCertifications}

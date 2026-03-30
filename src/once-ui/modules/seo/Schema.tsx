@@ -61,10 +61,6 @@ export function Schema({
     url,
   };
 
-  schema.sameAs = social
-    .map((item) => item.link)
-    .filter((link) => link.startsWith("http"));
-
   if (as === "website") {
     schema.name = title;
     schema.description = description;
@@ -73,10 +69,12 @@ export function Schema({
     schema.name = title;
     schema.description = description;
     schema.image = imageUrl;
+    schema.sameAs = social.map((item) => item.link).filter((link) => link.startsWith("http"));
   } else if (as === "person") {
     schema.name = title;
     schema.description = description;
     schema.image = imageUrl;
+    schema.sameAs = social.map((item) => item.link).filter((link) => link.startsWith("http"));
     if (jobTitle) schema.jobTitle = jobTitle;
     if (email) schema.email = email;
   } else {

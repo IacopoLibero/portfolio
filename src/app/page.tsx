@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Heading, Flex, Text, Button, Avatar, RevealFx, Column, Badge, Row } from "@/once-ui/components";
+import { Heading, Flex, Button, Avatar, RevealFx, Column, Badge, Row } from "@/once-ui/components";
 
 import { baseURL } from "@/app/resources";
 import { home, about, person, newsletter } from "@/app/resources/content";
@@ -60,9 +60,9 @@ export default function Home() {
             </Heading>
           </RevealFx>
           <RevealFx translateY="8" delay={0.2} fillWidth horizontal="start" paddingBottom="32">
-            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
+            <Heading as="h2" wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
               {home.subline}
-            </Text>
+            </Heading>
           </RevealFx>
           <RevealFx paddingTop="12" delay={0.4} horizontal="start" paddingLeft="12">
             <Flex gap="12" wrap>

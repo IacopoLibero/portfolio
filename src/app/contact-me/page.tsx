@@ -1,5 +1,5 @@
-import { Column } from "@/once-ui/components";
-import { contactMe, person } from "@/app/resources/content";
+import { Column, Heading } from "@/once-ui/components";
+import { contactMe, person, about } from "@/app/resources/content";
 import { baseURL } from "@/app/resources";
 import { Meta, Schema } from "@/once-ui/modules";
 import ContactMeClient from "./contact-me-client";
@@ -27,11 +27,14 @@ export default function ContactMe() {
                 image={contactMe.image}
                 author={{
                     name: person.name,
-                    url: `${baseURL}${contactMe.path}`,
+                    url: `${baseURL}${about.path}`,
                     image: `${baseURL}${person.avatar}`,
                 }}
             />
-            <ContactMeClient 
+            <Heading as="h1" variant="display-strong-l" paddingTop="16" paddingBottom="l">
+                {contactMe.title}
+            </Heading>
+            <ContactMeClient
                 title={contactMe.title}
                 description={contactMe.description}
                 person={person}

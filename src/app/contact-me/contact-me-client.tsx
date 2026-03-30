@@ -225,7 +225,7 @@ Thanks!` : "",
         <>
             <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 16px' }}>
                 <RevealFx translateY="16" paddingTop="16" paddingBottom="l" horizontal="start">
-                    <Heading as="h1" variant="display-strong-l">
+                    <Heading as="h2" variant="display-strong-l">
                         {title}
                     </Heading>
                 </RevealFx>
