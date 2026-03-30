@@ -1,0 +1,47 @@
+---
+title: "Florence Pelletteria - Artisan Leather Goods Showcase"
+publishedAt: "2026-03-30"
+summary: "A product showcase website for an artisan leather goods shop in Florence, established in 1920. Built with Next.js 16, React 19, TypeScript, and Tailwind CSS v4, with a JSON-driven catalog, category filtering, and rich product detail pages."
+images:
+  - "/images/projects/florence_pelletteria_be/pelletteria_1.png"
+  - "/images/projects/florence_pelletteria_be/pelletteria_2.png"
+link: "https://florence-pelletteria-be.vercel.app/"
+target: "_blank"
+---
+
+## Overview
+
+Florence Pelletteria is a product showcase website built for an artisan leather goods shop with roots going back to 1920 in Florence. The shop crafts bags, wallets, gloves, and backpacks from premium Italian leather. The site acts as a digital catalog — no cart, no checkout — designed purely to present the collection with the quality and care it deserves. The tagline "The Art of Leather" shaped every design and content decision.
+
+All product data is managed through a single `products.json` file, making it straightforward for the shop to update their catalog without touching the codebase.
+
+## Key Features
+
+- **JSON-Driven Catalog**: All products, descriptions, prices, and images are sourced from a static `products.json` file, keeping content management simple and code-free.
+- **Category Filtering**: Collection page with a sidebar for filtering by category (bags, wallets, gloves, backpacks) with live product counts per category.
+- **Product Detail Pages**: Dynamic `[id]` routes for each item, showing an image gallery, color variant swatches, price, and expandable accordions for materials, dimensions, and hardware details.
+- **Color Variant Selector**: Interactive swatches per product, each linked to its own set of product images.
+- **Brand Story Section**: Homepage section communicating the shop's history and artisan identity since 1920.
+- **Customer Reviews**: Reviews section on the homepage showcasing social proof.
+- **Category Grid**: Visual navigation for quickly jumping to a product category.
+- **SEO Optimized**: Full metadata, Open Graph tags, XML sitemap, and robots configuration targeting both Italian shoppers and international tourists searching for Florentine leather goods.
+- **Privacy & Legal**: GDPR-compliant privacy policy page.
+
+## Technologies Used
+
+- **Next.js 16**: App Router with server components, dynamic routing, and optimized image delivery with AVIF/WebP support via Google-hosted images.
+- **React 19**: Latest React with concurrent rendering for smooth UI interactions.
+- **TypeScript 5**: Strict mode with path aliases (`@/*`) for clean imports throughout.
+- **Tailwind CSS v4**: Utility-first styling with a warm, premium design system suited to the brand aesthetic.
+- **Lucide React**: Lightweight icon set for consistent UI elements.
+- **Vercel**: Production deployment with CDN delivery, image optimization, and automatic HTTPS.
+
+## Challenges and Learnings
+
+The main challenge was making a static catalog feel rich and premium. With no backend logic, all the perceived interactivity — filtering, color switching, image galleries — had to be handled cleanly on the client side with React state, while keeping server components where possible for performance.
+
+Adopting Tailwind CSS v4 also meant navigating breaking changes from v3, particularly in configuration syntax and how design tokens are defined — a good forcing function to understand what changed under the hood.
+
+## Outcome
+
+The site gives Florence Pelletteria a polished digital presence that reflects over a century of craftsmanship. Customers and tourists can browse the full collection, explore color options, and check product details before visiting the shop. The JSON-driven approach means the client can request catalog updates with no technical dependency on the developer.

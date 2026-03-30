@@ -1,0 +1,42 @@
+---
+title: "Bar 16 - Cocktails & Culture, Florence"
+publishedAt: "2026-03-15"
+summary: "A clean, elegant landing page for Bar 16, a cocktail bar in the heart of Florence. Built with React 18, TypeScript, Tailwind CSS, and Vite, with a data-driven architecture and mobile-first design."
+images:
+  - "/images/projects/bar16/bar16_1.png"
+  - "/images/projects/bar16/bar16_2.png"
+  - "/images/projects/bar16/bar16_3.png"
+link: "https://bar16.homes/"
+target: "_blank"
+---
+
+## Overview
+
+Bar 16 is a landing page built for a cocktail bar located in Via del Corso, Florence. The project focuses on simplicity and elegance, reflecting the bar's identity — cocktails, culture, and Florentine atmosphere. All content is sourced from structured JSON files, making it easy to maintain and update without touching the code.
+
+## Key Features
+
+- **Data-Driven Architecture**: All content (bar info, hours, menu, contacts) is managed through JSON files, decoupling content from presentation.
+- **Multi-Page Navigation**: React Router v6 routing with pages for landing, full menu, gallery, contacts, and privacy policy.
+- **Mobile-First Design**: Responsive layout optimized from 375px up, tested across all device sizes.
+- **WCAG AA Accessibility**: Semantic HTML, proper contrast ratios, and accessible interactive elements throughout.
+- **Performance Optimized**: Sub-3-second load time on 4G, targeting 90+ Lighthouse score with Vite's optimized build.
+- **Custom Design System**: Tailwind configuration with a curated palette (Cream, Gold, Charcoal) and typography pairing Playfair Display with Open Sans.
+- **SEO Ready**: Dedicated SEO component with meta tags, Open Graph, and structured data support.
+
+## Technologies Used
+
+- **React 18**: Component-based UI with hooks for state and side effects.
+- **TypeScript**: Full type safety across all components and data structures.
+- **Tailwind CSS v3**: Utility-first styling with a custom design token system and animation utilities.
+- **React Router v6**: Client-side routing for a seamless multi-page experience.
+- **Vite**: Fast build tooling with hot module replacement for development and optimized output for production.
+- **Vercel**: Deployment with custom headers, cache policies, and clean URL routing.
+
+## Challenges and Learnings
+
+The main challenge was translating a real bar's identity into a minimal yet polished web presence without overdesigning it. Keeping all content in JSON files required careful typing and a clean data model. I also focused heavily on performance from the start — using Vite's tree-shaking, lazy loading images, and tuning Tailwind's purge configuration to keep the bundle lean.
+
+## Outcome
+
+The result is a fast, accessible, and visually cohesive landing page that represents the bar's brand online. The data-driven approach means the client can request content updates without requiring code changes, and the Vercel deployment ensures zero-downtime updates.
