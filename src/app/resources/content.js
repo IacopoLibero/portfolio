@@ -319,6 +319,8 @@ const certifications = {
   keywords: [...baseKeywords, "certifications", "Cisco", "credentials", "badges"],
   title: `Certifications | Iacopo Libero Bernabei – Cisco & More`,
   description: `View professional certifications earned by Iacopo Libero Bernabei, including Cisco cybersecurity, Python programming, and digital security credentials.`,
+  heading: `My Certifications`,
+  subheading: `Professional certifications and achievements`,
   certifications: [
     {
       title: "Introduction to Cybersecurity",
@@ -399,6 +401,8 @@ const contactMe = {
   label: "Contact Me",
   title: `Contact Iacopo Libero Bernabei | Let's Work Together`,
   description: `Get in touch with Iacopo Libero Bernabei for web development projects, cybersecurity consulting, or IT support. Fill out the form and I'll respond promptly.`,
+  heading: `Let's work together`,
+  subheading: `Fill out the form below and I'll get back to you as soon as possible.`,
 };
 
 const services = {

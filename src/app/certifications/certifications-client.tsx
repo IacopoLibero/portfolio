@@ -1,7 +1,6 @@
 "use client";
 
 import Image from 'next/image';
-import { usePathname } from "next/navigation";
 import { Column, Flex, Heading, Text, RevealFx, Card, Button } from "@/once-ui/components";
 
 interface CertificationItem {
@@ -16,37 +15,16 @@ interface CertificationItem {
 }
 
 interface CertificationsClientProps {
-    title: string;
-    description: string;
     sortedCertifications: CertificationItem[];
     columnCount: number;
 }
 
 export default function CertificationsClient({
-    title,
-    description,
     sortedCertifications,
     columnCount
 }: CertificationsClientProps) {
-    const pathname = usePathname();
-
     return (
         <>
-            <Column fillWidth paddingBottom="xl">
-                <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 16px' }}>
-                    <RevealFx translateY="16" paddingTop="16" paddingBottom="l" horizontal="start">
-                        <Heading as="h2" variant="display-strong-l">
-                            {title}
-                        </Heading>
-                    </RevealFx>
-                    <RevealFx translateY="8" delay={0.5} horizontal="start" paddingBottom="m">
-                        <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-                            {description}
-                        </Text>
-                    </RevealFx>
-                </div>
-            </Column>
-
             <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 16px' }}>
                 <div className="certification-grid" style={{
                     display: 'grid',

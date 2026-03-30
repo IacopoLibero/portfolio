@@ -1,4 +1,4 @@
-import { Column, Heading } from "@/once-ui/components";
+import { Column, Heading, Text, RevealFx } from "@/once-ui/components";
 import { certifications, person, about } from "@/app/resources/content";
 import { baseURL } from "@/app/resources";
 import { Meta, Schema } from "@/once-ui/modules";
@@ -41,12 +41,21 @@ export default function Certifications() {
         }}
       />
       
-      <Heading as="h1" variant="display-strong-l" paddingTop="16" paddingBottom="l">
-        {certifications.title}
-      </Heading>
+      <Column fillWidth paddingBottom="xl">
+        <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 16px' }}>
+          <RevealFx translateY="16" paddingTop="16" paddingBottom="l" horizontal="start">
+            <Heading as="h1" variant="display-strong-l">
+              {certifications.heading}
+            </Heading>
+          </RevealFx>
+          <RevealFx translateY="8" delay={0.5} horizontal="start" paddingBottom="m">
+            <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
+              {certifications.subheading}
+            </Text>
+          </RevealFx>
+        </div>
+      </Column>
       <CertificationsClient
-        title={certifications.title}
-        description={certifications.description}
         sortedCertifications={sortedCertifications}
         columnCount={columnCount}
       />

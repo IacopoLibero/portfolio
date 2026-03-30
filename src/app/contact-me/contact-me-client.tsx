@@ -1,7 +1,6 @@
 "use client";
 
 import {
-    Column,
     Flex,
     Heading,
     Text,
@@ -15,8 +14,6 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
 
 interface ContactMeClientProps {
-    title: string;
-    description: string;
     person: {
         name: string;
         email: string;
@@ -25,7 +22,7 @@ interface ContactMeClientProps {
     };
 }
 
-export default function ContactMeClient({ title, description, person }: ContactMeClientProps) {
+export default function ContactMeClient({ person }: ContactMeClientProps) {
     const searchParams = useSearchParams();
     const service = searchParams.get("service");
 
@@ -224,17 +221,6 @@ Thanks!` : "",
     return (
         <>
             <div style={{ maxWidth: '768px', margin: '0 auto', padding: '0 16px' }}>
-                <RevealFx translateY="16" paddingTop="16" paddingBottom="l" horizontal="start">
-                    <Heading as="h2" variant="display-strong-l">
-                        {title}
-                    </Heading>
-                </RevealFx>
-                <RevealFx translateY="8" delay={0.5} horizontal="start" paddingBottom="xl">
-                    <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-                        {description}
-                    </Text>
-                </RevealFx>
-
                 <RevealFx translateY="12" delay={1.0} horizontal="start">
                     <form onSubmit={handleSubmit} noValidate>
                         <Flex direction="column" gap="l">
