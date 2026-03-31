@@ -1,5 +1,3 @@
-import { Logo } from "@/once-ui/components";
-
 const person = {
   firstName: "Iacopo Libero",
   lastName: "Bernabei",
@@ -9,7 +7,8 @@ const person = {
   role: "Developer and Cybersecurity expert",
   avatar: "/images/avatar.webp",
   email: "iacopoliberolavoro@gmail.com",
-  location: "Europe/Rome", // Expecting the IANA time zone identifier, e.g., 'Europe/Vienna'
+  location: "Florence, Italy",
+  timezone: "Europe/Rome", // IANA time zone identifier
   languages: ["Italian", "English"], // optional: Leave the array empty if you don't want to display languages
   phone: "+393459488277",
 };

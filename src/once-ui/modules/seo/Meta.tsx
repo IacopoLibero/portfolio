@@ -56,6 +56,7 @@ export function generateMetadata({
       title,
       description,
       type,
+      locale: "en_US",
       siteName: "Iacopo Libero's Portfolio",
       ...(publishedTime && type === "article" ? { publishedTime } : {}),
       url,
