@@ -33,6 +33,8 @@ export async function generateMetadata({
     title: `${post.metadata.title} | Iacopo Libero Bernabei`,
     description: post.metadata.summary,
     baseURL: baseURL,
+    type: "article",
+    publishedTime: post.metadata.publishedAt,
     image: post.metadata.image ? `${baseURL}${post.metadata.image}` : `${baseURL}/og?title=${post.metadata.title}`,
     path: `${work.path}/${post.slug}`,
     keywords: work.keywords,

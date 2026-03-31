@@ -1,0 +1,108 @@
+---
+title: "OpenClaw: The 2026's Most Talked-About Open Source AI Agent"
+publishedAt: "2026-03-20"
+summary: "What OpenClaw is, how it works, all the variants (Nvidia's NemoClaw, Anthropic's Claude Code Channels), real security risks, and how to set it up safely."
+image: "/images/blog/openclaw.webp"
+---
+
+In less than five months OpenClaw crossed 250,000 GitHub stars, surpassing React as the most-starred non-aggregator project on the platform. Nvidia CEO Jensen Huang called it "probably the single most important release of software, you know, probably ever." It's worth understanding what it actually is, what it can do — and what you're risking if you run it without the right precautions.
+
+## What is OpenClaw
+
+OpenClaw is a free, open-source autonomous AI agent that executes complex tasks through a large language model of your choice: Claude, GPT, DeepSeek, local models via Ollama. It runs locally and communicates with the user through messaging platforms — Signal, Telegram, Discord, WhatsApp.
+
+It was created by Austrian developer Peter Steinberger and first published in November 2025 under the name **Clawdbot**. In January 2026, Anthropic filed a trademark complaint (the name was too close to Claude), forcing two renames in three days: first **Moltbot**, then **OpenClaw**.
+
+In February 2026 Steinberger announced he would be joining OpenAI and moving the project under an open-source foundation.
+
+## The Main Variants
+
+### NemoClaw — Nvidia's Enterprise Version
+
+Announced at GTC 2026, **NemoClaw** is Nvidia's answer to OpenClaw's most critical security problem: it's essentially OpenClaw with an enterprise stack on top.
+
+It installs with a single command and adds:
+- **NVIDIA OpenShell** — an isolated sandbox with policy-configurable security guardrails
+- **NVIDIA Agent Toolkit** — centralized management of agent behavior
+- **Native NIM support** — out-of-the-box compatibility with all Nvidia NIM models (LLaMA variants, Mistral, Nemotron, plus domain-specific models for healthcare, finance, and manufacturing)
+
+It doesn't require Nvidia GPUs — it's hardware agnostic. The focus is on privacy and audit trails for enterprise deployments.
+
+### Claude Code Channels — Anthropic's Response
+
+Anthropic responded to OpenClaw with **Claude Code Channels**: a way to connect Claude Code (their agentic CLI for developers) to Discord and Telegram. Same UX as OpenClaw — commands via chat — but with Claude as a fixed backbone and Anthropic's safety guarantees built in.
+
+It's less flexible than OpenClaw (Claude only, no model choice) but significantly easier to configure securely.
+
+### NanoClaw and ZeroClaw
+
+After the discovery of **CVE-2026-25253** (a one-click RCE with CVSS 8.8), the repository generated a wave of security-focused forks. The most relevant:
+
+- **NanoClaw** — minimalist fork, reduced attack surface, no external plugins
+- **ZeroClaw** — performance-oriented rewrite with hardened sandbox
+
+Both follow a more aggressive patch cycle than the main project.
+
+## Pros
+
+- **Model agnostic**: use Claude, GPT, DeepSeek, local models — or combine them
+- **Self-hosted**: your data never touches third-party servers if you use a local model
+- **Massive ecosystem**: 47,700 forks, integrations for nearly every existing service
+- **Familiar messaging interface**: operate the agent from Telegram or Discord, no new UI to learn
+- **Free**: no subscription, you only pay for the API of the model you choose
+
+## Cons
+
+- **High attack surface**: 60+ CVEs in five months. This is not a security-first product
+- **Complex secure setup**: doing it right takes time and expertise
+- **Autonomous agent = unintended actions**: overly permissive configs can lead to unexpected behavior
+- **Model-dependent quality**: task quality depends entirely on the LLM you choose
+- **Uncertain governance**: the project is now under a foundation, long-term direction is open
+
+## Security: What to Know Before Installing
+
+OpenClaw has accumulated over **60 CVEs** since launch. The worst, **CVE-2026-25253** (CVSS 8.8), was a one-click remote code execution discovered in February 2026. China has banned its use on government computers citing security risks.
+
+The most common attack vectors:
+- **Prompt injection via messages**: a malicious actor can send a message that convinces the agent to execute commands
+- **Unvetted third-party plugins**: the integration ecosystem has no centralized review
+- **Excessive permissions**: OpenClaw tends to request filesystem, email, and calendar access all at once
+
+## Recommended Setup
+
+**1. Isolation**
+
+Run OpenClaw in a dedicated Docker container, not on your main host machine. Limit volume mounts to only the directories the agent actually needs to touch.
+
+```bash
+docker run --rm \
+  -e OPENCLAW_API_KEY=... \
+  -v /home/user/projects:/workspace:rw \
+  -v /home/user/documents:/documents:ro \
+  openclaw/openclaw:latest
+```
+
+**2. Minimum permissions**
+
+Don't give the agent access to email, calendars, or cloud services until you've verified it actually needs them for your use case.
+
+**3. Local model for sensitive data**
+
+If you're working with proprietary code or business data, use a local model via Ollama instead of an external API. Your data never leaves the machine.
+
+```bash
+OPENCLAW_LLM_PROVIDER=ollama
+OPENCLAW_LLM_MODEL=llama3.3
+```
+
+**4. Frequent updates**
+
+With 60+ CVEs in five months, the patch rate is high. Automate updates and follow the repository's security advisory channel.
+
+**5. NemoClaw for enterprise contexts**
+
+If you're running OpenClaw in a company environment, NemoClaw is the most sensible choice: it adds policy-based guardrails, audit logs, and a managed sandbox without requiring you to rebuild your configuration from scratch.
+
+## Summary
+
+OpenClaw is genuinely groundbreaking as a paradigm — an autonomous AI agent operable from Telegram was science fiction six months ago. But the ecosystem is young and the security track record is concerning. Use it for personal projects with an isolated setup, consider NemoClaw for enterprise, and expect to update it often.

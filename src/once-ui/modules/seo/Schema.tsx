@@ -71,6 +71,7 @@ export function Schema({
     schema.image = imageUrl;
     schema.sameAs = social.map((item) => item.link).filter((link) => link.startsWith("http"));
   } else if (as === "person") {
+    schema.url = `${normalizedBaseURL}/about`;
     schema.name = title;
     schema.description = description;
     schema.image = imageUrl;

@@ -65,18 +65,27 @@ function createImage({ alt, src, ...props }: SmartImageProps & { src: string }) 
   );
 }
 
-function slugify(str: string): string {
-  return str
+function extractText(node: React.ReactNode): string {
+  if (typeof node === "string" || typeof node === "number") return String(node);
+  if (Array.isArray(node)) return node.map(extractText).join("");
+  if (node && typeof node === "object" && "props" in (node as any)) {
+    return extractText((node as React.ReactElement).props.children);
+  }
+  return "";
+}
+
+function slugify(str: React.ReactNode): string {
+  return extractText(str)
     .toLowerCase()
-    .replace(/\s+/g, "-") // Replace spaces with -
-    .replace(/&/g, "-and-") // Replace & with 'and'
-    .replace(/[^\w\-]+/g, "") // Remove all non-word characters except for -
-    .replace(/\-\-+/g, "-"); // Replace multiple - with single -
+    .replace(/\s+/g, "-")
+    .replace(/&/g, "-and-")
+    .replace(/[^\w\-]+/g, "")
+    .replace(/\-\-+/g, "-");
 }
 
 function createHeading(as: "h1" | "h2" | "h3" | "h4" | "h5" | "h6") {
   const CustomHeading = ({ children, ...props }: TextProps<typeof as>) => {
-    const slug = slugify(children as string);
+    const slug = slugify(children);
     return (
       <HeadingLink
         style={{ marginTop: "var(--static-space-24)", marginBottom: "var(--static-space-12)" }}

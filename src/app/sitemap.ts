@@ -7,6 +7,11 @@ export default async function sitemap() {
     lastModified: post.metadata.publishedAt,
   }));
 
+  const blogPosts = getPosts(["src", "app", "blog", "posts"]).map((post) => ({
+    url: `${baseURL}/blog/${post.slug}`,
+    lastModified: post.metadata.publishedAt,
+  }));
+
 
   const activeRoutes = Object.keys(routesConfig).filter((route) => routesConfig[route as keyof typeof routesConfig]);
 
@@ -15,5 +20,5 @@ export default async function sitemap() {
     lastModified: new Date().toISOString().split("T")[0],
   }));
 
-  return [...routes, ...works];
+  return [...routes, ...works, ...blogPosts];
 }

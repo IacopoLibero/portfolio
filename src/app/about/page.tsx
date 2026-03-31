@@ -6,6 +6,7 @@ import {
   Heading,
   Icon,
   IconButton,
+  RevealFx,
   SmartImage,
   Tag,
   Text,
@@ -13,7 +14,7 @@ import {
 import { baseURL } from "@/app/resources";
 import TableOfContents from "@/components/about/TableOfContents";
 import styles from "@/components/about/about.module.scss";
-import { person, about, social } from "@/app/resources/content";
+import { person, about, social, services, contactMe } from "@/app/resources/content";
 import React from "react";
 import { Meta, Schema } from "@/once-ui/modules";
 
@@ -50,6 +51,11 @@ export default function About() {
       display: about.technical.display,
       items: about.technical.skills.map((skill) => skill.title),
     },
+    {
+      title: services.label,
+      display: true,
+      items: services.items.map((s) => s.title),
+    },
   ];
   return (
     <Column maxWidth="m">
@@ -65,6 +71,16 @@ export default function About() {
           url: `${baseURL}${about.path}`,
           image: `${baseURL}${person.avatar}`,
         }}
+      />
+      <Schema
+        as="person"
+        baseURL={baseURL}
+        path={about.path}
+        title={person.name}
+        description={about.description}
+        image={person.avatar}
+        jobTitle={person.role}
+        email={person.email}
       />
       {about.tableOfContent.display && (
         <Column
@@ -97,7 +113,7 @@ export default function About() {
             </Flex>
             {person.languages.length > 0 && (
               <Flex wrap gap="8">
-                {person.languages.map((language, index) => (
+                {person.languages.map((language) => (
                   <Tag key={language} size="l">
                     {language}
                   </Tag>
@@ -348,6 +364,46 @@ export default function About() {
               </Column>
             </>
           )}
+
+          <Heading
+            as="h2"
+            id={services.label}
+            variant="display-strong-s"
+            marginBottom="40"
+            marginTop="40"
+          >
+            {services.label}
+          </Heading>
+          <Column fillWidth gap="xl" marginBottom="40">
+            {services.items.map((service, index) => (
+              <RevealFx key={index} translateY="8" delay={index * 0.2} horizontal="start">
+                <Column fillWidth gap="m" padding="l" border="neutral-medium" radius="l" background="neutral-alpha-weak">
+                  {service.images && service.images.length > 0 && (
+                    <SmartImage
+                      radius="m"
+                      aspectRatio="16/9"
+                      alt={service.images[0].alt}
+                      src={service.images[0].src}
+                      sizes="100vw"
+                    />
+                  )}
+                  <Heading as="h3" variant="heading-strong-xl">
+                    {service.title}
+                  </Heading>
+                  <Text variant="body-default-l" onBackground="neutral-weak">
+                    {service.description}
+                  </Text>
+                  <Button
+                    href={`${contactMe.path}?service=${encodeURIComponent(service.title)}`}
+                    variant="secondary"
+                    arrowIcon
+                  >
+                    Get a quote
+                  </Button>
+                </Column>
+              </RevealFx>
+            ))}
+          </Column>
         </Column>
       </Flex>
     </Column>

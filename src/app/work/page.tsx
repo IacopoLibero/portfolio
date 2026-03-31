@@ -35,12 +35,12 @@ export default function Work() {
       <Column fillWidth paddingBottom="xl">
         <RevealFx translateY="16" paddingTop="16" paddingBottom="l" horizontal="start">
           <Heading as="h1" variant="display-strong-l">
-            {work.title}
+            {work.heading}
           </Heading>
         </RevealFx>
         <RevealFx translateY="8" delay={0.5} horizontal="start" paddingBottom="m">
           <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
-            {work.description}
+            {work.subheading}
           </Text>
         </RevealFx>
       </Column>

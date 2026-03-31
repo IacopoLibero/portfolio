@@ -1,8 +1,8 @@
-import { Column, Heading } from "@/once-ui/components";
+import { Column, Heading, RevealFx, Text } from "@/once-ui/components";
 import { Mailchimp } from "@/components";
 import { Posts } from "@/components/blog/Posts";
 import { baseURL } from "@/app/resources";
-import { blog, person, newsletter } from "@/app/resources/content";
+import { blog, person, newsletter, about } from "@/app/resources/content";
 import { Meta, Schema } from "@/once-ui/modules";
 
 export async function generateMetadata() {
@@ -28,13 +28,22 @@ export default function Blog() {
         image={blog.image}
         author={{
           name: person.name,
-          url: `${baseURL}/blog`,
+          url: `${baseURL}${about.path}`,
           image: `${baseURL}${person.avatar}`,
         }}
       />
-      <Heading marginBottom="l" variant="display-strong-s">
-        {blog.title}
-      </Heading>
+      <Column fillWidth paddingBottom="l">
+        <RevealFx translateY="16" paddingTop="16" paddingBottom="l" horizontal="start">
+          <Heading as="h1" variant="display-strong-l">
+            {blog.heading}
+          </Heading>
+        </RevealFx>
+        <RevealFx translateY="8" delay={0.5} horizontal="start" paddingBottom="m">
+          <Text wrap="balance" onBackground="neutral-weak" variant="heading-default-xl">
+            {blog.subheading}
+          </Text>
+        </RevealFx>
+      </Column>
       <Column
 				fillWidth flex={1}>
 				<Posts range={[1,1]} thumbnail direction="column"/>

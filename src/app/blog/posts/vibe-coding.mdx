@@ -1,0 +1,100 @@
+---
+title: "Vibe Coding: What It Is, Why It Works, and Why It Can Become a Security Problem"
+publishedAt: "2026-03-15"
+summary: "Vibe coding has democratized software creation, but 53% of teams that shipped AI-generated code later found security vulnerabilities that had passed initial review. What to know before vibing."
+image: "/images/blog/vibe-coding.webp"
+---
+
+The term **vibe coding** was coined by Andrej Karpathy in February 2025 and in less than a year became the way millions of people build software. The idea is simple: describe what you want in natural language, the AI generates the code, you accept and move on — without necessarily understanding every line of what was written.
+
+It is a genuine revolution. It is also a technical and security debt that accumulates silently.
+
+## What is Vibe Coding
+
+Karpathy described it like this: *"Don't even review the code. Just run it, see what happens. Copy and paste error messages back into the AI."*
+
+In practice: a loop of prompt → code → execution → correction prompt, where the user evaluates the final result (does it work? does it look right?) more than the intermediate code. Tools like Cursor, Claude Code, Lovable, and Bolt have made this workflow accessible even to people who have never written a line of code.
+
+The result is that anyone can build a working app in hours instead of weeks. That is genuinely useful.
+
+## Why It Works
+
+Current models (Claude 4.6.7, Gemini 3.1, GPT-5.2-codex, etc...) are very good at generating code that **runs**. They know the most common patterns for almost every framework, handle standard cases, and produce output that passes surface-level tests on the first or second attempt.
+
+For prototyping, building internal tools, automating repetitive tasks — vibe coding is extraordinarily productive. A single developer can produce in a week what used to require a team.
+
+## The Problem: Models Optimize for Running Code, Not Secure Code
+
+This is the core issue. According to the **GenAI Code Security Report 2025** by Veracode, **45% of AI-generated code introduces security vulnerabilities**. **53% of teams** that shipped AI-generated code later discovered security issues that had passed initial review.
+
+Models don't reason like a security engineer. They reason like a very fast developer who wants to make the thing work. This leads to specific and recurring patterns:
+
+### Removing Security Controls to Fix Errors
+
+This is the most dangerous behavior. When an AI agent encounters an error, the fastest solution is often to remove the control causing it — input validation, an authentication check, a database policy — rather than understanding why that control is failing.
+
+I have seen agents remove Row Level Security from Supabase because it "caused a 403 error in tests." The correct solution was to fix the policy. The fast solution was to disable it.
+
+### Exposed Secrets in Code
+
+A researcher who analyzed 5,600 vibe-coded apps found:
+- **2,000+ vulnerabilities**
+- **400+ exposed secrets** (API keys, tokens, credentials)
+- **175 instances of exposed PII**
+
+AI frequently generates examples with hard-coded credentials because it is the most direct way to make something work. If you don't know what you're reading, you don't recognize the problem.
+
+### Broken Access Control by Design
+
+Out of 1,645 apps generated with Lovable, researchers found **critical Row Level Security flaws in Supabase in 10.3% of cases** — 170 apps where different users' data was potentially accessible across accounts.
+
+The model had built the database, the logic, the interface. But it had not correctly configured data isolation between tenants.
+
+### Outdated Dependencies
+
+An agent generating a `package.json` draws on its training knowledge, which may be months or years behind. The dependency versions it suggests could have well-known CVEs.
+
+## Secure Vibe Coding: A Practical Approach
+
+You don't need to stop using AI to write code. You need to add a few layers of control.
+
+### 1. Never bypass authentication and authorization controls
+
+If the AI suggests removing a security policy, an authentication middleware, or a validation check to resolve an error — stop. Ask the AI to explain **why** that control is failing and how to fix it without removing it.
+
+### 2. Never put credentials in code
+
+Always use environment variables. If you see a string that looks like an API key in generated code, treat it as compromised even if you haven't deployed it yet.
+
+### 3. Run a static analyzer
+
+Tools like **Semgrep**, **CodeQL**, or **Snyk's** security scanner find vulnerable patterns without requiring you to understand the code line by line. Add them to your CI/CD pipeline or run them before every deploy.
+
+```bash
+# Semgrep: free and open source static analysis
+semgrep --config auto ./src
+```
+
+### 4. Ask the AI to do the security review
+
+After generating code, run a second, explicit prompt:
+
+> *"Analyze this code from a security perspective. Look for missing authentication, unvalidated inputs, exposed secrets, and data access issues. Flag everything that could be a problem."*
+
+Models are good at this too — but only if you ask explicitly.
+
+### 5. Test permission boundaries
+
+If you build anything with authentication, manually test that one authenticated user cannot access another user's data by modifying IDs in requests. This test takes five minutes and catches the most common vulnerability class in vibe-coded apps.
+
+## Who Should Be Most Careful
+
+- **Apps with data from multiple users**: data leakage between users is a high risk
+- **Apps with payments**: payment authorization logic is complex and models get it wrong frequently
+- **Apps with public forms**: SQL injection and XSS come from external input — AI doesn't always generate adequate validation
+
+## Summary
+
+Vibe coding is real, productive, and here to stay. It genuinely lowers the barrier to building software. But "it works" and "it is secure" are two different things, and models only optimize for the first.
+
+Add a moment of reflection every time the AI suggests removing something instead of fixing it. Run a static analyzer before going to production. Test data access boundaries manually. It's not much — but it's the difference between an app that works and an app that works securely.

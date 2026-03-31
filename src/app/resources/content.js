@@ -70,14 +70,14 @@ const home = {
   path: "/",
   image: "/images/og/home.png",
   label: "Home",
-  title: `Iacopo Libero Bernabei – Developer & Cybersecurity Expert`,
+  title: `Iacopo Libero Bernabei | Developer & Cybersecurity Expert`,
   keywords: [...baseKeywords],
   description: `Explore the portfolio of Iacopo Libero Bernabei, a full-stack developer and cybersecurity expert building secure web applications from Florence, Italy.`,
   headline: <>Building tomorrow&apos;s security through today&apos;s code.</>,
   featured: {
     display: true,
     title: <>Recent project: <strong className="ml-4">Easy Restaurant</strong></>,
-    href: "/work/easy_restaurant",
+    href: "/work/easy-restaurant",
   }, subline: (
     <>
       I&apos;m {person.firstName}, a {person.role.toLowerCase()} <br /> focused on building secure
@@ -90,7 +90,7 @@ const about = {
   path: "/about",
   image: "/images/og/about.png",
   label: "About",
-  title: `About Iacopo Libero Bernabei | Full-Stack Developer`,
+  title: `About | Iacopo Libero Bernabei | Full-Stack Developer`,
   keywords: [...baseKeywords, "about", "bio", "curriculum vitae"],
   description: `Meet Iacopo Libero Bernabei, a full-stack developer and cybersecurity specialist based in Florence, Italy. Learn about my skills, experience, and education.`,
   tableOfContent: {
@@ -246,6 +246,8 @@ const blog = {
   label: "Blog",
   title: `Blog | Tech & Cybersecurity by Iacopo Libero Bernabei`,
   description: `Read articles by Iacopo Libero Bernabei about web development, cybersecurity trends, and lessons learned from building secure full-stack applications.`,
+  heading: `My Blog`,
+  subheading: `Read my articles about web development, cybersecurity and trends`,
   // Create new blog posts by adding a new .mdx file to app/blog/posts
   // All posts will be listed on the /blog route
 };
@@ -255,8 +257,10 @@ const work = {
   image: "/images/og/work.png",
   label: "Work",
   keywords: [...baseKeywords, "projects", "Next.js", "React", "web applications", "security"],
-  title: `Projects by Iacopo Libero Bernabei | Web & Security`,
+  title: `Projects | Iacopo Libero Bernabei | Web & Security`,
   description: `Browse projects by Iacopo Libero Bernabei, from modern web applications built with Next.js and React to cybersecurity tools and network security solutions.`,
+  heading: `My Projects`,
+  subheading: `Explore my projects and see what I've been working on`,
   // Create new project pages by adding a new .mdx file to app/work/projects
   // All projects will be listed on the /home and /work routes
 };
@@ -317,7 +321,7 @@ const certifications = {
   image: "/images/og/certifications.png",
   label: "Certifications",
   keywords: [...baseKeywords, "certifications", "Cisco", "credentials", "badges"],
-  title: `Certifications | Iacopo Libero Bernabei – Cisco & More`,
+  title: `Certifications | Iacopo Libero Bernabei`,
   description: `View professional certifications earned by Iacopo Libero Bernabei, including Cisco cybersecurity, Python programming, and digital security credentials.`,
   heading: `My Certifications`,
   subheading: `Professional certifications and achievements`,
@@ -399,7 +403,7 @@ const contactMe = {
   keywords: [...baseKeywords, "contact", "hire", "freelance", "quote"],
   path: "/contact-me",
   label: "Contact Me",
-  title: `Contact Iacopo Libero Bernabei | Let's Work Together`,
+  title: `Let's Work Together | Contact Iacopo Libero Bernabei`,
   description: `Get in touch with Iacopo Libero Bernabei for web development projects, cybersecurity consulting, or IT support. Fill out the form and I'll respond promptly.`,
   heading: `Let's work together`,
   subheading: `Fill out the form below and I'll get back to you as soon as possible.`,
