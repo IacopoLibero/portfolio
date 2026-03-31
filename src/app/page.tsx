@@ -43,6 +43,8 @@ export default function Home() {
         image={person.avatar}
         jobTitle={person.role}
         email={person.email}
+        knowsAbout={["Web Development", "Full-Stack Development", "Cybersecurity", "Penetration Testing", "Network Security", "Next.js", "React", "Node.js", "Security Audits", "IT Consulting"]}
+        address={{ city: "Florence", region: "Tuscany", country: "IT" }}
       />
       <Column fillWidth paddingY="24" gap="m">
         <Column maxWidth="s">

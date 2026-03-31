@@ -4,7 +4,7 @@ const person = {
   get name() {
     return `${this.firstName} ${this.lastName}`;
   },
-  role: "Developer and Cybersecurity expert",
+  role: "Full-Stack Web Developer & Cybersecurity Expert",
   avatar: "/images/avatar.webp",
   email: "iacopoliberolavoro@gmail.com",
   location: "Florence, Italy",
@@ -14,21 +14,48 @@ const person = {
 };
 
 const baseKeywords = [
+  // Name variants
   "Iacopo Libero Bernabei",
   "Iacopo Libero",
   "Bernabei",
   "jacopo libero bernabei",
   "jacopo libero",
-  "developer",
+  // Role — English
   "web developer",
   "full-stack developer",
-  "cybersecurity",
-  "programmatore",
-  "programming",
-  "coding",
-  "italy",
-  "italian",
+  "full stack web developer",
+  "frontend developer",
+  "backend developer",
+  "Next.js developer",
+  "React developer",
+  "Node.js developer",
+  "cybersecurity expert",
+  "cybersecurity specialist",
+  "cybersecurity consultant",
+  "security engineer",
+  "penetration tester",
+  "ethical hacker",
+  "freelance web developer",
+  "freelance developer",
+  // Role — Italian
+  "sviluppatore web",
+  "sviluppatore full-stack",
+  "esperto cybersecurity",
+  "esperto sicurezza informatica",
+  "consulente cybersecurity",
+  "programmatore web",
+  // Location
+  "Florence",
+  "Firenze",
+  "Italy",
+  "Italia",
+  "web developer Florence",
+  "web developer Firenze",
+  "web developer Italy",
+  "sviluppatore web Firenze",
+  // General
   "portfolio",
+  "programming",
 ];
 
 const newsletter = {
@@ -69,9 +96,9 @@ const home = {
   path: "/",
   image: "/images/og/home.png",
   label: "Home",
-  title: `Iacopo Libero Bernabei | Developer & Cybersecurity Expert`,
+  title: `Iacopo Libero Bernabei | Full-Stack Web Developer & Cybersecurity Expert`,
   keywords: [...baseKeywords],
-  description: `Explore the portfolio of Iacopo Libero Bernabei, a full-stack developer and cybersecurity expert building secure web applications from Florence, Italy.`,
+  description: `Iacopo Libero Bernabei is a full-stack web developer and cybersecurity expert based in Florence, Italy. Available for freelance projects worldwide — web apps, security audits, and IT consulting.`,
   headline: <>Building tomorrow&apos;s security through today&apos;s code.</>,
   featured: {
     display: true,
@@ -89,9 +116,9 @@ const about = {
   path: "/about",
   image: "/images/og/about.png",
   label: "About",
-  title: `About | Iacopo Libero Bernabei | Full-Stack Developer`,
-  keywords: [...baseKeywords, "about", "bio", "curriculum vitae"],
-  description: `Meet Iacopo Libero Bernabei, a full-stack developer and cybersecurity specialist based in Florence, Italy. Learn about my skills, experience, and education.`,
+  title: `Iacopo Libero Bernabei | Web Developer & Cybersecurity Expert | About`,
+  keywords: [...baseKeywords, "about", "bio", "curriculum vitae", "hire", "available for work"],
+  description: `Iacopo Libero Bernabei — full-stack web developer and cybersecurity expert based in Florence, Italy. Available for freelance and remote work worldwide. Skills: Next.js, React, Node.js, penetration testing, security audits.`,
   tableOfContent: {
     display: true,
     subItems: false,

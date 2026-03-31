@@ -13,6 +13,8 @@ export interface SchemaProps {
   image?: string;
   jobTitle?: string;
   email?: string;
+  knowsAbout?: string[];
+  address?: { city: string; region: string; country: string };
   author?: {
     name: string;
     url?: string;
@@ -42,6 +44,8 @@ export function Schema({
   image,
   jobTitle,
   email,
+  knowsAbout,
+  address,
   author,
 }: SchemaProps) {
   const normalizedBaseURL = baseURL.endsWith("/") ? baseURL.slice(0, -1) : baseURL;
@@ -78,6 +82,15 @@ export function Schema({
     schema.sameAs = social.map((item) => item.link).filter((link) => link.startsWith("http"));
     if (jobTitle) schema.jobTitle = jobTitle;
     if (email) schema.email = email;
+    if (knowsAbout && knowsAbout.length > 0) schema.knowsAbout = knowsAbout;
+    if (address) {
+      schema.address = {
+        "@type": "PostalAddress",
+        addressLocality: address.city,
+        addressRegion: address.region,
+        addressCountry: address.country,
+      };
+    }
   } else {
     schema.headline = title;
     schema.description = description;

@@ -81,6 +81,8 @@ export default function About() {
         image={person.avatar}
         jobTitle={person.role}
         email={person.email}
+        knowsAbout={["Web Development", "Full-Stack Development", "Cybersecurity", "Penetration Testing", "Network Security", "Next.js", "React", "Node.js", "Security Audits", "IT Consulting"]}
+        address={{ city: "Florence", region: "Tuscany", country: "IT" }}
       />
       {about.tableOfContent.display && (
         <Column
