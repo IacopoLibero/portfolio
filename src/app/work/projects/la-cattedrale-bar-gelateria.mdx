@@ -1,0 +1,51 @@
+---
+title: "La Cattedrale Bar Gelateria — Firenze"
+publishedAt: "2026-05-20"
+summary: "A full-stack website and TV display system for an artisan gelato bar steps from the Duomo in Florence. With a live menu, admin dashboard, and a real-time TV menu board that cycles between product displays and promotional videos."
+images:
+  - "/images/projects/la_cattedrale_bar_gelateria/cattedrale_1.png"
+  - "/images/projects/la_cattedrale_bar_gelateria/cattedrale_2.png"
+  - "/images/projects/la_cattedrale_bar_gelateria/cattedrale_3.png"
+link: "https://lacattedralebargelateria.vip/"
+target: "_blank"
+---
+
+## Overview
+
+La Cattedrale Bar Gelateria is an artisan gelato bar located at Via del Proconsolo, 99 in Florence — directly facing the historic Duomo. The project is a full-stack website with a public-facing storefront, a protected admin dashboard, and a dedicated TV display system used inside the bar.
+
+The design language draws from the monolithic architecture of the Cattedrale itself: dark surfaces, sharp typography, and a deliberate restraint in color. Newsreader italic headings contrast against Manrope's geometric precision, echoing the tension between Florence's Renaissance heritage and a modern sensory experience.
+
+## Key Features
+
+- **Live Menu Page**: Dynamic product catalog filtered by category, fetched in real time from the API. Categories and products are independently managed through the admin panel, with no code changes required.
+- **TV Menu Board**: A full-screen kiosk display designed for the bar's in-store television. It cycles automatically between a product menu phase (2 minutes) and promotional videos, with round-robin video rotation and font sizes that scale dynamically based on how many products are currently active.
+- **Admin Dashboard**: A password-protected back-office for managing products, categories, and promotional videos. Authentication is handled with bcrypt-hashed credentials and JWT-signed session tokens.
+- **Product Management**: Create, edit, and deactivate products with name, description, price, category, and image. Changes reflect live on both the public menu and the TV board.
+- **Category Management**: Add and reorder categories; products inherit the display order from their assigned category.
+- **Video Management**: Upload promotional video clips, toggle which ones are active, and control their display order in the TV rotation cycle.
+- **Homepage**: Full-viewport hero, a curated seasonal selection section with staggered product cards, a philosophy quote banner, and an embedded Google Maps block with opening hours.
+- **SEO & Schema**: Full metadata, Open Graph tags, Twitter cards, XML sitemap, robots configuration, and a `IceCreamShop` JSON-LD schema targeting both local and tourist search intent.
+- **Privacy & Legal**: GDPR-compliant privacy policy page.
+
+## Technologies Used
+
+- **Next.js 16**: App Router with server components, API routes, dynamic rendering (`force-dynamic`), and optimized asset delivery.
+- **React 18**: Client components for interactive menu filtering and the TV state machine; server components for the homepage data fetch.
+- **TypeScript 5**: Strict mode throughout, with shared types for `Prodotto`, `Categoria`, `Video`, and `Stato` consumed across the frontend and API layer.
+- **Tailwind CSS v3**: Utility-first styling with a dark, monochromatic design system. Custom CSS variables for surface tokens (`surface`, `surface-container-low`, `outline-variant`) and typography pairings.
+- **bcryptjs + jsonwebtoken**: Admin authentication with hashed passwords and signed JWT session tokens.
+- **PHP Backend via Proxy**: Products, categories, and videos are persisted on a PHP/MySQL backend. A `proxy.ts` middleware routes API calls from the Next.js app to the external PHP endpoints, keeping CORS and auth headers centralized.
+- **Vercel**: Production deployment with zero-downtime updates and automatic HTTPS.
+
+## Challenges and Learnings
+
+The TV display was the most technically interesting part of the project. The core problem: how do you make a menu board that always fills the screen correctly regardless of how many products are currently active? The solution was a dynamic font-size scaling system — the TV page calculates a "total slot count" from the number of categories and product rows, then derives `vh`-based font sizes for names, descriptions, and prices proportionally. This means the board looks correct whether there are 5 gelato flavors or 30.
+
+The video cycling system also required careful state management. Videos are preloaded while the menu is showing, so when the 2-minute menu phase ends there is no buffering delay before the clip begins. A mutable ref pattern keeps timer callbacks reading the latest video list without re-registering on every render.
+
+On the admin side, the PHP backend introduced a constraint: all data mutations route through a proxy to keep the authentication token handling in one place and prevent the PHP endpoint URL from being exposed to the browser.
+
+## Outcome
+
+The result is a cohesive digital presence for the bar — a public storefront that reflects the artisan identity, an admin panel the owner can operate without technical support, and a TV board that turns the bar's screen into a live, always-accurate menu display. The client can add a new gelato flavor or upload a promotional video from their phone and see it reflected on both the website and the in-store TV within seconds.
