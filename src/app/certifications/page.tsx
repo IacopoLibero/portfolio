@@ -88,6 +88,7 @@ export default function Certifications() {
                         alt={cert.title}
                         src={cert.image}
                         fill={true}
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 280px"
                         priority={index === 0}
                         style={{ objectFit: 'contain', position: 'absolute', top: 0, left: 0 }}
                       />

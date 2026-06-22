@@ -46,10 +46,10 @@ export default function Home() {
         knowsAbout={["Web Development", "Full-Stack Development", "Cybersecurity", "Penetration Testing", "Network Security", "Next.js", "React", "Node.js", "Security Audits", "IT Consulting"]}
         address={{ city: "Florence", region: "Tuscany", country: "IT" }}
       />
-      <Column fillWidth paddingY="24" gap="m">
+      <Column fillWidth paddingY="12" gap="m">
         <Column maxWidth="s">
           {home.featured && (
-            <RevealFx fillWidth horizontal="start" paddingTop="16" paddingBottom="32" paddingLeft="12">
+            <RevealFx fillWidth horizontal="start" paddingTop="16" paddingBottom="32" paddingLeft="12" hide="s">
               <Badge background="brand-alpha-weak" paddingX="12" paddingY="4" onBackground="neutral-strong" textVariant="label-default-s" arrow={false}
                 href={home.featured.href}>
                 <Row paddingY="2">{home.featured.title}</Row>

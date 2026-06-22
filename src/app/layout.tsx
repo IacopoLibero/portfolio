@@ -49,7 +49,6 @@ export default async function RootLayout({ children }: RootLayoutProps) {
       )}
     >
       <head>
-        <link rel="preload" href="/images/avatar.webp" as="image" type="image/webp" />
         <meta name="geo.region" content="IT-FI" />
         <meta name="geo.placename" content="Florence, Italy" />
         <meta name="geo.position" content="43.7696;11.2558" />

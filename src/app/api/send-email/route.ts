@@ -19,6 +19,15 @@ function isValidEmail(email: string): boolean {
   return emailRegex.test(email);
 }
 
+function escapeHtml(str: string): string {
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -57,12 +66,12 @@ export async function POST(request: NextRequest) {
       subject: `Nuovo messaggio da ${firstName} ${lastName}`,
       html: `
         <h2>Hai ricevuto un nuovo messaggio dal tuo sito portfolio</h2>
-        <p><strong>Nome:</strong> ${firstName}</p>
-        <p><strong>Cognome:</strong> ${lastName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Telefono:</strong> ${phone || 'Non specificato'}</p>
+        <p><strong>Nome:</strong> ${escapeHtml(firstName)}</p>
+        <p><strong>Cognome:</strong> ${escapeHtml(lastName)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(email)}</p>
+        <p><strong>Telefono:</strong> ${escapeHtml(phone || 'Non specificato')}</p>
         <p><strong>Messaggio:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
+        <p>${escapeHtml(message).replace(/\n/g, '<br>')}</p>
       `
     };
     
