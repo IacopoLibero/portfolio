@@ -88,6 +88,7 @@ export default function Certifications() {
                         alt={cert.title}
                         src={cert.image}
                         fill={true}
+                        priority={index === 0}
                         style={{ objectFit: 'contain', position: 'absolute', top: 0, left: 0 }}
                       />
                     </div>
@@ -117,7 +118,7 @@ export default function Certifications() {
                           rel="noopener noreferrer"
                           variant="outline"
                           label="View on Credly"
-                          suffixIcon="externalLink"
+                          suffixIcon="arrowUpRightFromSquare"
                         />
                       </Flex>
                     )}
