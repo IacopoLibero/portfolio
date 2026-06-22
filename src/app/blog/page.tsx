@@ -44,12 +44,13 @@ export default function Blog() {
           </Text>
         </RevealFx>
       </Column>
-      <Column
-				fillWidth flex={1}>
-				<Posts range={[1,1]} thumbnail direction="column"/>
-				<Posts range={[2,3]} thumbnail/>
-				<Posts range={[4]} columns="2"/>
-			</Column>
+      <RevealFx translateY="8" delay={0.8} horizontal="start">
+        <Column fillWidth flex={1}>
+          <Posts range={[1,1]} thumbnail direction="column"/>
+          <Posts range={[2,3]} thumbnail/>
+          <Posts range={[4]} columns="2"/>
+        </Column>
+      </RevealFx>
       {newsletter.display && <Mailchimp newsletter={newsletter} />}
     </Column>
   );
