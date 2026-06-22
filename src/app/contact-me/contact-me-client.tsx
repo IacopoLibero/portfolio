@@ -376,42 +376,41 @@ Thanks!` : "",
                                 )}
                             </Flex>
 
-                            <Flex horizontal="start" >
+                            <Flex horizontal="start">
                                 <button
                                     type="submit"
+                                    disabled={isSubmitting}
                                     style={{
-                                        background: 'var(--color-brand-background-strong)',
-                                        color: 'var(--color-brand-on-background-strong)',
-                                        border: 'none',
-                                        borderRadius: 'var(--radius-m)',
-                                        fontSize: '16px',
-                                        fontWeight: 'bold',
-                                        cursor: isSubmitting ? 'wait' : 'pointer',
-                                        opacity: isSubmitting ? 0.7 : 1,
-                                        boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
-                                        transition: 'all 0.2s ease',
                                         display: 'flex',
                                         alignItems: 'center',
-                                        justifyContent: 'center',
+                                        gap: '8px',
+                                        padding: '10px 20px',
+                                        background: 'var(--neutral-alpha-weak)',
+                                        color: 'var(--neutral-on-background-strong)',
+                                        border: '1px solid var(--neutral-alpha-medium)',
+                                        borderRadius: 'var(--radius-m)',
+                                        fontSize: '14px',
+                                        fontWeight: '600',
+                                        cursor: isSubmitting ? 'wait' : 'pointer',
+                                        opacity: isSubmitting ? 0.6 : 1,
+                                        transition: 'all 0.2s ease',
+                                        backdropFilter: 'blur(8px)',
                                     }}
                                     onMouseOver={(e) => {
-                                        e.currentTarget.style.transform = 'translateY(-2px)';
-                                        e.currentTarget.style.boxShadow = '0 6px 8px rgba(0, 0, 0, 0.12)';
+                                        e.currentTarget.style.background = 'var(--neutral-alpha-medium)';
+                                        e.currentTarget.style.borderColor = 'var(--neutral-border-medium)';
                                     }}
                                     onMouseOut={(e) => {
-                                        e.currentTarget.style.transform = 'translateY(0)';
-                                        e.currentTarget.style.boxShadow = '0 4px 6px rgba(0, 0, 0, 0.1)';
+                                        e.currentTarget.style.background = 'var(--neutral-alpha-weak)';
+                                        e.currentTarget.style.borderColor = 'var(--neutral-alpha-medium)';
                                     }}
-                                    disabled={isSubmitting}
                                 >
                                     {isSubmitting ? "Sending..." : "Send Message"}
                                     {!isSubmitting && (
-                                        <span style={{ marginLeft: '8px', display: 'inline-block' }}>
-                                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                                <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-                                            </svg>
-                                        </span>
+                                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <path d="M22 2L11 13" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                            <path d="M22 2L15 22L11 13L2 9L22 2Z" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+                                        </svg>
                                     )}
                                 </button>
                             </Flex>
