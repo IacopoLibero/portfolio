@@ -1,3 +1,11 @@
+/**
+ * Forma delle immagini usate nelle sezioni di contenuto.
+ * Serve ad annotare gli array vuoti: senza tipo TypeScript li inferisce come
+ * never[] e l'accesso a image.src/alt/width/height diventa un errore.
+ *
+ * @typedef {{ src: string, alt: string, width: number, height: number }} ContentImage
+ */
+
 const person = {
   firstName: "Iacopo Libero",
   lastName: "Bernabei",
@@ -6,11 +14,12 @@ const person = {
   },
   role: "Full-Stack Web Developer & Cybersecurity Expert",
   avatar: "/images/avatar.webp",
-  email: "iacopoliberolavoro@gmail.com",
+  email: "work@iacopolibero.dev",
   location: "Florence, Italy",
   timezone: "Europe/Rome", // IANA time zone identifier
   languages: ["Italian", "English"], // optional: Leave the array empty if you don't want to display languages
   phone: "+393459488277",
+  vatNumber: "07570280482",
 };
 
 const baseKeywords = [
@@ -168,6 +177,7 @@ const about = {
             Collaborated with a team of experienced professionals, enhancing my understanding of cloud security best practices and incident response strategies.
           </>
         ],
+        /** @type {ContentImage[]} */
         images: [
           // optional: leave the array empty if you don't want to display images
           /*
@@ -195,6 +205,7 @@ const about = {
             Steadily building a diverse portfolio of projects that demonstrate my evolving capabilities in both front-end and back-end development.
           </>,
         ],
+        /** @type {ContentImage[]} */
         images: [
           // optional: leave the array empty if you don't want to display images
           /*
