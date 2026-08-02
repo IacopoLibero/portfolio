@@ -265,6 +265,20 @@ h2 i {
     margin-bottom: 8px;
 }
 
+/* Griglia a due colonne per le competenze tecniche
+   (sostituisce .row / .col-md-6 di Bootstrap, non piu' caricato) */
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+}
+
+.skills-grid .skills-col {
+    flex: 1 1 50%;
+    max-width: 50%;
+    min-width: 0;
+}
+
 .job-roles {
     margin-top: 20px;
 }
@@ -386,10 +400,178 @@ hr {
         columns: 1;
     }
 
+    .skills-grid .skills-col {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+
     .language-selector {
         position: static;
         margin: 20px auto;
         justify-content: center;
         width: fit-content;
+    }
+}
+/* ============================================================
+   Stampa su A4
+   Nasconde i controlli di interfaccia e adatta il layout al foglio.
+   ============================================================ */
+@page {
+    size: A4 portrait;
+    margin: 0;
+}
+
+@media print {
+
+    /* Mantiene sfondi e colori (colonna sinistra, barre lingue, icone) */
+    *,
+    *::before,
+    *::after {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    /* Fattore di riduzione per far stare il CV in un unico foglio A4. */
+    body {
+        background-color: #fff;
+        font-size: 10.5px;
+        line-height: 1.45;
+        zoom: var(--print-zoom, 0.74);
+    }
+
+    .signature {
+        margin-top: 18px;
+        padding-top: 12px;
+    }
+
+    /* Controlli non stampabili */
+    .language-selector {
+        display: none !important;
+    }
+
+    /* Il flexbox non si impagina su piu' fogli: in stampa le due colonne
+       diventano celle di tabella, che Chromium spezza correttamente
+       mantenendole affiancate su ogni pagina. */
+    .container {
+        display: table;
+        table-layout: fixed;
+        max-width: none;
+        width: 100%;
+        margin: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .left-column,
+    .right-column {
+        display: table-cell;
+        vertical-align: top;
+    }
+
+    .left-column {
+        width: 38%;
+        padding: 12mm 6mm 8mm 8mm;
+    }
+
+    .right-column {
+        width: 62%;
+        padding: 12mm 8mm 8mm 8mm;
+    }
+
+    .photo {
+        height: 150px;
+        margin-bottom: 12px;
+    }
+
+    .photo:hover {
+        transform: none;
+    }
+
+    h1,
+    .nome {
+        font-size: 24px;
+    }
+
+    h2 {
+        font-size: 14px;
+        margin: 16px 0 10px 0;
+    }
+
+    .right-column h2 {
+        font-size: 15px;
+    }
+
+    .signature-name {
+        font-size: 22px;
+    }
+
+    hr {
+        margin: 14px 0;
+    }
+
+    .languages {
+        margin-right: 0;
+    }
+
+    /* Dentro una cella di tabella il flex-basis percentuale non si risolve:
+       fisso le due colonne senza wrap. */
+    .skills-grid {
+        flex-wrap: nowrap;
+        gap: 10px;
+    }
+
+    .skills-grid .skills-col {
+        flex: 1 1 0;
+        max-width: none;
+    }
+
+    /* Compattazione verticale: su foglio singolo lo spazio bianco e' costoso */
+    .contact-info ul li,
+    .skills ul li,
+    .hobbies ul li {
+        margin-bottom: 5px;
+    }
+
+    .skills li,
+    .hobbies li {
+        margin-bottom: 5px;
+    }
+
+    .contact-info ul,
+    .skills ul,
+    .hobbies ul {
+        line-height: 1.5;
+    }
+
+    .profile p,
+    .education p,
+    .signature p {
+        margin-bottom: 8px;
+    }
+
+    .language {
+        margin-bottom: 10px;
+    }
+
+    .education-details {
+        margin-bottom: 14px;
+        padding: 10px;
+    }
+
+    .job-roles p {
+        margin-bottom: 4px;
+    }
+
+    /* Evita che i blocchi piccoli vengano spezzati a meta' */
+    .language,
+    .education-details,
+    .job-roles>div {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
     }
 }

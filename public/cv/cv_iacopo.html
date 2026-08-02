@@ -5,20 +5,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>CV - Iacopo Libero Bernabei</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Open+Sans:wght@300;400;600;700&display=swap"
-        rel="stylesheet">
+    <!-- Asset self-hosted: nessuna dipendenza da CDN esterni (rispetta la CSP 'self' del sito) -->
+    <link rel="stylesheet" href="vendor/fonts.css">
+    <link rel="stylesheet" href="vendor/icons.css">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-        crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -43,11 +33,11 @@
                     <li><i class="fas fa-map-marker-alt"></i>Firenze, FI</li>
                     <li><i class="fas fa-phone-alt"></i><a href="tel:+393459488277">+39 345 9488277</a></li>
                     <li><i class="fas fa-globe"></i> <a href="https://iacopolibero.dev"
-                            target="_blank">iacopolibero.dev</a></li>
+                            target="_blank" rel="noopener noreferrer">iacopolibero.dev</a></li>
                     <li><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/iacopolibero/"
-                            target="_blank">Linkedin</a></li>
+                            target="_blank" rel="noopener noreferrer">Linkedin</a></li>
                     <li><i class="fas fa-envelope"></i> <a
-                            href="mailto: iacopoliberolavoro@gmail.com">iacopoliberolavoro@gmail.com</a></li>
+                            href="mailto: work@iacopolibero.dev">work@iacopolibero.dev</a></li>
                     <li><i class="bi bi-github"></i><a
                             href="https://github.com/IacopoLibero">github.com/IacopoLibero</a></li>
                     <li><i class="fas fa-birthday-cake"></i> 14/12/2004</li>
@@ -126,8 +116,8 @@
             </div>
             <div class="skills section">
                 <h2><i class="bi bi-tools"></i> <span data-key="technical_skills"></span></h2>
-                <ul class="row">
-                    <div class="col-md-6">
+                <ul class="skills-grid">
+                    <div class="skills-col">
                         <li data-key="tech1"></li>
                         <li data-key="tech2"></li>
                         <li data-key="tech3"></li>
@@ -139,7 +129,7 @@
                         <li data-key="tech9"></li>
                         <li data-key="tech10"></li>
                     </div>
-                    <div class="col-md-6">
+                    <div class="skills-col">
                         <li data-key="tech11"></li>
                         <li data-key="tech12"></li>
                         <li data-key="tech13"></li>

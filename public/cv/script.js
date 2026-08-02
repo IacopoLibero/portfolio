@@ -77,9 +77,9 @@ const translations = {
         job_title2: "Tirocinio a Neboola Srl.",
         job_time2: "Firenze, 05/2025 - 07/2025",
         job_desc2: "Ho svolto un tirocinio presso Neboola S.R.L., dove ho applicato le mie competenze in infrastrutture cloud e cybersecurity a progetti reali.Ho acquisito esperienza pratica con Infrastructure as Code utilizzando Terraform, gestione automatizzata della configurazione con Ansible e fondamenti di orchestrazione dei container con Kubernetes.",
-        job_title1: "Sviluppatore Web full stack",
+        job_title1: "Sviluppatore Full Stack Freelance",
         job_time1: "Firenze, 09/2024 - in corso",
-        job_desc1: "Sviluppo di applicazioni web full stack con tecnologie moderne come Next.js, React, Node.js. Ho lavorato su progetti autonomi, gestendo l'intero ciclo di sviluppo, dalla progettazione alla distribuzione, con particolare attenzione alla sicurezza e all'efficienza del codice.",
+        job_desc1: "Sono specializzato nella creazione di siti web personalizzati, sistemi di gestione dei contenuti, strumenti di automazione e soluzioni digitali su misura, oltre che in servizi di sicurezza informatica, per aziende, professionisti e attività commerciali che desiderano distinguersi online. Mi occupo di supervisionare ogni fase del progetto, dall’analisi delle esigenze alla definizione della struttura, dalla progettazione UI/UX allo sviluppo front-end, passando per l’implementazione tecnica, l’ottimizzazione SEO e la messa in sicurezza del sito web o della piattaforma. Ogni progetto viene realizzato con meticolosità per garantire una presenza online moderna, affidabile e professionale, con soluzioni visivamente accattivanti, facili da usare, veloci e ottimizzate per la visibilità sui motori di ricerca.",
         privacy_statement: "Autorizzo il trattamento dei dati personali contenuti nel mio CV ex art. 13 del decreto legislativo 196/2003 e art. 13 del regolamento UE 2016/679 sulla protezione dei singoli cittadini in merito al trattamento dei dati personali"
     },
     en: {
@@ -157,9 +157,9 @@ const translations = {
         job_title2: "Internship at Neboola S.R.L.",
         job_time2: "Florence, 05/2025 - 07/2025",
         job_desc2: "I've done an internship at Neboola S.R.L., where I am applying my skills in cloud infrastructure and cybersecurity to real-world projects. Gained hands-on experience with infrastructure as code using Terraform, automated configuration management with Ansible, and container orchestration fundamentals with Kubernetes.",
-        job_title1: "Full stack Web Developer",
+        job_title1: "Freelance Full Stack Developer",
         job_time1: "Florence, 09/2024 - ongoing",
-        job_desc1: "Development of full stack web applications with modern technologies such as Next.js, React, Node.js. I have worked on independent projects, managing the entire development cycle, from design to deployment, with particular attention to code security and efficiency.",
+        job_desc1: "I specialize in creating custom websites, content management systems, automation tools, and tailored digital solutions, as well as cybersecurity services, for companies, professionals, and businesses that want to stand out online. I oversee every phase of the project, from needs analysis to structure definition, from UI/UX design to front-end development, through technical implementation, SEO optimization, and securing the website or platform. Every project is meticulously crafted to deliver a modern, reliable, and professional online presence, featuring solutions that are visually appealing, easy to use, fast, and optimized for search engine visibility.",
         privacy_statement: "I authorize the processing of personal data contained in my CV pursuant to art. 13 of legislative decree 196/2003 and art. 13 of EU regulation 2016/679 on the protection of individuals with regard to the processing of personal data"
     }
 };
@@ -263,83 +263,6 @@ function showDownloadNotification(lang) {
     }, 3000);
 }
 
-/*
-// Funzione per scaricare il CV
-function downloadCV() {
-    const lang = currentLanguage === 'en' ? 'EN' : 'IT';
-    const filename = `CV_Iacopo_Libero_Bernabei_${lang}`;
-
-    // Nascondi il selettore di lingua prima della generazione PDF
-    const languageSelector = document.querySelector('.language-selector');
-    const originalDisplay = languageSelector.style.display;
-    languageSelector.style.display = 'none';
-
-    // Ottieni il contenitore del CV
-    const element = document.querySelector('.container');
-    const foto = document.getElementById('foto');
-
-    // Rimuovi il margine top e bottom e riduci il font del 10%
-    const originalFontSize = element.style.fontSize;
-    const originalMargin = element.style.marginTop;
-    element.style.marginTop = '0';
-    element.style.marginBottom = '0';
-
-    // Applica una trasformazione per ridurre l'altezza all'80% e il testo
-    const originalTransform = element.style.transform;
-    const originalFotox = foto.style.transform;
-    const originalFotoTransform = foto.style.transform;
-    element.style.transform = 'scaleY(0.8)';
-    element.style.transformOrigin = 'top center';
-    foto.style.transform = 'scaleX(0.8)';
-    foto.style.transformOrigin = 'center';
-
-    // Configurazioni per html2pdf
-    const opt = {
-        filename: filename + '.pdf',
-        image: { type: 'jpeg', quality: 0.98 },
-        html2canvas: {
-            scale: 4,
-            useCORS: true,
-            letterRendering: true
-        },
-        jsPDF: {
-            unit: 'in',
-            format: 'a3',
-            orientation: 'portrait',
-            compress: true,
-            margin: [0.0, 0.0, 0.0, 0.0]
-        }
-    };
-
-    // Controlla se html2pdf è disponibile
-    if (typeof html2pdf !== 'undefined') {
-        // Genera e scarica il PDF
-        html2pdf().set(opt).from(element).save().then(() => {
-            // Ripristina la trasformazione e il selettore di lingua
-            element.style.transform = originalTransform;
-            element.style.marginTop = originalMargin;
-            element.style.marginBottom = originalMargin;
-            foto.style.transform = originalFotox;
-            setTimeout(() => {
-                languageSelector.style.display = originalDisplay || 'flex';
-            }, 500);
-        });
-    } else {
-        // Fallback: usa il metodo di stampa standard
-        setTimeout(() => {
-            window.print();
-            // Ripristina la trasformazione
-            element.style.transform = originalTransform;
-            element.style.marginTop = originalMargin;
-            element.style.marginBottom = originalMargin;
-            foto.style.transform = originalFotox;
-            setTimeout(() => {
-                languageSelector.style.display = originalDisplay || 'flex';
-            }, 1000);
-        }, 100);
-    }
-}
-*/
 
 // Event listener per il cambio lingua
 document.addEventListener('DOMContentLoaded', function () {
