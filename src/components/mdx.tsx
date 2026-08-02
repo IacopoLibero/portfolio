@@ -68,8 +68,8 @@ function createImage({ alt, src, ...props }: SmartImageProps & { src: string }) 
 function extractText(node: React.ReactNode): string {
   if (typeof node === "string" || typeof node === "number") return String(node);
   if (Array.isArray(node)) return node.map(extractText).join("");
-  if (node && typeof node === "object" && "props" in (node as any)) {
-    return extractText((node as React.ReactElement).props.children);
+  if (React.isValidElement<{ children?: React.ReactNode }>(node)) {
+    return extractText(node.props.children);
   }
   return "";
 }
@@ -121,11 +121,15 @@ function createInlineCode({ children }: { children: ReactNode }) {
   return <InlineCode>{children}</InlineCode>;
 }
 
-function createCodeBlock(props: any) {
+/** Props del <code> annidato che MDX genera dentro un <pre>. */
+type CodeChildProps = { className?: string; children?: ReactNode };
+
+function createCodeBlock(props: React.ComponentPropsWithoutRef<"pre">) {
   // For pre tags that contain code blocks
-  if (props.children && props.children.props && props.children.props.className) {
-    const { className, children } = props.children.props;
-    
+  const child = props.children;
+  if (React.isValidElement<CodeChildProps>(child) && child.props.className) {
+    const { className, children } = child.props;
+
     // Extract language from className (format: language-xxx)
     const language = className.replace('language-', '');
     const label = language.charAt(0).toUpperCase() + language.slice(1);
@@ -136,7 +140,8 @@ function createCodeBlock(props: any) {
         marginBottom="16"
         codeInstances={[
           {
-            code: children,
+            // CodeBlock vuole una stringa: children qui e' il ReactNode del <code>.
+            code: extractText(children),
             language,
             label
           }
@@ -150,18 +155,21 @@ function createCodeBlock(props: any) {
   return <pre {...props} />;
 }
 
+// I componenti di once-ui accettano props piu' strette (TextProps) di quelle
+// degli elementi HTML che sostituiscono, quindi le due firme non combaciano
+// strutturalmente. Un solo cast sull'oggetto, invece di un `any` per voce.
 const components = {
-  p: createParagraph as any,
-  h1: createHeading("h1") as any,
-  h2: createHeading("h2") as any,
-  h3: createHeading("h3") as any,
-  h4: createHeading("h4") as any,
-  h5: createHeading("h5") as any,
-  h6: createHeading("h6") as any,
-  img: createImage as any,
-  a: CustomLink as any,
-  code: createInlineCode as any,
-  pre: createCodeBlock as any,
+  p: createParagraph,
+  h1: createHeading("h1"),
+  h2: createHeading("h2"),
+  h3: createHeading("h3"),
+  h4: createHeading("h4"),
+  h5: createHeading("h5"),
+  h6: createHeading("h6"),
+  img: createImage,
+  a: CustomLink,
+  code: createInlineCode,
+  pre: createCodeBlock,
   Heading,
   Text,
   CodeBlock,
@@ -178,7 +186,7 @@ const components = {
   Icon: dynamic(() => import("@/once-ui/components").then(mod => mod.Icon)),
   SmartImage: dynamic(() => import("@/once-ui/components").then(mod => mod.SmartImage)),
   SmartLink: dynamic(() => import("@/once-ui/components").then(mod => mod.SmartLink)),
-};
+} as MDXRemoteProps["components"];
 
 type CustomMDXProps = MDXRemoteProps & {
   components?: typeof components;

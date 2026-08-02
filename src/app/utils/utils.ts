@@ -2,14 +2,14 @@ import fs from "fs";
 import path from "path";
 import matter from "gray-matter";
 
-type Team = {
+export type Team = {
   name: string;
   role: string;
   avatar: string;
   linkedIn: string;
 };
 
-type Metadata = {
+export type Metadata = {
   title: string;
   publishedAt: string;
   summary: string;
@@ -18,6 +18,12 @@ type Metadata = {
   tag?: string;
   team: Team[];
   link?: string;
+};
+
+export type Post = {
+  metadata: Metadata;
+  slug: string;
+  content: string;
 };
 
 import { notFound } from 'next/navigation';
