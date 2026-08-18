@@ -1,0 +1,97 @@
+---
+title: "Eurodrive - Server Migration & Infrastructure Overhaul"
+publishedAt: "2026-07-24"
+summary: "Full migration and modernization of the hosting infrastructure for Eurodrive, a driving and nautical school in Florence: six services moved to a new self-managed server, redesigned deployment architecture, security hardening, and a documented disaster-recovery process."
+images:
+  - "/images/projects/eurodrive_infrastructure/chaos-to-order.png"
+link: "https://eurodrive.it"
+target: "_blank"
+---
+
+## Overview
+
+Eurodrive is a driving and nautical school in Florence running several
+web properties: its institutional website, a customer portal for students,
+a legacy backend serving its mobile exam-prep app, a newer web app for the
+same exam prep, and an internal staff tool. I was brought in to migrate all
+of it off an aging server onto new infrastructure, and ended up going well
+beyond a lift-and-shift: redesigning how every service is deployed,
+maintained, and recovered.
+
+The work spanned two phases. First, migrating everything to a new server
+with zero perceptible downtime. Then, weeks later, a full infrastructure
+overhaul: splitting a fragile, centrally-managed deployment setup into
+independent, self-contained services, hardening security across every
+public login, and building automated safety nets so the client is never
+dependent on tribal knowledge to keep things running — or to recover if
+something goes catastrophically wrong.
+
+## Key Improvements
+
+- **Zero-downtime server migration**: moved every live service — institutional
+  site, customer portal, legacy and modern app backends, internal tools — to
+  a new server, including DNS cutover and TLS certificate issuance, without
+  interrupting service for end users.
+- **Independent deployment per service**: replaced a single shared deployment
+  pipeline with one dedicated, automatically-deploying setup per service.
+  A change to one application can no longer accidentally affect another, and
+  each one carries everything needed to rebuild it independently.
+- **Security hardening across every login surface**: added brute-force /
+  credential-stuffing protection to every public-facing login form across
+  the infrastructure, and tightened file permissions that were broader than
+  necessary — while deliberately leaving unaffected the one endpoint where a
+  blanket rate-limit would have degraded real usage for end users.
+- **Drift protection**: built an automated nightly process that captures
+  changes made through CMS admin panels, so manual edits are never silently
+  lost or out of sync with the deployed configuration.
+- **Disaster recovery**: authored a script and runbook that can rebuild the
+  entire infrastructure — all services, security configuration included —
+  on a brand-new server, cutting a from-scratch rebuild down to a fraction
+  of the manual effort it would otherwise take.
+- **Full documentation & handover-readiness**: every service now ships with
+  self-contained documentation covering its stack, configuration, and
+  operational quirks, so a new developer could take over with effectively
+  no ramp-up time.
+
+## Technologies Used
+
+- **Docker & Docker Compose**: containerized every service for consistent,
+  reproducible deployments.
+- **Traefik**: reverse proxy handling routing, automatic TLS, and the new
+  rate-limiting rules across all services.
+- **GitHub Actions**: per-service CI/CD, triggering automatic, isolated
+  deployments on push.
+- **Linux server administration**: firewall configuration, intrusion
+  prevention, user/permission hardening on a self-managed Ubuntu server.
+- **Bash scripting**: automation for backups, drift-detection sync, and the
+  disaster-recovery bootstrap process.
+- **WordPress, Joomla, Next.js, Python/FastAPI**: the underlying stacks of
+  the various services being hosted and maintained.
+
+## Challenges and Learnings
+
+Coordinating a live migration across multiple production services with real
+users — students, staff, mobile app clients — without a maintenance window
+was the first challenge; every step had to be reversible and verified before
+moving to the next.
+
+The bigger challenge came later, redesigning the deployment architecture
+itself while everything stayed live in production. Security hardening in
+particular required judgment calls rather than blanket rules: one legacy
+endpoint serves both authentication and normal application traffic, so the
+same rate-limiting that protected every other login would have broken real
+usage there — recognizing that distinction mattered more than applying a
+uniform policy everywhere.
+
+Writing the disaster-recovery tooling was its own exercise in humility:
+building something meant to work correctly on the one day you hope never
+comes, and being honest in the documentation about what it does and doesn't
+cover, rather than overselling it.
+
+## Outcome
+
+Eurodrive's infrastructure is now easier to reason about, harder to
+compromise, resistant to silent configuration drift, and — critically —
+independent of any single person's memory of how it was built. If they ever
+need a different developer to take over, the handover is a non-event: the
+documentation and tooling carry the knowledge, not a person.
